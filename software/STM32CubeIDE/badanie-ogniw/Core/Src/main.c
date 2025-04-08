@@ -48,13 +48,13 @@
 #include "testimg.h"
 #include "BMPXX80.h"
 #include "fatfs_sd.h"
-#include "fatfs_sd_defs.h"
+//#include "fatfs_sd_defs.h"
 
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+#define RETRY_DELAY_MS 500
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -73,16 +73,85 @@
 float BMP280temperature = 0;
 int32_t BMP280pressure = 0;
 
+FATFS fs;
+FIL fil;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 void SDcardInit(char* folder_name);
+void SDcardWriteData(float *temperature, int32_t *pressure);
+void SDcardClose(void);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void SDcardInit(char* folder_name) {
+    FRESULT res;
+    uint8_t retry_count = 5;
+
+    while (retry_count--) {
+        res = f_mount(&fs, "", 1);
+        if (res == FR_OK) {
+            break;
+        }
+        printf("Error mounting filesystem! (%d). Retrying...\n", res);
+        HAL_Delay(RETRY_DELAY_MS);
+    }
+
+    retry_count = 5;
+    while (retry_count--) {
+        res = f_open(&fil, "file.txt", FA_OPEN_ALWAYS | FA_WRITE);
+        if (res == FR_OK) {
+            break;
+        }
+        printf("Error opening SDcard file! (%d). Retrying...\n", res);
+        HAL_Delay(RETRY_DELAY_MS);
+    }
+
+    res = f_lseek(&fil, f_size(&fil));
+    if (res != FR_OK) {
+        printf("Error seeking to end of file! (%d)\n", res);
+        f_close(&fil);
+        return;
+    }
+
+    f_puts("\n--- Nowy pomiar ---\n", &fil);
+    f_puts("Temperatura,Cisnienie\n", &fil);
+
+    f_sync(&fil);
+
+}
+
+void SDcardWriteData(float *temperature, int32_t *pressure) {
+    if (f_lseek(&fil, f_size(&fil)) != FR_OK) {
+        printf("Error seeking in file!\n");
+        ST7735_WriteString(10, ST7735_WIDTH-20, "Error in file!", Font_7x10, ST7735_RED, ST7735_BLACK);
+        return;
+    }
+
+    char buffer[50];
+    snprintf(buffer, sizeof(buffer), "%.2f,%ld\n", *temperature, *pressure);
+
+    if (f_puts(buffer, &fil) < 0) {
+        printf("Error writing to file!\n");
+    }
+
+    if (f_sync(&fil) != FR_OK) {
+        printf("Error syncing file!\n");
+    }
+    f_sync(&fil);
+}
+
+
+void SDcardClose(void) {
+    if (f_close(&fil) != FR_OK) {
+        printf("Error closing file!\n");
+    }
+}
 
 /* USER CODE END 0 */
 
@@ -126,7 +195,7 @@ int main(void)
 
   BMP280_Init(&hspi1, BMP280_TEMPERATURE_16BIT, BMP280_STANDARD, BMP280_FORCEDMODE);
 
-  //SDcardInit("test.txt");
+  SDcardInit("test.txt");
 
   /* USER CODE END 2 */
 
@@ -142,7 +211,7 @@ int main(void)
 
 
 
-  	//SDcardWriteData(&BMP280temperature, &BMP280pressure);
+  	SDcardWriteData(&BMP280temperature, &BMP280pressure);
 
 
 
@@ -168,11 +237,6 @@ int main(void)
 
 
   	HAL_Delay(1000);
-
-  	if(0){
-  			//SDcardClose();
-  	}
-
   }
   /* USER CODE END 3 */
 }

@@ -40,8 +40,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/i2c.h ../Core/Inc/main.h ../Core/Inc/spi.h \
  ../Core/Inc/usart.h ../Core/Inc/usb_otg.h ../Core/Inc/gpio.h \
  ../Core/Inc/st7735.h ../Core/Inc/fonts.h ../Core/Inc/fonts.h \
- ../Core/Inc/testimg.h ../Core/Inc/BMPXX80.h ../Core/Inc/fatfs_sd.h \
- ../Core/Inc/fatfs_sd_defs.h
+ ../Core/Inc/testimg.h ../Core/Inc/BMPXX80.h ../Core/Inc/fatfs_sd.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
 ../Core/Inc/stm32f7xx_hal_conf.h:
@@ -96,4 +95,3 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/testimg.h:
 ../Core/Inc/BMPXX80.h:
 ../Core/Inc/fatfs_sd.h:
-../Core/Inc/fatfs_sd_defs.h:
