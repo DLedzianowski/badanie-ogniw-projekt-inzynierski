@@ -38,6 +38,21 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+// Struktura z pomiarami
+struct sensors {
+    float BMP280temperature;
+    int32_t BMP280pressure;
+
+    uint16_t tvoc_ppb;
+    uint16_t co2_eq_ppm;
+    uint16_t scaled_ethanol_signal;
+    uint16_t scaled_h2_signal;
+
+    uint16_t INA219_Voltage;
+    int16_t INA219_Current;
+    uint16_t INA219_Power;
+};
+extern struct sensors s;
 
 /* USER CODE END ET */
 
@@ -48,6 +63,7 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
+#define RETRY_DELAY_MS 2000
 
 /* USER CODE END EM */
 

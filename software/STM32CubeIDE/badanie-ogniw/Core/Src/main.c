@@ -30,6 +30,12 @@
  *	--CS	PE9
  *	SD card	+3.3V
  *	--CS	PE11
+ *
+ *	PINOUT I2C
+ *	SCL PB8
+ *	SDA PB9
+ *	SGP30 0x58
+ *	INA219 0x40
  */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
@@ -48,13 +54,16 @@
 #include "testimg.h"
 #include "BMPXX80.h"
 #include "fatfs_sd.h"
-//#include "fatfs_sd_defs.h"
+#include "sensirion_common.h"
+#include "sgp30.h"
+#include "INA219.h"
 
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define RETRY_DELAY_MS 500
+
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -70,8 +79,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-float BMP280temperature = 0;
-int32_t BMP280pressure = 0;
+struct sensors s = {0};
 
 FATFS fs;
 FIL fil;
@@ -82,9 +90,9 @@ FIL fil;
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 void SDcardInit(char* folder_name);
-void SDcardWriteData(float *temperature, int32_t *pressure);
+void SDcardWriteData(struct sensors *s);
 void SDcardClose(void);
-
+void OLEDdisplay(struct sensors *s);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -98,59 +106,105 @@ void SDcardInit(char* folder_name) {
         if (res == FR_OK) {
             break;
         }
-        printf("Error mounting filesystem! (%d). Retrying...\n", res);
+        printf("Error mounting filesystem! (%d). Retrying...\r\n", res);
         HAL_Delay(RETRY_DELAY_MS);
     }
 
     retry_count = 5;
     while (retry_count--) {
-        res = f_open(&fil, "file.txt", FA_OPEN_ALWAYS | FA_WRITE);
+        res = f_open(&fil, "test.txt", FA_OPEN_ALWAYS | FA_WRITE);
         if (res == FR_OK) {
             break;
         }
-        printf("Error opening SDcard file! (%d). Retrying...\n", res);
+        printf("Error opening SDcard file! (%d). Retrying...\r\n", res);
         HAL_Delay(RETRY_DELAY_MS);
     }
 
     res = f_lseek(&fil, f_size(&fil));
     if (res != FR_OK) {
-        printf("Error seeking to end of file! (%d)\n", res);
+        printf("Error seeking to end of file! (%d)\r\n", res);
         f_close(&fil);
         return;
     }
 
     f_puts("\n--- Nowy pomiar ---\n", &fil);
-    f_puts("Temperatura,Cisnienie\n", &fil);
+    f_puts("TVOC_ppb,CO2_eq_ppm,Ethanol_signal,H2_signal,Temperatura,Cisnienie\n", &fil);
 
     f_sync(&fil);
 
 }
 
-void SDcardWriteData(float *temperature, int32_t *pressure) {
-    if (f_lseek(&fil, f_size(&fil)) != FR_OK) {
-        printf("Error seeking in file!\n");
-        ST7735_WriteString(10, ST7735_WIDTH-20, "Error in file!", Font_7x10, ST7735_RED, ST7735_BLACK);
-        return;
-    }
+void SDcardWriteData(struct sensors *s) {
+	// ERROR SDcard -> OLED
+	if (f_lseek(&fil, f_size(&fil)) != FR_OK) {
+  	 printf("Error seeking in file!\r\n");
+  	 ST7735_WriteString(10, 140, "Error in file!", Font_7x10, ST7735_RED, ST7735_BLACK);
+  	 return;
+	}
 
-    char buffer[50];
-    snprintf(buffer, sizeof(buffer), "%.2f,%ld\n", *temperature, *pressure);
+	char buffer[150];
+	snprintf(buffer, sizeof(buffer), "%u,%u,%.2f,%.2f,%.2f,%ld\n",
+			s->tvoc_ppb, s->co2_eq_ppm, s->scaled_ethanol_signal/512.0f, s->scaled_h2_signal/512.0f, s->BMP280temperature, s->BMP280pressure);
 
-    if (f_puts(buffer, &fil) < 0) {
-        printf("Error writing to file!\n");
-    }
+	if (f_puts(buffer, &fil) < 0) {
+  	 printf("Error writing to file!\r\n");
+	}
 
-    if (f_sync(&fil) != FR_OK) {
-        printf("Error syncing file!\n");
-    }
-    f_sync(&fil);
+	if (f_sync(&fil) != FR_OK) {
+		printf("Error syncing file!\r\n");
+	}
+	f_sync(&fil);
 }
-
 
 void SDcardClose(void) {
     if (f_close(&fil) != FR_OK) {
-        printf("Error closing file!\n");
+        printf("Error closing file!\r\n");
     }
+}
+
+void OLEDdisplay(struct sensors *s) {
+    char buffer[100];
+    int tempInt = (int)(s->BMP280temperature * 100);
+    int tempFrac = tempInt % 100;
+
+    // Temperatura
+    snprintf(buffer, sizeof(buffer), "Temp: %d.%02d C", tempInt / 100, tempFrac);
+    ST7735_WriteString(5,  5, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+    // Ciśnienie
+    snprintf(buffer, sizeof(buffer), "Prs:  %ld Pa", s->BMP280pressure);
+    ST7735_WriteString(5,  20, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+    // TVOC
+    snprintf(buffer, sizeof(buffer), "TVOC: %4u ppb", s->tvoc_ppb);
+    ST7735_WriteString(5,  35, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+    // CO2eq
+    snprintf(buffer, sizeof(buffer), "CO2:  %4u ppm", s->co2_eq_ppm);
+    ST7735_WriteString(5,  50, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+    // Etanol/512.0
+    float ethanol = s->scaled_ethanol_signal / 512.0f;
+    snprintf(buffer, sizeof(buffer), "EtOH: %.2f", ethanol);
+    ST7735_WriteString(5,  65, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+    // H2/512.0
+    float h2 = s->scaled_h2_signal / 512.0f;
+    snprintf(buffer, sizeof(buffer), "H2:   %.2f", h2);
+    ST7735_WriteString(5,  80, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+    // INA219_Current
+    snprintf(buffer, sizeof(buffer), "Current:  %4d mA", s->INA219_Current);
+    ST7735_WriteString(5,  95, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+    // INA219_Voltage
+    snprintf(buffer, sizeof(buffer), "Voltage:  %4u mV", s->INA219_Voltage);
+    ST7735_WriteString(5,  110, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+    // INA219_Power
+    snprintf(buffer, sizeof(buffer), "Power:  %4u mW", s->INA219_Power);
+    ST7735_WriteString(5,  125, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
 }
 
 /* USER CODE END 0 */
@@ -190,12 +244,23 @@ int main(void)
   MX_SPI1_Init();
   MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
+  // OLED
   ST7735_Init();
   ST7735_FillScreen(ST7735_BLACK);
 
+  // BMP
   BMP280_Init(&hspi1, BMP280_TEMPERATURE_16BIT, BMP280_STANDARD, BMP280_FORCEDMODE);
+  // SGP
+	if (sgp_probe() != STATUS_OK) {
+		printf("SGP sensor error\r\n");
+	}
+	// INA
+	INA219_t myina219;
+	INA219_Init(&myina219, &hi2c1, INA219_ADDRESS);
+	//INA219_setCalibration_32V_2A(&myina219);
 
-  SDcardInit("test.txt");
+	// SD
+	SDcardInit("test.txt");
 
   /* USER CODE END 2 */
 
@@ -206,35 +271,33 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  	BMP280_ReadTemperatureAndPressure(&BMP280temperature, &BMP280pressure);
-  	printf("Temperature: %.2f °C, %ld Pa\n\r", BMP280temperature, BMP280pressure);
+  	// BMP
+  	BMP280_ReadTemperatureAndPressure(&s.BMP280temperature, &s.BMP280pressure);
+  	printf("Temperature: %.2f °C, Pressure: %ld Pa\n\r", s.BMP280temperature, s.BMP280pressure);
+
+  	// SGP
+  	sgp_measure_iaq_blocking_read(&s.tvoc_ppb, &s.co2_eq_ppm);
+		sgp_measure_signals_blocking_read(&s.scaled_ethanol_signal, &s.scaled_h2_signal);
+		printf("TVOC           = %4u ppb\r\n", s.tvoc_ppb);
+		printf("CO2 Equivalent = %4u ppm\r\n", s.co2_eq_ppm);
+		printf("Etanol Signal  = %.2f\r\n", s.scaled_ethanol_signal / 512.0f);
+		printf("H2 Signal      = %.2f\r\n", s.scaled_h2_signal / 512.0f);
+		//sgp_set_absolute_humidity()
+
+		// INA219
+		s.INA219_Current = INA219_ReadCurrent_raw(&myina219);
+		s.INA219_Voltage = INA219_ReadBusVoltage(&myina219);
+		s.INA219_Power = INA219_ReadPower(&myina219);
+		printf("INA219 Voltage = %4u V\r\n", s.INA219_Voltage);
+		printf("INA219 Current = %4d mA\r\n", s.INA219_Current);
+		printf("INA219 Power   = %4u mW\r\n", s.INA219_Power);
 
 
+  	// SD
+  	SDcardWriteData(&s);
 
-  	SDcardWriteData(&BMP280temperature, &BMP280pressure);
-
-
-
-    char buffer[100];
-    int tempInt = (int)(BMP280temperature * 100);
-    int tempFrac = tempInt % 100;
-
-    // Temperatura
-    int len = snprintf(NULL, 0, "Temp: %d.%02d °C", tempInt / 100, tempFrac) + 1;
-    if (len < sizeof(buffer)) {
-    	snprintf(buffer, sizeof(buffer), "Temp: %d.%02d °C", tempInt / 100, tempFrac);
-    	ST7735_WriteString(10, 10, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-    }
-    ST7735_WriteString(10, 10, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-
-    // Cisnienie
-    len = snprintf(NULL, 0, "Pressure: %ld Pa", BMP280pressure) + 1;
-    if (len < sizeof(buffer)) {
-    	snprintf(buffer, sizeof(buffer), "Prs: %ld Pa", BMP280pressure);
-    	ST7735_WriteString(10, 20, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-    }
-    ST7735_WriteString(10, 20, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-
+  	// OLED
+  	OLEDdisplay(&s);
 
   	HAL_Delay(1000);
   }

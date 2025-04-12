@@ -1,0 +1,2 @@
+../Core/Src/sensirion_common.c:39:4:sensirion_common_generate_crc	24	static
+../Core/Src/sensirion_common.c:58:4:sensirion_common_check_crc	16	static

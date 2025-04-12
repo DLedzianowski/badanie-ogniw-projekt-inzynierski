@@ -1,0 +1,11 @@
+../Core/Src/BMXX80.c:70:9:BMP280_Read8	1
+../Core/Src/BMXX80.c:118:10:BMP280_Read16	1
+../Core/Src/BMXX80.c:136:10:BMP280_Read16LE	1
+../Core/Src/BMXX80.c:179:6:BMP280_Write8	1
+../Core/Src/BMXX80.c:195:10:BMP280_Read24	1
+../Core/Src/BMXX80.c:326:6:BMP280_SetConfig	1
+../Core/Src/BMXX80.c:336:6:BMP280_Init	6
+../Core/Src/BMXX80.c:488:7:BMP280_ReadTemperature	4
+../Core/Src/BMXX80.c:626:9:BMP280_ReadPressure	3
+../Core/Src/BMXX80.c:730:9:BMP280_ReadTemperatureAndPressure	4
+../Core/Src/BMXX80.c:765:7:BMP280_ReadAltitude	1
