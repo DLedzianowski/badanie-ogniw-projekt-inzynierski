@@ -809,9 +809,6 @@ s16 sgp_probe() {
 
     client_data.current_state = WAIT_STATE;
 
-    /* Initialize I2C */
-    sensirion_i2c_init();
-
     /* try to read the serial ID */
     err = sgp_i2c_read_words_from_cmd(&sgp_cmd_get_serial_id,
                                       SGP_CMD_GET_SERIAL_ID_DURATION_US,

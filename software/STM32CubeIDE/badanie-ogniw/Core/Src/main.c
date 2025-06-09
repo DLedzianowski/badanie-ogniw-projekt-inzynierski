@@ -40,9 +40,11 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
 #include "fatfs.h"
 #include "i2c.h"
 #include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "usb_otg.h"
 #include "gpio.h"
@@ -79,7 +81,13 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+uint8_t isProgramStarted = 0;
+uint8_t _interruptFlag = 0;
+
+uint16_t adcPosition = 0;
+
 struct sensors s = {0};
+INA219_t myina219;
 
 FATFS fs;
 FIL fil;
@@ -107,6 +115,7 @@ void SDcardInit(char* folder_name) {
             break;
         }
         printf("Error mounting filesystem! (%d). Retrying...\r\n", res);
+     	  ST7735_WriteString(10, 140, "Error in file!", Font_7x10, ST7735_RED, ST7735_BLACK);
         HAL_Delay(RETRY_DELAY_MS);
     }
 
@@ -117,6 +126,7 @@ void SDcardInit(char* folder_name) {
             break;
         }
         printf("Error opening SDcard file! (%d). Retrying...\r\n", res);
+     	  ST7735_WriteString(10, 140, "Error in file!", Font_7x10, ST7735_RED, ST7735_BLACK);
         HAL_Delay(RETRY_DELAY_MS);
     }
 
@@ -128,7 +138,7 @@ void SDcardInit(char* folder_name) {
     }
 
     f_puts("\n--- Nowy pomiar ---\n", &fil);
-    f_puts("TVOC_ppb,CO2_eq_ppm,Ethanol_signal,H2_signal,Temperatura,Cisnienie\n", &fil);
+    f_puts("TVOC_ppb,CO2_eq_ppm,Ethanol_signal,H2_signal,Temperatura,Cisnienie,Napiecie_mV,Prad_mA,Moc_mW\n", &fil);
 
     f_sync(&fil);
 
@@ -142,9 +152,9 @@ void SDcardWriteData(struct sensors *s) {
   	 return;
 	}
 
-	char buffer[150];
-	snprintf(buffer, sizeof(buffer), "%u,%u,%.2f,%.2f,%.2f,%ld\n",
-			s->tvoc_ppb, s->co2_eq_ppm, s->scaled_ethanol_signal/512.0f, s->scaled_h2_signal/512.0f, s->BMP280temperature, s->BMP280pressure);
+	char buffer[200];
+	snprintf(buffer, sizeof(buffer), "%u,%u,%.2f,%.2f,%.2f,%ld,%u,%d,%u\n",
+			s->tvoc_ppb, s->co2_eq_ppm, s->scaled_ethanol_signal/512.0f, s->scaled_h2_signal/512.0f, s->BMP280temperature, s->BMP280pressure,s->INA219_Voltage, s->INA219_Current, s->INA219_Power);
 
 	if (f_puts(buffer, &fil) < 0) {
   	 printf("Error writing to file!\r\n");
@@ -243,7 +253,12 @@ int main(void)
   MX_USB_OTG_FS_PCD_Init();
   MX_SPI1_Init();
   MX_FATFS_Init();
+  MX_TIM7_Init();
+  MX_ADC1_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+  HAL_TIM_Base_Start_IT(&htim7);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   // OLED
   ST7735_Init();
   ST7735_FillScreen(ST7735_BLACK);
@@ -255,13 +270,12 @@ int main(void)
 		printf("SGP sensor error\r\n");
 	}
 	// INA
-	INA219_t myina219;
 	INA219_Init(&myina219, &hi2c1, INA219_ADDRESS);
 	//INA219_setCalibration_32V_2A(&myina219);
 
 	// SD
 	SDcardInit("test.txt");
-
+	isProgramStarted = 1;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -271,35 +285,44 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  	// BMP
-  	BMP280_ReadTemperatureAndPressure(&s.BMP280temperature, &s.BMP280pressure);
-  	printf("Temperature: %.2f °C, Pressure: %ld Pa\n\r", s.BMP280temperature, s.BMP280pressure);
 
-  	// SGP
-  	sgp_measure_iaq_blocking_read(&s.tvoc_ppb, &s.co2_eq_ppm);
-		sgp_measure_signals_blocking_read(&s.scaled_ethanol_signal, &s.scaled_h2_signal);
-		printf("TVOC           = %4u ppb\r\n", s.tvoc_ppb);
-		printf("CO2 Equivalent = %4u ppm\r\n", s.co2_eq_ppm);
-		printf("Etanol Signal  = %.2f\r\n", s.scaled_ethanol_signal / 512.0f);
-		printf("H2 Signal      = %.2f\r\n", s.scaled_h2_signal / 512.0f);
-		//sgp_set_absolute_humidity()
+  	// stele probkowanie
+  	if (_interruptFlag == 1){
 
-		// INA219
-		s.INA219_Current = INA219_ReadCurrent_raw(&myina219);
-		s.INA219_Voltage = INA219_ReadBusVoltage(&myina219);
-		s.INA219_Power = INA219_ReadPower(&myina219);
-		printf("INA219 Voltage = %4u V\r\n", s.INA219_Voltage);
-		printf("INA219 Current = %4d mA\r\n", s.INA219_Current);
-		printf("INA219 Power   = %4u mW\r\n", s.INA219_Power);
+    	// ADC
+    	HAL_ADC_Start(&hadc1);
+    	HAL_ADC_PollForConversion(&hadc1, 1);
+    	adcPosition = HAL_ADC_GetValue(&hadc1) ;
+    	printf("ADC: %.2f%%\r\n", (adcPosition / 4095.0f)*100);
+
+    	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, (adcPosition / 4095.0f)*1000);
 
 
-  	// SD
-  	SDcardWriteData(&s);
+  		// BMP
+			BMP280_ReadTemperatureAndPressure(&s.BMP280temperature, &s.BMP280pressure);
 
-  	// OLED
-  	OLEDdisplay(&s);
+			// SGP
+			sgp_measure_iaq_blocking_read(&s.tvoc_ppb, &s.co2_eq_ppm);
+			sgp_measure_signals_blocking_read(&s.scaled_ethanol_signal, &s.scaled_h2_signal);
+			//sgp_set_absolute_humidity()
 
-  	HAL_Delay(1000);
+			// INA219
+			s.INA219_Current = INA219_ReadCurrent_raw(&myina219);
+			s.INA219_Voltage = INA219_ReadBusVoltage(&myina219);
+			s.INA219_Power = INA219_ReadPower(&myina219);
+
+
+			// SD
+			SDcardWriteData(&s);
+
+			// OLED
+			OLEDdisplay(&s);
+
+			//printf("{%u,%u,%.2f,%.2f,%.2f,%ld,%u,%d,%u}\r\n",
+			//		s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f, s.BMP280temperature, s.BMP280pressure, s.INA219_Voltage, s.INA219_Current, s.INA219_Power);
+
+			_interruptFlag = 0;
+  	}
   }
   /* USER CODE END 3 */
 }
@@ -354,6 +377,15 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+  if (htim == &htim7 && isProgramStarted == 1){
+  	if (_interruptFlag == 1){
+  		printf("Flaga _interruptFlag jest juz 1");
+  	}
+  	_interruptFlag = 1;
+  }
+}
 
 /* USER CODE END 4 */
 

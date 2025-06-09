@@ -1,4 +1,4 @@
-../Core/Src/sensirion_configuration.c:47:6:sensirion_i2c_init	1
-../Core/Src/sensirion_configuration.c:62:8:sensirion_i2c_read	1
-../Core/Src/sensirion_configuration.c:78:8:sensirion_i2c_write	1
-../Core/Src/sensirion_configuration.c:89:6:sensirion_sleep_usec	2
+../Core/Src/sensirion_configuration.c:48:6:sensirion_i2c_init	1
+../Core/Src/sensirion_configuration.c:63:8:sensirion_i2c_read	1
+../Core/Src/sensirion_configuration.c:79:8:sensirion_i2c_write	1
+../Core/Src/sensirion_configuration.c:90:6:sensirion_sleep_usec	2

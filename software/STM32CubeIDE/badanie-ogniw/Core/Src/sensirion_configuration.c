@@ -30,6 +30,7 @@
 
 #include "i2c.h"
 #include "stm32f7xx_hal.h"
+#include "sensirion_configuration.h"
 extern I2C_HandleTypeDef hi2c1;
 
 /*
