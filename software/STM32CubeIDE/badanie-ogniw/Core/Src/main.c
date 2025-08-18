@@ -318,8 +318,8 @@ int main(void)
 			// OLED
 			OLEDdisplay(&s);
 
-			//printf("{%u,%u,%.2f,%.2f,%.2f,%ld,%u,%d,%u}\r\n",
-			//		s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f, s.BMP280temperature, s.BMP280pressure, s.INA219_Voltage, s.INA219_Current, s.INA219_Power);
+			printf("{%u,%u,%.2f,%.2f,%.2f,%ld,%u,%d,%u}\r\n",
+					s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f, s.BMP280temperature, s.BMP280pressure, s.INA219_Voltage, s.INA219_Current, s.INA219_Power);
 
 			_interruptFlag = 0;
   	}

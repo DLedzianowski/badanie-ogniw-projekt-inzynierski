@@ -104,6 +104,13 @@ typedef uint8_t u8;
 #define USE_SENSIRION_CLOCK_STRETCHING 0
 #endif /* USE_SENSIRION_CLOCK_STRETCHING */
 
+void sensirion_i2c_init();
+int8_t sensirion_i2c_read(uint8_t address, uint8_t* data, uint16_t count);
+int8_t sensirion_i2c_write(uint8_t address, uint8_t* data, uint16_t count);
+void sensirion_sleep_usec(uint32_t useconds);
+
+
+
 #ifdef __cplusplus
 }
 #endif
