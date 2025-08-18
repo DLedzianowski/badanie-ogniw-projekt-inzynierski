@@ -1,0 +1,9 @@
+../Core/Src/sensors/BMXX80.c:51:9:BMP280_Read8	32	static
+../Core/Src/sensors/BMXX80.c:61:10:BMP280_Read16	32	static
+../Core/Src/sensors/BMXX80.c:72:10:BMP280_Read16LE	24	static
+../Core/Src/sensors/BMXX80.c:80:6:BMP280_Write8	32	static
+../Core/Src/sensors/BMXX80.c:91:10:BMP280_Read24	32	static
+../Core/Src/sensors/BMXX80.c:103:6:BMP280_SetConfig	16	static
+../Core/Src/sensors/BMXX80.c:108:9:BMP280_Init	32	static
+../Core/Src/sensors/BMXX80.c:156:7:BMP280_ReadTemperature	48	static
+../Core/Src/sensors/BMXX80.c:202:9:BMP280_ReadTemperatureAndPressure	344	static

@@ -1,0 +1,4 @@
+../Core/Src/sensors/sensirion_configuration.c:48:6:sensirion_i2c_init	4	static
+../Core/Src/sensors/sensirion_configuration.c:63:8:sensirion_i2c_read	24	static
+../Core/Src/sensors/sensirion_configuration.c:79:8:sensirion_i2c_write	24	static
+../Core/Src/sensors/sensirion_configuration.c:90:6:sensirion_sleep_usec	16	static
