@@ -31,6 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -38,6 +39,48 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+enum ScreenType {
+    SCREEN_MENU,
+    SCREEN_SENSOR,
+	SCREEN_TYPE_COUNT
+};
+
+enum MenuScreen {
+    MENU_MAIN,
+    MENU_START,
+    MENU_BATTERY_TYPE,
+    MENU_ADC,
+    MENU_STOP,
+	MENU_SCREEN_COUNT
+};
+
+enum SensorScreen {
+    SENSOR_FIRST,
+    SENSOR_SECOND,
+	SENSOR_SCREEN_COUNT
+};
+
+struct state {
+    enum ScreenType current_screen_type;
+    enum MenuScreen menu_current;
+    enum MenuScreen menu_current_ptr;
+    enum SensorScreen sensor_current;
+
+	uint8_t screen_menu_ptr;
+	uint8_t screen_menu_current;
+	uint8_t battery_ptr;
+	uint8_t battery_current;
+
+    bool _interrupt_flag;
+	bool is_measurements_started;
+	bool is_program_started;
+	bool is_enc_pressed;
+	bool update_actions;
+	bool is_screen_menu;
+	bool screen_clear;
+};
+extern struct state st;
+
 // Struktura z pomiarami
 #define BMP_SENSOR_COUNT 3
 struct sensors {
@@ -56,6 +99,14 @@ struct sensors {
     float adc_percentage;
 };
 extern struct sensors s;
+
+#define BATERYS_NUM 2
+extern const char* batteries[BATERYS_NUM];
+
+
+#define SCREENS_MENU_VISIBLE_ITEMS 3  // number of visible opcions in menu
+#define SCREENS_MENU_NUM 4  // numbers of all menu elements
+extern const char* menu[SCREENS_MENU_NUM];
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
@@ -66,14 +117,14 @@ extern struct sensors s;
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
 #define RETRY_DELAY_MS 2000
-#define SCREENS_NUM 2
+#define SCREENS_SENSORS_NUM 2  // number of screens with sensors data
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+void get_adc_percentage(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -90,6 +141,9 @@ void Error_Handler(void);
 #define oled_RST_GPIO_Port GPIOA
 #define sd_CS_Pin GPIO_PIN_4
 #define sd_CS_GPIO_Port GPIOA
+#define enc_KEY_Pin GPIO_PIN_10
+#define enc_KEY_GPIO_Port GPIOA
+#define enc_KEY_EXTI_IRQn EXTI15_10_IRQn
 #define bmp2_CS_Pin GPIO_PIN_3
 #define bmp2_CS_GPIO_Port GPIOB
 #define bmp1_CS_Pin GPIO_PIN_5

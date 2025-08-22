@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (12.3.rel1)
+# Toolchain: GNU Tools for STM32 (13.3.rel1)
 ################################################################################
 
 -include ../makefile.init
@@ -20,6 +20,7 @@ RM := rm -rf
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/sensors/subdir.mk
+-include Core/Src/logic/subdir.mk
 -include Core/Src/subdir.mk
 -include objects.mk
 
@@ -69,8 +70,8 @@ all: main-build
 main-build: badanie-ogniw-blackpill.elf secondary-outputs
 
 # Tool invocations
-badanie-ogniw-blackpill.elf badanie-ogniw-blackpill.map: $(OBJS) $(USER_OBJS) C:\Users\idomi\STM32CubeIDE\workspace_1.16.1\badanie-ogniw-blackpill\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "badanie-ogniw-blackpill.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\idomi\STM32CubeIDE\workspace_1.16.1\badanie-ogniw-blackpill\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="badanie-ogniw-blackpill.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+badanie-ogniw-blackpill.elf badanie-ogniw-blackpill.map: $(OBJS) $(USER_OBJS) C:\Users\idomi\Documents\Github\badanie-ogniw-projekt-przejsciowy\software\STM32CubeIDE\badanie-ogniw-blackpill\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "badanie-ogniw-blackpill.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\idomi\Documents\Github\badanie-ogniw-projekt-przejsciowy\software\STM32CubeIDE\badanie-ogniw-blackpill\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="badanie-ogniw-blackpill.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

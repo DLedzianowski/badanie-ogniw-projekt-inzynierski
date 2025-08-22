@@ -6,11 +6,11 @@
  */
 #include "sensors/printf_to_uart.h"
 
-int __io_putchar(int ch)
-{
-	HAL_UART_Transmit(&huart1, (uint8_t*)&ch, 1, 1000);
-	return ch;
-}
+//int __io_putchar(int ch)
+//{
+//	HAL_UART_Transmit(&huart1, (uint8_t*)&ch, 1, 1000);
+//	return ch;
+//}
 
 
 uint8_t serial_transmit(uint8_t* message)

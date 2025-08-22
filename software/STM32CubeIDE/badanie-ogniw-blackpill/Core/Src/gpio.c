@@ -96,6 +96,12 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(sd_CS_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : enc_KEY_Pin */
+  GPIO_InitStruct.Pin = enc_KEY_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(enc_KEY_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pins : bmp2_CS_Pin bmp1_CS_Pin bmp3_CS_Pin */
   GPIO_InitStruct.Pin = bmp2_CS_Pin|bmp1_CS_Pin|bmp3_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -106,6 +112,9 @@ void MX_GPIO_Init(void)
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI0_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
 

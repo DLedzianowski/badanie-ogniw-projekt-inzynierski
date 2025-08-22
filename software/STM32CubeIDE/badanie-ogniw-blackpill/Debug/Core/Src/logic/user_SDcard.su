@@ -1,0 +1,3 @@
+../Core/Src/logic/user_SDcard.c:11:6:SDcardInit	40	static
+../Core/Src/logic/user_SDcard.c:50:6:SDcardWriteData	304	static
+../Core/Src/logic/user_SDcard.c:73:6:SDcardClose	16	static

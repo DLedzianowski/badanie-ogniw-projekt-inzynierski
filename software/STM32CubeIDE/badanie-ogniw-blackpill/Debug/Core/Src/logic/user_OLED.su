@@ -1,0 +1,13 @@
+../Core/Src/logic/user_OLED.c:31:6:OLED_manage	16	static
+../Core/Src/logic/user_OLED.c:65:6:display_sensor_first	192	static
+../Core/Src/logic/user_OLED.c:107:6:display_sensor_second	184	static
+../Core/Src/logic/user_OLED.c:127:6:display_menu_main	104	static
+../Core/Src/logic/user_OLED.c:160:6:display_menu_start	64	static
+../Core/Src/logic/user_OLED.c:169:6:display_menu_battery_type	96	static
+../Core/Src/logic/user_OLED.c:185:6:display_menu_adc	64	static
+../Core/Src/logic/user_OLED.c:195:6:display_menu_stop	16	static
+../Core/Src/logic/user_OLED.c:203:6:action_menu_main	16	static
+../Core/Src/logic/user_OLED.c:207:6:action_menu_start	16	static
+../Core/Src/logic/user_OLED.c:214:6:action_menu_battery_type	16	static
+../Core/Src/logic/user_OLED.c:221:6:action_menu_adc	24	static
+../Core/Src/logic/user_OLED.c:243:6:action_menu_stop	16	static
