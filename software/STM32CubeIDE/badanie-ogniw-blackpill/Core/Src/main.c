@@ -141,6 +141,9 @@ void get_adc_percentage(void) {
 	adc_position = adc_position - fmodf(adc_position, 5.0f);
 	s.adc_percentage = fminf(fmaxf(adc_position, 0.0f), 100.0f);
 }
+void SDClose(void) {
+	SDcardClose(&sd);
+}
 /* USER CODE END 0 */
 
 /**

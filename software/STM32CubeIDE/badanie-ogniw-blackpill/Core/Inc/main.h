@@ -125,6 +125,7 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 void get_adc_percentage(void);
+void SDClose(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

@@ -50,6 +50,10 @@ void OLED_manage(struct state *st, struct sensors *s) {
 			ST7735_FillScreenFast(ST7735_BLACK);
 		}
 		sensor_display[st->sensor_current](s);
+		if (st->is_enc_pressed) {
+			st->is_enc_pressed = false;
+			st->current_screen_type = SCREEN_MENU;
+		}
 	    break;
 	default:
 		break;
@@ -215,7 +219,7 @@ void display_menu_stop(struct state *st) {
 
 void action_menu_main(struct state *st) {
 	st->menu_current = st->menu_current_ptr;
-    st->screen_clear = true;
+	st->screen_clear = true;
 }
 
 void action_menu_start(struct state *st) {
@@ -223,7 +227,7 @@ void action_menu_start(struct state *st) {
 	st->is_measurements_started = true;
 
 	st->menu_current = MENU_MAIN;
-    st->screen_clear = true;
+	st->screen_clear = true;
 }
 
 void action_menu_battery_type(struct state *st) {
@@ -238,7 +242,7 @@ void action_menu_battery_type(struct state *st) {
 
 	st->current_screen_type = SCREEN_MENU;
 	st->menu_current = MENU_MAIN;
-    st->screen_clear = true;
+	st->screen_clear = true;
 }
 
 void action_menu_adc(struct state *st) {
@@ -260,15 +264,17 @@ void action_menu_adc(struct state *st) {
 		st->update_actions = false;
 		st->menu_current = MENU_MAIN;
 		st->current_screen_type = SCREEN_MENU;
-        st->screen_clear = true;
+		st->screen_clear = true;
 	}
 }
 
 void action_menu_stop(struct state *st) {
 	st->current_screen_type = SCREEN_MENU;
-	st->is_measurements_started = true;
+	st->is_measurements_started = false;
 
 	st->menu_current = MENU_MAIN;
-    st->screen_clear = true;
+	st->screen_clear = true;
+
+	SDClose();
 }
 

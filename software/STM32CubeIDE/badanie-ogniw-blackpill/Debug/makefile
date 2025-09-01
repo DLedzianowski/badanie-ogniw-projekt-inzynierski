@@ -70,8 +70,8 @@ all: main-build
 main-build: badanie-ogniw-blackpill.elf secondary-outputs
 
 # Tool invocations
-badanie-ogniw-blackpill.elf badanie-ogniw-blackpill.map: $(OBJS) $(USER_OBJS) C:\Users\idomi\Documents\Github\badanie-ogniw-projekt-przejsciowy\software\STM32CubeIDE\badanie-ogniw-blackpill\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "badanie-ogniw-blackpill.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\idomi\Documents\Github\badanie-ogniw-projekt-przejsciowy\software\STM32CubeIDE\badanie-ogniw-blackpill\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="badanie-ogniw-blackpill.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+badanie-ogniw-blackpill.elf badanie-ogniw-blackpill.map: $(OBJS) $(USER_OBJS) C:\Users\idomi\OneDrive\Dokumenty\GitHub\badanie-ogniw-projekt-przejsciowy\software\STM32CubeIDE\badanie-ogniw-blackpill\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "badanie-ogniw-blackpill.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\idomi\OneDrive\Dokumenty\GitHub\badanie-ogniw-projekt-przejsciowy\software\STM32CubeIDE\badanie-ogniw-blackpill\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="badanie-ogniw-blackpill.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
