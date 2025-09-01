@@ -310,13 +310,18 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 // encoder
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
-    if (htim->Instance == TIM1) {
+	if (htim->Instance == TIM1) {
+	    static uint16_t prev_enc_count = 0;
     	uint16_t enc_count = __HAL_TIM_GET_COUNTER(htim) / 4;
-    	st.sensor_current = (enum SensorScreen)(enc_count % SENSOR_SCREEN_COUNT);
-    	st.menu_current_ptr = (enum MenuScreen)(1 + (enc_count % (MENU_SCREEN_COUNT - 1)));
-    	st.battery_ptr = enc_count % BATERYS_NUM;
 
-    	st.screen_clear = true;
+    	if (prev_enc_count != enc_count) {
+        	st.sensor_current = (enum SensorScreen)(enc_count % SENSOR_SCREEN_COUNT);
+        	st.menu_current_ptr = (enum MenuScreen)(1 + (enc_count % (MENU_SCREEN_COUNT - 1)));
+        	st.battery_ptr = enc_count % BATERYS_NUM;
+
+    		st.screen_clear = true;
+    	}
+    	prev_enc_count = enc_count;
     }
 }
 
@@ -339,9 +344,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 
     if (GPIO_Pin == enc_KEY_Pin) {
         // debounce
-        if (now - last_press_time >= 150) {
+        if (now - last_press_time >= 500) {
             st.is_enc_pressed = true;
-            st.screen_clear = true;
             last_press_time = now;
         }
     }
