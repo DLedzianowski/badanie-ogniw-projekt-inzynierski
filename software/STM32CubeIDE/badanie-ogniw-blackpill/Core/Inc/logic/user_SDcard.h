@@ -19,7 +19,7 @@ typedef struct {
 	FRESULT res;
 } SDcard_t;
 
-void SDcardInit(SDcard_t* sd, char* folder_name);
+void SDcardInit(SDcard_t* sd, const char *folder_name);
 void SDcardWriteData(SDcard_t* sd, struct sensors *s);
 void SDcardClose(SDcard_t* sd);
 

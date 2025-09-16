@@ -21,6 +21,7 @@ void display_menu_main(struct state *st);
 void display_menu_start(struct state *st);
 void display_menu_battery_type(struct state *st);
 void display_menu_adc(struct state *st);
+void display_menu_state(struct state *st);
 void display_menu_stop(struct state *st);
 
 extern MenuFunc_t menu_actions[];
@@ -28,6 +29,7 @@ void action_menu_main(struct state *st);
 void action_menu_start(struct state *st);
 void action_menu_battery_type(struct state *st);
 void action_menu_adc(struct state *st);
+void action_menu_state(struct state *st);
 void action_menu_stop(struct state *st);
 
 typedef void (*SensorsFunc_t)(struct sensors *s);

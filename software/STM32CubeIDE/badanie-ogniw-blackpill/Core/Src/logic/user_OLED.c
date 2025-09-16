@@ -17,6 +17,7 @@ MenuFunc_t menu_display[] = {
 	display_menu_start,
 	display_menu_battery_type,
 	display_menu_adc,
+	display_menu_state,
 	display_menu_stop
 };
 
@@ -25,18 +26,19 @@ MenuFunc_t menu_actions[] = {
 	action_menu_start,
 	action_menu_battery_type,
 	action_menu_adc,
+	action_menu_state,
 	action_menu_stop
 };
 
 void OLED_manage(struct state *st, struct sensors *s) {
 	switch (st->current_screen_type) {
 	case SCREEN_MENU:
-
-		if (st->is_enc_pressed || st->update_actions){
+		if (st->is_enc_pressed || st->update_actions) {
 			menu_actions[st->menu_current](st);
+			st->enc_offset = st->enc_count;
 			st->is_enc_pressed = false;
 		}
-		if (st->screen_clear == true && st->current_screen_type == SCREEN_MENU){
+		if (st->screen_clear == true && st->current_screen_type == SCREEN_MENU) {
 			st->screen_clear = false;
 			ST7735_FillScreenFast(ST7735_BLACK);
 
@@ -49,6 +51,7 @@ void OLED_manage(struct state *st, struct sensors *s) {
 			st->screen_clear = false;
 			ST7735_FillScreenFast(ST7735_BLACK);
 		}
+
 		sensor_display[st->sensor_current](s);
 		if (st->is_enc_pressed) {
 			st->is_enc_pressed = false;
@@ -63,48 +66,6 @@ void OLED_manage(struct state *st, struct sensors *s) {
 void display_sensor_first(struct sensors *s) {
 	char buffer[150];
 
-	// Temperatura
-	snprintf(buffer, sizeof(buffer), "Temp: %5.2f C ", s->BMP280temperature[0]);
-	ST7735_WriteString(5, 5, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-
-	// Ciśnienie
-	snprintf(buffer, sizeof(buffer), "Prs:  %6.4f bar", (float)s->BMP280pressure[0] / 100000.0f);
-	ST7735_WriteString(5,  20, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-
-	// TVOC
-	snprintf(buffer, sizeof(buffer), "TVOC: %6u ppb", s->tvoc_ppb);
-	ST7735_WriteString(5,  35, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-
-	// CO2eq
-	snprintf(buffer, sizeof(buffer), "CO2:  %6u ppm", s->co2_eq_ppm);
-	ST7735_WriteString(5,  50, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-
-	// Etanol/512.0
-	float ethanol = s->scaled_ethanol_signal / 512.0f;
-	snprintf(buffer, sizeof(buffer), "EtOH: %6.2f", ethanol);
-	ST7735_WriteString(5,  65, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-
-	// H2/512.0
-	float h2 = s->scaled_h2_signal / 512.0f;
-	snprintf(buffer, sizeof(buffer), "H2:   %6.2f", h2);
-	ST7735_WriteString(5,  80, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-
-	// INA219_Current
-	snprintf(buffer, sizeof(buffer), "Current:  %4d mA", s->INA219_Current);
-	ST7735_WriteString(5,  95, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-
-	// INA219_Voltage
-	snprintf(buffer, sizeof(buffer), "Voltage:  %4u mV", s->INA219_Voltage);
-	ST7735_WriteString(5,  110, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-
-	// INA219_Power
-	snprintf(buffer, sizeof(buffer), "Power:  %4u mW", s->INA219_Power);
-	ST7735_WriteString(5,  125, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-}
-
-void display_sensor_second(struct sensors *s) {
-	char buffer[150];
-
 	// Temperatura 1
 	snprintf(buffer, sizeof(buffer), "Temp1: %5.2f C ", s->BMP280temperature[0]);
 	ST7735_WriteString(5, 5, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
@@ -117,9 +78,52 @@ void display_sensor_second(struct sensors *s) {
 	snprintf(buffer, sizeof(buffer), "Temp3: %5.2f C ", s->BMP280temperature[2]);
 	ST7735_WriteString(5, 35, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
 
+	// Ciśnienie
+	snprintf(buffer, sizeof(buffer), "Prs:  %6.4f bar", (float)s->BMP280pressure[0] / 100000.0f);
+	ST7735_WriteString(5,  50, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+	// TVOC
+	snprintf(buffer, sizeof(buffer), "TVOC: %6u ppb", s->tvoc_ppb);
+	ST7735_WriteString(5,  65, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+	// CO2eq
+	snprintf(buffer, sizeof(buffer), "CO2:  %6u ppm", s->co2_eq_ppm);
+	ST7735_WriteString(5,  80, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+	// Etanol/512.0
+	float ethanol = s->scaled_ethanol_signal / 512.0f;
+	snprintf(buffer, sizeof(buffer), "EtOH: %6.2f", ethanol);
+	ST7735_WriteString(5,  95, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+	// H2/512.0
+	float h2 = s->scaled_h2_signal / 512.0f;
+	snprintf(buffer, sizeof(buffer), "H2:   %6.2f", h2);
+	ST7735_WriteString(5,  110, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+}
+
+void display_sensor_second(struct sensors *s) {
+	char buffer[150];
+
+	// INA219_Current
+	snprintf(buffer, sizeof(buffer), "Current:  %4d mA", s->INA219_Current);
+	ST7735_WriteString(5,  5, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+	// INA219_Voltage
+	snprintf(buffer, sizeof(buffer), "Voltage:  %4u mV", s->INA219_Voltage);
+	ST7735_WriteString(5,  20, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+	// INA219_Power
+	snprintf(buffer, sizeof(buffer), "Power:  %4u mW", s->INA219_Power);
+	ST7735_WriteString(5,  35, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
 	// PWM "ADC: %.2f%%\r\n",
 	snprintf(buffer, sizeof(buffer), "PWM: %.2f%% ", s->adc_percentage);
 	ST7735_WriteString(5, 50, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+	// state
+	snprintf(buffer, sizeof(buffer), "state: %s", status[get_state_int()]);
+	ST7735_WriteString(5,  65, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
 }
 
 void display_menu_main(struct state *st) {
@@ -182,7 +186,7 @@ void display_menu_start(struct state *st) {
 void display_menu_battery_type(struct state *st) {
 	char buffer[50];
 
-    for (uint8_t i = 0; i < 2; i++) {
+    for (uint8_t i = 0; i < BATERYS_NUM; i++) {
     	snprintf(buffer, sizeof(buffer), "%s", batteries[i]);
 
     	uint16_t x_pos = (ST7735_WIDTH - (strlen(buffer) * Font_11x18.width)) / 2;
@@ -205,6 +209,23 @@ void display_menu_adc(struct state *st) {
 	st->update_actions = true;
 }
 
+void display_menu_state(struct state *st) {
+	char buffer[50];
+
+    for (uint8_t i = 0; i < STATUS_NUM; i++) {
+    	snprintf(buffer, sizeof(buffer), "%s", status[i]);
+
+    	uint16_t x_pos = (ST7735_WIDTH - (strlen(buffer) * Font_11x18.width)) / 2;
+    	uint16_t y_pos = i*(Font_11x18.height+26)+26;
+    	ST7735_WriteString(x_pos, y_pos, buffer, Font_11x18, ST7735_WHITE, ST7735_BLACK);
+        // cursor
+    	if ( st->status_ptr == i ) {
+    		ST7735_FillRectangle(x_pos, y_pos + Font_11x18.height + 1, strlen(buffer)*Font_11x18.width, 2, ST7735_WHITE);
+    	}
+    }
+}
+
+
 void display_menu_stop(struct state *st) {
 	char buffer[] = "Stop";
 
@@ -223,6 +244,9 @@ void action_menu_main(struct state *st) {
 }
 
 void action_menu_start(struct state *st) {
+	// SD
+	SDinit("test.csv");
+
 	st->current_screen_type = SCREEN_SENSOR;
 	st->is_measurements_started = true;
 
@@ -268,6 +292,15 @@ void action_menu_adc(struct state *st) {
 	}
 }
 
+void action_menu_state(struct state *st) {
+	st->status_current = st->status_ptr;
+	st->battery_state = (enum BatteryStatus)(st->status_ptr);
+
+	st->menu_current = MENU_MAIN;
+	st->current_screen_type = SCREEN_MENU;
+	st->screen_clear = true;
+}
+
 void action_menu_stop(struct state *st) {
 	st->current_screen_type = SCREEN_MENU;
 	st->is_measurements_started = false;
@@ -275,6 +308,6 @@ void action_menu_stop(struct state *st) {
 	st->menu_current = MENU_MAIN;
 	st->screen_clear = true;
 
-	SDClose();
+	SDclose();
 }
 

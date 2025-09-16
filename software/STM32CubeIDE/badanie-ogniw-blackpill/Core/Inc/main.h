@@ -50,6 +50,7 @@ enum MenuScreen {
     MENU_START,
     MENU_BATTERY_TYPE,
     MENU_ADC,
+	MENU_STATUS,
     MENU_STOP,
 	MENU_SCREEN_COUNT
 };
@@ -60,20 +61,32 @@ enum SensorScreen {
 	SENSOR_SCREEN_COUNT
 };
 
+enum BatteryStatus {
+	BATTERY_IDLE,
+	BATTERY_CHARGING,
+	BATTERY_DISCHARGING
+};
+
 struct state {
     enum ScreenType current_screen_type;
     enum MenuScreen menu_current;
     enum MenuScreen menu_current_ptr;
     enum SensorScreen sensor_current;
+    enum BatteryStatus battery_state;
 
 	uint8_t screen_menu_ptr;
 	uint8_t screen_menu_current;
 	uint8_t battery_ptr;
 	uint8_t battery_current;
+	uint8_t status_ptr;
+	uint8_t status_current;
+	uint16_t enc_count;
+	uint16_t prev_enc_count;
+	uint16_t enc_offset;
 
     bool _interrupt_flag;
 	bool is_measurements_started;
-	bool is_program_started;
+	// bool is_program_started;
 	bool is_enc_pressed;
 	bool update_actions;
 	bool is_screen_menu;
@@ -92,8 +105,8 @@ struct sensors {
     uint16_t scaled_ethanol_signal;
     uint16_t scaled_h2_signal;
 
-    uint16_t INA219_Voltage;
     int16_t INA219_Current;
+    uint16_t INA219_Voltage;
     uint16_t INA219_Power;
 
     float adc_percentage;
@@ -103,9 +116,11 @@ extern struct sensors s;
 #define BATERYS_NUM 2
 extern const char* batteries[BATERYS_NUM];
 
+#define STATUS_NUM 3
+extern const char* status[STATUS_NUM];
 
 #define SCREENS_MENU_VISIBLE_ITEMS 3  // number of visible opcions in menu
-#define SCREENS_MENU_NUM 4  // numbers of all menu elements
+#define SCREENS_MENU_NUM 5  // numbers of all menu elements
 extern const char* menu[SCREENS_MENU_NUM];
 /* USER CODE END ET */
 
@@ -116,7 +131,7 @@ extern const char* menu[SCREENS_MENU_NUM];
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-#define RETRY_DELAY_MS 2000
+#define RETRY_DELAY_MS 1000
 #define SCREENS_SENSORS_NUM 2  // number of screens with sensors data
 /* USER CODE END EM */
 
@@ -125,7 +140,13 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 void get_adc_percentage(void);
-void SDClose(void);
+void SDinit(const char *folder_name);
+void SDclose(void);
+void read_sensors_data(void);
+void control_battery_state(void);
+void handle_battery_state(void);
+int get_state_int(void);
+
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

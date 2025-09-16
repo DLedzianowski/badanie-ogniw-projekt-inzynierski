@@ -99,24 +99,41 @@
 struct state st = {
 	.current_screen_type = MENU_MAIN,
 	.menu_current_ptr = MENU_START,
+	.sensor_current = SENSOR_FIRST,
+	.battery_state = BATTERY_IDLE,
 
-    .is_screen_menu = true,
-    .screen_clear = true,
+	.screen_menu_ptr = 0,
+	.screen_menu_current = 0,
+	.battery_ptr = 0,
+	.battery_current = 0,
+	.status_ptr = 0,
+	.status_current = 0,
+	.enc_count = 0,
+	.prev_enc_count = 0,
+	.enc_offset = 0,
+
+	.is_screen_menu = true,
+	.screen_clear = true,
 };
 struct sensors s = {0};
 const char* menu[SCREENS_MENU_NUM] = {
-    "Start",
-    "Typ baterii",
+	"Start",
+	"Typ baterii",
 	"ADC",
-    "Stop"
+	"Status",
+	"Stop"
 };
-
 
 const char* batteries[BATERYS_NUM] = {
-    "Li-Pol",
-    "Li-On"
+	"Li-Pol",
+	"Li-On"
 };
 
+const char* status[STATUS_NUM] = {
+	"Bezczynny",
+	"Ladowanie",
+	"Rozladowyw."
+};
 
 SDcard_t sd;
 INA219_t myina219;
@@ -141,8 +158,76 @@ void get_adc_percentage(void) {
 	adc_position = adc_position - fmodf(adc_position, 5.0f);
 	s.adc_percentage = fminf(fmaxf(adc_position, 0.0f), 100.0f);
 }
-void SDClose(void) {
+
+void SDinit(const char *folder_name) {
+	SDcardInit(&sd, folder_name);
+}
+
+void SDclose(void) {
 	SDcardClose(&sd);
+}
+
+void read_sensors_data(void) {
+	// ADC
+	get_adc_percentage();
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, s.adc_percentage*10);
+
+	// BMP
+	for (uint8_t index = 0; index < BMP_SENSOR_COUNT; ++index) {
+		BMP280_ReadTemperatureAndPressure(&s.BMP280temperature[index], &s.BMP280pressure[index], index);
+	}
+
+	// SGP
+	sgp_measure_iaq_blocking_read(&s.tvoc_ppb, &s.co2_eq_ppm);
+	sgp_measure_signals_blocking_read(&s.scaled_ethanol_signal, &s.scaled_h2_signal);
+	//sgp_set_absolute_humidity()
+
+	// INA219
+	s.INA219_Current = INA219_ReadCurrent(&myina219);
+	s.INA219_Voltage = INA219_ReadBusVoltage(&myina219) * 4;
+	s.INA219_Power = INA219_ReadPower(&myina219);
+}
+
+void control_battery_state(void) {
+	switch (st.battery_state) {
+		case BATTERY_IDLE:
+			break;
+
+		case BATTERY_CHARGING:
+			if (s.INA219_Voltage > 4200) {
+				st.battery_state = BATTERY_DISCHARGING;
+			}
+			if (s.INA219_Voltage < 2900) {
+				st.battery_state = BATTERY_IDLE;
+			}
+			break;
+
+		case BATTERY_DISCHARGING:
+			if (s.INA219_Voltage < 3000) {
+				st.battery_state = BATTERY_CHARGING;
+			}
+			if (s.INA219_Voltage > 4300) {
+				st.battery_state = BATTERY_IDLE;
+			}
+			break;
+	}
+}
+
+void handle_battery_state(void) {
+	switch (st.battery_state) {
+	case BATTERY_IDLE:
+		break;
+
+	case BATTERY_CHARGING:
+		break;
+
+	case BATTERY_DISCHARGING:
+		break;
+	}
+}
+
+int get_state_int() {
+	return (int)(st.battery_state);
 }
 /* USER CODE END 0 */
 
@@ -160,7 +245,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+	HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -186,7 +271,7 @@ int main(void)
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 	// TIMER
-    HAL_TIM_Encoder_Start_IT(&htim1, TIM_CHANNEL_ALL);
+	HAL_TIM_Encoder_Start_IT(&htim1, TIM_CHANNEL_ALL);
 	HAL_TIM_Base_Start_IT(&htim4);
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 
@@ -210,10 +295,9 @@ int main(void)
 		printf("INA sensor error\r\n");
 	}
 
-	// SD
-	SDcardInit(&sd,"test.txt");
+	get_adc_percentage();
 
-	st.is_program_started = true;
+	//st.is_program_started = true;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -229,25 +313,7 @@ int main(void)
 		}
 		// stele probkowanie
 		if (st._interrupt_flag == true && st.is_measurements_started == true) {
-			// ADC
-			get_adc_percentage();
-			__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, s.adc_percentage*10);
-
-
-			// BMP
-			for (uint8_t index = 0; index < BMP_SENSOR_COUNT; ++index) {
-				BMP280_ReadTemperatureAndPressure(&s.BMP280temperature[index], &s.BMP280pressure[index], index);
-			}
-
-			// SGP
-			sgp_measure_iaq_blocking_read(&s.tvoc_ppb, &s.co2_eq_ppm);
-			sgp_measure_signals_blocking_read(&s.scaled_ethanol_signal, &s.scaled_h2_signal);
-			//sgp_set_absolute_humidity()
-
-			// INA219
-			s.INA219_Current = INA219_ReadCurrent_raw(&myina219);
-			s.INA219_Voltage = INA219_ReadBusVoltage(&myina219);
-			s.INA219_Power = INA219_ReadPower(&myina219);
+			read_sensors_data();
 
 			// OLED
 			OLED_manage(&st, &s);
@@ -255,9 +321,19 @@ int main(void)
 			// SD
 			SDcardWriteData(&sd, &s);
 
-			// Transmit ofer uart
-			printf("{%u,%u,%.2f,%.2f,%.2f,%ld,%u,%d,%u}\r\n",
-					s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f, s.BMP280temperature[0], s.BMP280pressure[0], s.INA219_Voltage, s.INA219_Current, s.INA219_Power);
+			// charging state
+			control_battery_state();
+			handle_battery_state();
+
+			// Transmit over uart
+			//printf("{%u,%u,%.2f,%.2f,%.2f,%ld,%u,%d,%u}\r\n",
+			//		s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f, s.BMP280temperature[0], s.BMP280pressure[0], s.INA219_Voltage, s.INA219_Current, s.INA219_Power);
+			printf("{%u,%u,%.2f,%.2f,"
+					"%.2f,%ld,%.2f,%ld,%.2f,%ld,"
+					"%u,%d,%u,%f,%i}\r\n",
+					s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f,
+					s.BMP280temperature[0], s.BMP280pressure[0], s.BMP280temperature[1], s.BMP280pressure[1], s.BMP280temperature[2], s.BMP280pressure[2],
+					s.INA219_Voltage, s.INA219_Current, s.INA219_Power, s.adc_percentage * 10, st.battery_state);
 
 			st._interrupt_flag = false;
 		}
@@ -314,23 +390,22 @@ void SystemClock_Config(void)
 // encoder
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
 	if (htim->Instance == TIM1) {
-	    static uint16_t prev_enc_count = 0;
-    	uint16_t enc_count = __HAL_TIM_GET_COUNTER(htim) / 4;
+    	st.enc_count = (__HAL_TIM_GET_COUNTER(htim) - st.enc_offset) / 4;
+		st.sensor_current = (enum SensorScreen)(st.enc_count % SENSOR_SCREEN_COUNT);
+		st.menu_current_ptr = (enum MenuScreen)(1 + (st.enc_count % (MENU_SCREEN_COUNT - 1)));
+		st.battery_ptr = st.enc_count % BATERYS_NUM;
+		st.status_ptr = st.enc_count % STATUS_NUM;
 
-    	if (prev_enc_count != enc_count) {
-        	st.sensor_current = (enum SensorScreen)(enc_count % SENSOR_SCREEN_COUNT);
-        	st.menu_current_ptr = (enum MenuScreen)(1 + (enc_count % (MENU_SCREEN_COUNT - 1)));
-        	st.battery_ptr = enc_count % BATERYS_NUM;
-
+    	if (st.prev_enc_count != st.enc_count) {
     		st.screen_clear = true;
     	}
-    	prev_enc_count = enc_count;
+    	st.prev_enc_count = st.enc_count;
     }
 }
 
 // main loop sensor data
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-	if (htim == &htim4 && st.is_program_started == true){
+	if (htim == &htim4 && st.is_measurements_started == true){
 		if (st._interrupt_flag == true){
 			printf("Flaga _interrupt_flag jest juz 1\r\n");
 		}

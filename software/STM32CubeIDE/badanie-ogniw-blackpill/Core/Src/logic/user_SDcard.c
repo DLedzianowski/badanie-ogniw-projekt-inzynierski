@@ -8,8 +8,8 @@
 #include "logic/user_SDcard.h"
 
 
-void SDcardInit(SDcard_t* sd, char* folder_name) {
-	uint8_t retry_count = 1;
+void SDcardInit(SDcard_t* sd, const char *folder_name) {
+	uint8_t retry_count = 2;
 	while (retry_count--) {
 		sd->res = f_mount(&sd->fs, "", 1);
 		if (sd->res == FR_OK) {
@@ -20,9 +20,9 @@ void SDcardInit(SDcard_t* sd, char* folder_name) {
 		HAL_Delay(RETRY_DELAY_MS);
 	}
 
-	retry_count = 1;
+	retry_count = 2;
 	while (retry_count--) {
-		sd->res = f_open(&sd->fil, "test.csv", FA_OPEN_ALWAYS | FA_WRITE);
+		sd->res = f_open(&sd->fil, folder_name, FA_OPEN_ALWAYS | FA_WRITE);
 		if (sd->res == FR_OK) {
 			break;
 		}
@@ -34,7 +34,7 @@ void SDcardInit(SDcard_t* sd, char* folder_name) {
 	sd->res = f_lseek(&sd->fil, f_size(&sd->fil));
 	if (sd->res != FR_OK) {
 		printf("Error seeking to end of file! (%d)\r\n", sd->res);
-		f_close(&sd->fil);
+		SDcardClose(sd);
 		return;
 	}
 	if (retry_count == 0) {
@@ -56,8 +56,16 @@ void SDcardWriteData(SDcard_t* sd, struct sensors *s) {
 	}
 
 	char buffer[200];
-	snprintf(buffer, sizeof(buffer), "%u,%u,%.2f,%.2f,%.2f,%ld,%u,%d,%u\n",
-			s->tvoc_ppb, s->co2_eq_ppm, s->scaled_ethanol_signal/512.0f, s->scaled_h2_signal/512.0f, s->BMP280temperature[0], s->BMP280pressure[0],s->INA219_Voltage, s->INA219_Current, s->INA219_Power);
+	//snprintf(buffer, sizeof(buffer), "%u,%u,%.2f,%.2f,%.2f,%ld,%u,%d,%u\n",
+	//		s->tvoc_ppb, s->co2_eq_ppm, s->scaled_ethanol_signal/512.0f, s->scaled_h2_signal/512.0f, s->BMP280temperature[0], s->BMP280pressure[0],s->INA219_Voltage, s->INA219_Current, s->INA219_Power);
+
+	snprintf(buffer, sizeof(buffer),
+			"%u,%u,%.2f,%.2f,"
+			"%.2f,%ld,%.2f,%ld,%.2f,%ld,"
+			"%u,%d,%u,%f,%i\n",
+			s->tvoc_ppb, s->co2_eq_ppm, s->scaled_ethanol_signal/512.0f, s->scaled_h2_signal/512.0f,
+			s->BMP280temperature[0], s->BMP280pressure[0], s->BMP280temperature[1], s->BMP280pressure[1], s->BMP280temperature[2], s->BMP280pressure[2],
+			s->INA219_Voltage, s->INA219_Current, s->INA219_Power, s->adc_percentage * 10, get_state_int());
 
 
 	if (f_puts(buffer, &sd->fil) < 0) {
