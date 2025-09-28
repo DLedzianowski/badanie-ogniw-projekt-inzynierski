@@ -151,10 +151,12 @@ void SystemClock_Config(void);
 void get_adc_percentage(void) {
 	uint16_t adc_position;
 
-	HAL_ADC_Start(&hadc1);
-	HAL_ADC_PollForConversion(&hadc1, 1);
-	adc_position = HAL_ADC_GetValue(&hadc1);
-	adc_position = ((adc_position - 150.0f) / (3700.0f - 150.0f)) * 100.0f;
+//	HAL_ADC_Start(&hadc1);
+//	HAL_ADC_PollForConversion(&hadc1, 1);
+//	adc_position = HAL_ADC_GetValue(&hadc1);
+//	HAL_ADC_Stop(&hadc1);
+	adc_position = ADC_Convert_Channel(ADC_CHANNEL_9);  // potentiometer %
+	adc_position = ((adc_position - 250.0f) / (3600.0f - 250.0f)) * 100.0f;
 	adc_position = adc_position - fmodf(adc_position, 5.0f);
 	s.adc_percentage = fminf(fmaxf(adc_position, 0.0f), 100.0f);
 }
@@ -170,6 +172,7 @@ void SDclose(void) {
 void read_sensors_data(void) {
 	// ADC
 	get_adc_percentage();
+	// PWM
 	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, s.adc_percentage*10);
 
 	// BMP
@@ -184,46 +187,54 @@ void read_sensors_data(void) {
 
 	// INA219
 	s.INA219_Current = INA219_ReadCurrent(&myina219);
-	s.INA219_Voltage = INA219_ReadBusVoltage(&myina219) * 4;
+	s.INA219_Voltage = INA219_ReadBusVoltage(&myina219);
 	s.INA219_Power = INA219_ReadPower(&myina219);
 }
 
-void control_battery_state(void) {
-	switch (st.battery_state) {
+void control_battery_state(struct state *st, uint16_t *INA219_Voltage) {
+	switch (st->battery_state) {
 		case BATTERY_IDLE:
 			break;
 
 		case BATTERY_CHARGING:
-			if (s.INA219_Voltage > 4200) {
-				st.battery_state = BATTERY_DISCHARGING;
+			if (*INA219_Voltage > 4200) {
+				st->battery_state = BATTERY_DISCHARGING;
 			}
-			if (s.INA219_Voltage < 2900) {
-				st.battery_state = BATTERY_IDLE;
+			if (*INA219_Voltage < 2900) {
+				st->battery_state = BATTERY_IDLE;
 			}
 			break;
 
 		case BATTERY_DISCHARGING:
-			if (s.INA219_Voltage < 3000) {
-				st.battery_state = BATTERY_CHARGING;
+			if (*INA219_Voltage < 3000) {
+				st->battery_state = BATTERY_CHARGING;
 			}
-			if (s.INA219_Voltage > 4300) {
-				st.battery_state = BATTERY_IDLE;
+			if (*INA219_Voltage > 4300) {
+				st->battery_state = BATTERY_IDLE;
 			}
 			break;
 	}
 }
 
-void handle_battery_state(void) {
-	switch (st.battery_state) {
+void handle_battery_state(struct state *st) {
+	switch (st->battery_state) {
 	case BATTERY_IDLE:
+		st->discharging_relay = false;
+		st->charging_relay = false;
 		break;
 
 	case BATTERY_CHARGING:
+		st->discharging_relay = false;
+		st->charging_relay = true;
 		break;
 
 	case BATTERY_DISCHARGING:
+		st->discharging_relay = true;
+		st->charging_relay = false;
 		break;
 	}
+	HAL_GPIO_WritePin(R1IN1_GPIO_Port, R1IN1_Pin, !st->charging_relay);
+	HAL_GPIO_WritePin(R1IN2_GPIO_Port, R1IN2_Pin, !st->discharging_relay);
 }
 
 int get_state_int() {
@@ -245,7 +256,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-	HAL_Init();
+  HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -270,11 +281,6 @@ int main(void)
   MX_FATFS_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-	// TIMER
-	HAL_TIM_Encoder_Start_IT(&htim1, TIM_CHANNEL_ALL);
-	HAL_TIM_Base_Start_IT(&htim4);
-	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-
 	// OLED
 	ST7735_Init();
 	ST7735_FillScreen(ST7735_BLACK);
@@ -297,7 +303,11 @@ int main(void)
 
 	get_adc_percentage();
 
-	//st.is_program_started = true;
+	// TIMER
+	HAL_TIM_Encoder_Start_IT(&htim1, TIM_CHANNEL_ALL);
+	HAL_TIM_Base_Start_IT(&htim4);
+	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -307,13 +317,14 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		// menu poczatkowe
-		if (st.is_measurements_started == false) {
-			OLED_manage(&st, &s);
-		}
 		// stele probkowanie
 		if (st._interrupt_flag == true && st.is_measurements_started == true) {
 			read_sensors_data();
+
+			// charging state
+			s.adc_voltage = ((ADC_Convert_Channel(ADC_CHANNEL_8) * 3.3f) / 4096.0f) * 2.0f * 1000.0f;  // batery mV
+			control_battery_state(&st, &s.INA219_Voltage);
+			handle_battery_state(&st);
 
 			// OLED
 			OLED_manage(&st, &s);
@@ -321,13 +332,7 @@ int main(void)
 			// SD
 			SDcardWriteData(&sd, &s);
 
-			// charging state
-			control_battery_state();
-			handle_battery_state();
-
 			// Transmit over uart
-			//printf("{%u,%u,%.2f,%.2f,%.2f,%ld,%u,%d,%u}\r\n",
-			//		s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f, s.BMP280temperature[0], s.BMP280pressure[0], s.INA219_Voltage, s.INA219_Current, s.INA219_Power);
 			printf("{%u,%u,%.2f,%.2f,"
 					"%.2f,%ld,%.2f,%ld,%.2f,%ld,"
 					"%u,%d,%u,%f,%i}\r\n",
@@ -336,6 +341,10 @@ int main(void)
 					s.INA219_Voltage, s.INA219_Current, s.INA219_Power, s.adc_percentage * 10, st.battery_state);
 
 			st._interrupt_flag = false;
+		}
+		// menu poczatkowe
+		else if (st.is_measurements_started == false || st.screen_clear == true) {
+			OLED_manage(&st, &s);
 		}
 	}
   /* USER CODE END 3 */
@@ -424,6 +433,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
         // debounce
         if (now - last_press_time >= 500) {
             st.is_enc_pressed = true;
+            st.screen_clear = true;
             last_press_time = now;
         }
     }

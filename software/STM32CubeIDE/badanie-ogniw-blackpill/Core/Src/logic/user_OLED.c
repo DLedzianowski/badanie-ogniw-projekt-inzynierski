@@ -56,6 +56,7 @@ void OLED_manage(struct state *st, struct sensors *s) {
 		if (st->is_enc_pressed) {
 			st->is_enc_pressed = false;
 			st->current_screen_type = SCREEN_MENU;
+			st->screen_clear = true;
 		}
 	    break;
 	default:
@@ -114,16 +115,20 @@ void display_sensor_second(struct sensors *s) {
 	ST7735_WriteString(5,  20, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
 
 	// INA219_Power
-	snprintf(buffer, sizeof(buffer), "Power:  %4u mW", s->INA219_Power);
+	snprintf(buffer, sizeof(buffer), "Power:    %4u mW", s->INA219_Power);
 	ST7735_WriteString(5,  35, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+	// adc_voltage
+	snprintf(buffer, sizeof(buffer), "Vbat adc: %3u mV", s->adc_voltage);
+	ST7735_WriteString(5,  50, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
 
 	// PWM "ADC: %.2f%%\r\n",
 	snprintf(buffer, sizeof(buffer), "PWM: %.2f%% ", s->adc_percentage);
-	ST7735_WriteString(5, 50, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+	ST7735_WriteString(5, 65, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
 
 	// state
 	snprintf(buffer, sizeof(buffer), "state: %s", status[get_state_int()]);
-	ST7735_WriteString(5,  65, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+	ST7735_WriteString(5,  80, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
 }
 
 void display_menu_main(struct state *st) {
@@ -164,23 +169,41 @@ void display_menu_main(struct state *st) {
 	snprintf(buffer, sizeof(buffer), "%.1f%%", s.adc_percentage);
 	ST7735_WriteString(x_pos, y_pos, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
 
-//	snprintf(buffer, sizeof(buffer), "%s", batteries[st->battery_current]);
-//	x_pos = ST7735_WIDTH - (strlen(buffer) * Font_7x10.width) - 5;
-//	ST7735_WriteString(x_pos, y_pos, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
 
-	x_pos = ST7735_WIDTH - img_thunder.width - 3;
-	y_pos = ST7735_HEIGHT - img_thunder.height - 3;
-	ST7735_DrawImage(x_pos, y_pos, img_thunder.width, img_thunder.height, img_thunder.data);
 
+
+	x_pos = ST7735_WIDTH - img_batery.width - 3;
+	y_pos = ST7735_HEIGHT - img_batery.height - 3;
+	ST7735_DrawImage(x_pos, y_pos, img_batery.width, img_batery.height, img_batery.data);
+
+	if (st->battery_state == BATTERY_DISCHARGING) {
+		x_pos += 2;
+		y_pos += 4;
+		ST7735_DrawImage(x_pos, y_pos, img_thunder.width, img_thunder.height, img_thunder.data);
+	}
+	else if (st->battery_state == BATTERY_CHARGING) {
+		x_pos += 3;
+		y_pos += 4;
+		ST7735_DrawImage(x_pos, y_pos, img_charging.width, img_charging.height, img_charging.data);
+	}
+	else {
+		x_pos += 3;
+		y_pos += img_batery.height - img_bar.height - 3;
+		for (uint8_t i = 0; i < 4; ++i) {
+			//ST7735_DrawImage(x_pos, y_pos - (i * 4), img_bar.width, img_bar.height, img_bar.data);
+			ST7735_FillRectangleFast(x_pos, y_pos - (i * 4), img_bar.width, img_bar.height, ST7735_WHITE);
+		}
+	}
 }
 
 void display_menu_start(struct state *st) {
-	char buffer[] = "Press to start";
+//	char buffer[] = "Press to start";
+//	uint16_t x_pos = (ST7735_WIDTH - (strlen(buffer) * Font_7x10.width)) / 2;
+//	uint16_t y_pos = (ST7735_WIDTH + Font_7x10.height)/2;
+//	ST7735_WriteString(x_pos, y_pos, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
 
-	//snprintf(buffer, sizeof(buffer), "Press to start");
-	uint16_t x_pos = (ST7735_WIDTH - (strlen(buffer) * Font_7x10.width)) / 2;
-	uint16_t y_pos = (ST7735_WIDTH + Font_7x10.height)/2;
-	ST7735_WriteString(x_pos, y_pos, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+	st->is_enc_pressed = true;
+
 }
 
 void display_menu_battery_type(struct state *st) {
@@ -240,18 +263,22 @@ void display_menu_stop(struct state *st) {
 
 void action_menu_main(struct state *st) {
 	st->menu_current = st->menu_current_ptr;
-	st->screen_clear = true;
+	//st->screen_clear = true;
 }
 
 void action_menu_start(struct state *st) {
+	ST7735_FillScreenFast(ST7735_BLACK);
+
 	// SD
-	SDinit("test.csv");
+	if (st->is_measurements_started == false) {
+		SDinit("test.csv");
+	}
 
 	st->current_screen_type = SCREEN_SENSOR;
 	st->is_measurements_started = true;
 
 	st->menu_current = MENU_MAIN;
-	st->screen_clear = true;
+	//st->screen_clear = true;
 }
 
 void action_menu_battery_type(struct state *st) {
@@ -266,7 +293,7 @@ void action_menu_battery_type(struct state *st) {
 
 	st->current_screen_type = SCREEN_MENU;
 	st->menu_current = MENU_MAIN;
-	st->screen_clear = true;
+	//st->screen_clear = true;
 }
 
 void action_menu_adc(struct state *st) {
@@ -288,7 +315,7 @@ void action_menu_adc(struct state *st) {
 		st->update_actions = false;
 		st->menu_current = MENU_MAIN;
 		st->current_screen_type = SCREEN_MENU;
-		st->screen_clear = true;
+		//st->screen_clear = true;
 	}
 }
 
@@ -298,7 +325,7 @@ void action_menu_state(struct state *st) {
 
 	st->menu_current = MENU_MAIN;
 	st->current_screen_type = SCREEN_MENU;
-	st->screen_clear = true;
+	//st->screen_clear = true;
 }
 
 void action_menu_stop(struct state *st) {
@@ -306,7 +333,7 @@ void action_menu_stop(struct state *st) {
 	st->is_measurements_started = false;
 
 	st->menu_current = MENU_MAIN;
-	st->screen_clear = true;
+	//st->screen_clear = true;
 
 	SDclose();
 }

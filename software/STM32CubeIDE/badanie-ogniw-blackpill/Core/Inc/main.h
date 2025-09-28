@@ -86,11 +86,12 @@ struct state {
 
     bool _interrupt_flag;
 	bool is_measurements_started;
-	// bool is_program_started;
 	bool is_enc_pressed;
 	bool update_actions;
 	bool is_screen_menu;
 	bool screen_clear;
+	bool discharging_relay;
+	bool charging_relay;
 };
 extern struct state st;
 
@@ -105,6 +106,7 @@ struct sensors {
     uint16_t scaled_ethanol_signal;
     uint16_t scaled_h2_signal;
 
+    uint16_t adc_voltage;
     int16_t INA219_Current;
     uint16_t INA219_Voltage;
     uint16_t INA219_Power;
@@ -143,8 +145,8 @@ void get_adc_percentage(void);
 void SDinit(const char *folder_name);
 void SDclose(void);
 void read_sensors_data(void);
-void control_battery_state(void);
-void handle_battery_state(void);
+void control_battery_state(struct state *st, uint16_t *INA219_Voltage);
+void handle_battery_state(struct state *st);
 int get_state_int(void);
 
 /* USER CODE END EFP */
@@ -163,6 +165,10 @@ int get_state_int(void);
 #define oled_RST_GPIO_Port GPIOA
 #define sd_CS_Pin GPIO_PIN_4
 #define sd_CS_GPIO_Port GPIOA
+#define R1IN1_Pin GPIO_PIN_12
+#define R1IN1_GPIO_Port GPIOB
+#define R1IN2_Pin GPIO_PIN_13
+#define R1IN2_GPIO_Port GPIOB
 #define enc_KEY_Pin GPIO_PIN_10
 #define enc_KEY_GPIO_Port GPIOA
 #define enc_KEY_EXTI_IRQn EXTI15_10_IRQn
