@@ -1,5 +1,5 @@
-Core/Src/logic/user_OLED.o: ../Core/Src/logic/user_OLED.c \
- ../Core/Inc/logic/user_OLED.h ../Core/Inc/main.h \
+Core/Src/logic/user_fnc.o: ../Core/Src/logic/user_fnc.c \
+ ../Core/Inc/logic/user_fnc.h ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -36,20 +36,11 @@ Core/Src/logic/user_OLED.o: ../Core/Src/logic/user_OLED.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- ../Core/Inc/sensors/st7735.h ../Core/Inc/sensors/fonts.h \
- ../Core/Inc/logic/user_fnc.h ../Core/Inc/adc.h ../Core/Inc/main.h \
- ../Core/Inc/tim.h ../Core/Inc/sensors/BMPXX80.h \
- ../Core/Inc/sensors/sgp30.h \
+ ../Core/Inc/adc.h ../Core/Inc/main.h ../Core/Inc/tim.h \
+ ../Core/Inc/sensors/BMPXX80.h ../Core/Inc/sensors/sgp30.h \
  ../Core/Inc/sensors/sensirion_configuration.h \
- ../Core/Inc/sensors/sensirion_common.h ../Core/Inc/sensors/INA219.h \
- ../Core/Inc/logic/user_SDcard.h ../FATFS/App/fatfs.h \
- ../Middlewares/Third_Party/FatFs/src/ff.h \
- ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
- ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
- ../Middlewares/Third_Party/FatFs/src/diskio.h \
- ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h \
- ../Core/Inc/sensors/fatfs_sd.h
-../Core/Inc/logic/user_OLED.h:
+ ../Core/Inc/sensors/sensirion_common.h ../Core/Inc/sensors/INA219.h
+../Core/Inc/logic/user_fnc.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -87,9 +78,6 @@ Core/Src/logic/user_OLED.o: ../Core/Src/logic/user_OLED.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
-../Core/Inc/sensors/st7735.h:
-../Core/Inc/sensors/fonts.h:
-../Core/Inc/logic/user_fnc.h:
 ../Core/Inc/adc.h:
 ../Core/Inc/main.h:
 ../Core/Inc/tim.h:
@@ -98,13 +86,3 @@ Core/Src/logic/user_OLED.o: ../Core/Src/logic/user_OLED.c \
 ../Core/Inc/sensors/sensirion_configuration.h:
 ../Core/Inc/sensors/sensirion_common.h:
 ../Core/Inc/sensors/INA219.h:
-../Core/Inc/logic/user_SDcard.h:
-../FATFS/App/fatfs.h:
-../Middlewares/Third_Party/FatFs/src/ff.h:
-../Middlewares/Third_Party/FatFs/src/integer.h:
-../FATFS/Target/ffconf.h:
-../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h:
-../Middlewares/Third_Party/FatFs/src/diskio.h:
-../Middlewares/Third_Party/FatFs/src/ff.h:
-../FATFS/Target/user_diskio.h:
-../Core/Inc/sensors/fatfs_sd.h:

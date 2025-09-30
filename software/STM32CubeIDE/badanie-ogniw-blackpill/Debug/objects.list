@@ -12,6 +12,7 @@
 "./Core/Src/tim.o"
 "./Core/Src/logic/user_OLED.o"
 "./Core/Src/logic/user_SDcard.o"
+"./Core/Src/logic/user_fnc.o"
 "./Core/Src/sensors/BMXX80.o"
 "./Core/Src/sensors/INA219.o"
 "./Core/Src/sensors/fatfs_sd.o"

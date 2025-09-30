@@ -10,7 +10,8 @@
 
 #include "main.h"
 #include "sensors/st7735.h"
-
+#include "logic/user_fnc.h"
+#include "logic/user_SDcard.h"
 
 void OLED_manage(struct state *st, struct sensors *s);
 

@@ -18,10 +18,10 @@ typedef struct {
 	FIL fil;
 	FRESULT res;
 } SDcard_t;
+extern SDcard_t sd;
 
-void SDcardInit(SDcard_t* sd, const char *folder_name);
-void SDcardWriteData(SDcard_t* sd, struct sensors *s);
-void SDcardClose(SDcard_t* sd);
-
+void SDcardInit(const char *folder_name);
+void SDcardWriteData(struct sensors *s);
+void SDcardClose(void);
 
 #endif /* SRC_LOGIC_USER_SDCARD_H_ */

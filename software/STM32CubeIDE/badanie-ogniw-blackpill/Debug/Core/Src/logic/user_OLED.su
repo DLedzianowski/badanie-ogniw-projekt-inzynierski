@@ -7,9 +7,9 @@
 ../Core/Src/logic/user_OLED.c:225:6:display_menu_adc	64	static
 ../Core/Src/logic/user_OLED.c:235:6:display_menu_state	96	static
 ../Core/Src/logic/user_OLED.c:252:6:display_menu_stop	56	static
-../Core/Src/logic/user_OLED.c:264:6:action_menu_main	16	static
-../Core/Src/logic/user_OLED.c:269:6:action_menu_start	16	static
-../Core/Src/logic/user_OLED.c:284:6:action_menu_battery_type	16	static
-../Core/Src/logic/user_OLED.c:299:6:action_menu_adc	24	static
-../Core/Src/logic/user_OLED.c:322:6:action_menu_state	16	static
-../Core/Src/logic/user_OLED.c:331:6:action_menu_stop	16	static
+../Core/Src/logic/user_OLED.c:267:6:action_menu_main	16	static
+../Core/Src/logic/user_OLED.c:272:6:action_menu_start	16	static
+../Core/Src/logic/user_OLED.c:287:6:action_menu_battery_type	16	static
+../Core/Src/logic/user_OLED.c:302:6:action_menu_adc	24	static
+../Core/Src/logic/user_OLED.c:324:6:action_menu_state	16	static
+../Core/Src/logic/user_OLED.c:333:6:action_menu_stop	16	static

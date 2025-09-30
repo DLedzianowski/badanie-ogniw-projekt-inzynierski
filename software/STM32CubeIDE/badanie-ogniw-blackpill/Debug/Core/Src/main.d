@@ -59,7 +59,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/sensors/sensirion_configuration.h \
  ../Core/Inc/sensors/sgp30.h ../Core/Inc/sensors/sensirion_common.h \
  ../Core/Inc/sensors/INA219.h ../Core/Inc/logic/user_SDcard.h \
- ../Core/Inc/sensors/fatfs_sd.h ../Core/Inc/logic/user_OLED.h
+ ../Core/Inc/sensors/fatfs_sd.h ../Core/Inc/logic/user_OLED.h \
+ ../Core/Inc/logic/user_fnc.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -136,3 +137,4 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/logic/user_SDcard.h:
 ../Core/Inc/sensors/fatfs_sd.h:
 ../Core/Inc/logic/user_OLED.h:
+../Core/Inc/logic/user_fnc.h:

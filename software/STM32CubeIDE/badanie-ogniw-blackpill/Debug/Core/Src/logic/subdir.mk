@@ -6,15 +6,18 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Core/Src/logic/user_OLED.c \
-../Core/Src/logic/user_SDcard.c 
+../Core/Src/logic/user_SDcard.c \
+../Core/Src/logic/user_fnc.c 
 
 OBJS += \
 ./Core/Src/logic/user_OLED.o \
-./Core/Src/logic/user_SDcard.o 
+./Core/Src/logic/user_SDcard.o \
+./Core/Src/logic/user_fnc.o 
 
 C_DEPS += \
 ./Core/Src/logic/user_OLED.d \
-./Core/Src/logic/user_SDcard.d 
+./Core/Src/logic/user_SDcard.d \
+./Core/Src/logic/user_fnc.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -24,7 +27,7 @@ Core/Src/logic/%.o Core/Src/logic/%.su Core/Src/logic/%.cyclo: ../Core/Src/logic
 clean: clean-Core-2f-Src-2f-logic
 
 clean-Core-2f-Src-2f-logic:
-	-$(RM) ./Core/Src/logic/user_OLED.cyclo ./Core/Src/logic/user_OLED.d ./Core/Src/logic/user_OLED.o ./Core/Src/logic/user_OLED.su ./Core/Src/logic/user_SDcard.cyclo ./Core/Src/logic/user_SDcard.d ./Core/Src/logic/user_SDcard.o ./Core/Src/logic/user_SDcard.su
+	-$(RM) ./Core/Src/logic/user_OLED.cyclo ./Core/Src/logic/user_OLED.d ./Core/Src/logic/user_OLED.o ./Core/Src/logic/user_OLED.su ./Core/Src/logic/user_SDcard.cyclo ./Core/Src/logic/user_SDcard.d ./Core/Src/logic/user_SDcard.o ./Core/Src/logic/user_SDcard.su ./Core/Src/logic/user_fnc.cyclo ./Core/Src/logic/user_fnc.d ./Core/Src/logic/user_fnc.o ./Core/Src/logic/user_fnc.su
 
 .PHONY: clean-Core-2f-Src-2f-logic
 

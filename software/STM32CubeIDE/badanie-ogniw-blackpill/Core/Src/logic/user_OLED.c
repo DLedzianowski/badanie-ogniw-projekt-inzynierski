@@ -255,6 +255,9 @@ void display_menu_stop(struct state *st) {
 	uint16_t x_pos = (ST7735_WIDTH - (strlen(buffer) * Font_7x10.width)) / 2;
 	uint16_t y_pos = (ST7735_WIDTH + Font_7x10.height)/2;
 	ST7735_WriteString(x_pos, y_pos, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
+
+	st->battery_state = BATTERY_IDLE;
+	handle_battery_state(st);
 }
 
 /*
@@ -262,26 +265,27 @@ void display_menu_stop(struct state *st) {
  */
 
 void action_menu_main(struct state *st) {
+	st->screen_clear = true;
 	st->menu_current = st->menu_current_ptr;
-	//st->screen_clear = true;
 }
 
 void action_menu_start(struct state *st) {
+	st->screen_clear = true;
 	ST7735_FillScreenFast(ST7735_BLACK);
 
 	// SD
 	if (st->is_measurements_started == false) {
-		SDinit("test.csv");
+		SDcardInit("test.csv");
 	}
 
 	st->current_screen_type = SCREEN_SENSOR;
 	st->is_measurements_started = true;
 
 	st->menu_current = MENU_MAIN;
-	//st->screen_clear = true;
 }
 
 void action_menu_battery_type(struct state *st) {
+	st->screen_clear = true;
 	st->battery_current = st->battery_ptr;
 
 //	if (batteries[st->battery_current] == "Li-Pol") {
@@ -293,7 +297,6 @@ void action_menu_battery_type(struct state *st) {
 
 	st->current_screen_type = SCREEN_MENU;
 	st->menu_current = MENU_MAIN;
-	//st->screen_clear = true;
 }
 
 void action_menu_adc(struct state *st) {
@@ -315,26 +318,24 @@ void action_menu_adc(struct state *st) {
 		st->update_actions = false;
 		st->menu_current = MENU_MAIN;
 		st->current_screen_type = SCREEN_MENU;
-		//st->screen_clear = true;
 	}
 }
 
 void action_menu_state(struct state *st) {
+	st->screen_clear = true;
 	st->status_current = st->status_ptr;
 	st->battery_state = (enum BatteryStatus)(st->status_ptr);
 
 	st->menu_current = MENU_MAIN;
 	st->current_screen_type = SCREEN_MENU;
-	//st->screen_clear = true;
 }
 
 void action_menu_stop(struct state *st) {
+	st->screen_clear = true;
 	st->current_screen_type = SCREEN_MENU;
 	st->is_measurements_started = false;
-
 	st->menu_current = MENU_MAIN;
-	//st->screen_clear = true;
 
-	SDclose();
+	SDcardClose();
 }
 

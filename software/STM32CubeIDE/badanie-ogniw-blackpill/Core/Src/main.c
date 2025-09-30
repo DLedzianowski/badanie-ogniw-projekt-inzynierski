@@ -40,7 +40,7 @@
  *	BME3	+3.3V
  *	--CS	PB8
  *
- *	SD card	+3.3V
+ *	SD card	+3.3V  == exFAT
  *	--CS	PA4
  *
  *	PINOUT I2C
@@ -75,6 +75,7 @@
 #include "sensors/INA219.h"
 #include "logic/user_SDcard.h"
 #include "logic/user_OLED.h"
+#include "logic/user_fnc.h"
 
 /* USER CODE END Includes */
 
@@ -135,9 +136,6 @@ const char* status[STATUS_NUM] = {
 	"Rozladowyw."
 };
 
-SDcard_t sd;
-INA219_t myina219;
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -148,95 +146,6 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void get_adc_percentage(void) {
-	uint16_t adc_position;
-
-//	HAL_ADC_Start(&hadc1);
-//	HAL_ADC_PollForConversion(&hadc1, 1);
-//	adc_position = HAL_ADC_GetValue(&hadc1);
-//	HAL_ADC_Stop(&hadc1);
-	adc_position = ADC_Convert_Channel(ADC_CHANNEL_9);  // potentiometer %
-	adc_position = ((adc_position - 250.0f) / (3600.0f - 250.0f)) * 100.0f;
-	adc_position = adc_position - fmodf(adc_position, 5.0f);
-	s.adc_percentage = fminf(fmaxf(adc_position, 0.0f), 100.0f);
-}
-
-void SDinit(const char *folder_name) {
-	SDcardInit(&sd, folder_name);
-}
-
-void SDclose(void) {
-	SDcardClose(&sd);
-}
-
-void read_sensors_data(void) {
-	// ADC
-	get_adc_percentage();
-	// PWM
-	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, s.adc_percentage*10);
-
-	// BMP
-	for (uint8_t index = 0; index < BMP_SENSOR_COUNT; ++index) {
-		BMP280_ReadTemperatureAndPressure(&s.BMP280temperature[index], &s.BMP280pressure[index], index);
-	}
-
-	// SGP
-	sgp_measure_iaq_blocking_read(&s.tvoc_ppb, &s.co2_eq_ppm);
-	sgp_measure_signals_blocking_read(&s.scaled_ethanol_signal, &s.scaled_h2_signal);
-	//sgp_set_absolute_humidity()
-
-	// INA219
-	s.INA219_Current = INA219_ReadCurrent(&myina219);
-	s.INA219_Voltage = INA219_ReadBusVoltage(&myina219);
-	s.INA219_Power = INA219_ReadPower(&myina219);
-}
-
-void control_battery_state(struct state *st, uint16_t *INA219_Voltage) {
-	switch (st->battery_state) {
-		case BATTERY_IDLE:
-			break;
-
-		case BATTERY_CHARGING:
-			if (*INA219_Voltage > 4200) {
-				st->battery_state = BATTERY_DISCHARGING;
-			}
-			if (*INA219_Voltage < 2900) {
-				st->battery_state = BATTERY_IDLE;
-			}
-			break;
-
-		case BATTERY_DISCHARGING:
-			if (*INA219_Voltage < 3000) {
-				st->battery_state = BATTERY_CHARGING;
-			}
-			if (*INA219_Voltage > 4300) {
-				st->battery_state = BATTERY_IDLE;
-			}
-			break;
-	}
-}
-
-void handle_battery_state(struct state *st) {
-	switch (st->battery_state) {
-	case BATTERY_IDLE:
-		st->discharging_relay = false;
-		st->charging_relay = false;
-		break;
-
-	case BATTERY_CHARGING:
-		st->discharging_relay = false;
-		st->charging_relay = true;
-		break;
-
-	case BATTERY_DISCHARGING:
-		st->discharging_relay = true;
-		st->charging_relay = false;
-		break;
-	}
-	HAL_GPIO_WritePin(R1IN1_GPIO_Port, R1IN1_Pin, !st->charging_relay);
-	HAL_GPIO_WritePin(R1IN2_GPIO_Port, R1IN2_Pin, !st->discharging_relay);
-}
-
 int get_state_int() {
 	return (int)(st.battery_state);
 }
@@ -288,17 +197,17 @@ int main(void)
 	// BMP x3
 	for (uint8_t index = 0; index < BMP_SENSOR_COUNT; ++index) {
 		if (!BMP280_Init(&hspi1, BMP280_TEMPERATURE_16BIT, BMP280_STANDARD, BMP280_FORCEDMODE, index)) {
-			printf("BMP280 sensor error\r\n");
+			LOG_DEBUG("BMP280 sensor error\r\n");
 		}
 	}
 
 	// SGP
 	if (sgp_probe() != STATUS_OK) {
-		printf("SGP sensor error\r\n");
+		LOG_DEBUG("SGP sensor error\r\n");
 	}
 	// INA
 	if (!INA219_Init(&myina219, &hi2c1, INA219_ADDRESS)){
-		printf("INA sensor error\r\n");
+		LOG_DEBUG("INA sensor error\r\n");
 	}
 
 	get_adc_percentage();
@@ -323,22 +232,22 @@ int main(void)
 
 			// charging state
 			s.adc_voltage = ((ADC_Convert_Channel(ADC_CHANNEL_8) * 3.3f) / 4096.0f) * 2.0f * 1000.0f;  // batery mV
-			control_battery_state(&st, &s.INA219_Voltage);
+			//control_battery_state(&st, &s.INA219_Voltage);
 			handle_battery_state(&st);
 
 			// OLED
 			OLED_manage(&st, &s);
 
 			// SD
-			SDcardWriteData(&sd, &s);
+			SDcardWriteData(&s);
 
 			// Transmit over uart
-			printf("{%u,%u,%.2f,%.2f,"
+			LOG_DATA("{%u,%u,%.2f,%.2f,"
 					"%.2f,%ld,%.2f,%ld,%.2f,%ld,"
-					"%u,%d,%u,%f,%i}\r\n",
+					"%u,%d,%u,%i,%i}\r\n",
 					s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f,
 					s.BMP280temperature[0], s.BMP280pressure[0], s.BMP280temperature[1], s.BMP280pressure[1], s.BMP280temperature[2], s.BMP280pressure[2],
-					s.INA219_Voltage, s.INA219_Current, s.INA219_Power, s.adc_percentage * 10, st.battery_state);
+					s.INA219_Voltage, s.INA219_Current, s.INA219_Power, (int)s.adc_percentage, st.battery_state);
 
 			st._interrupt_flag = false;
 		}
@@ -416,7 +325,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	if (htim == &htim4 && st.is_measurements_started == true){
 		if (st._interrupt_flag == true){
-			printf("Flaga _interrupt_flag jest juz 1\r\n");
+			LOG_DEBUG("Flaga _interrupt_flag jest juz 1\r\n");
 		}
 		else{
 			st._interrupt_flag = true;

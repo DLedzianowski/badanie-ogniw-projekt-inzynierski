@@ -128,25 +128,35 @@ extern const char* menu[SCREENS_MENU_NUM];
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
+#define RETRY_DELAY_MS 1000
+#define SCREENS_SENSORS_NUM 2  // number of screens with sensors data
 
+#define ENABLE_DEBUG   1
+#define ENABLE_DATA    1
+
+#define ANSI_YELLOW  "\033[33m"
+#define ANSI_CYAN    "\033[36m"
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-#define RETRY_DELAY_MS 1000
-#define SCREENS_SENSORS_NUM 2  // number of screens with sensors data
+#if ENABLE_DEBUG
+	#define LOG_DEBUG(msg, ...) (printf(ANSI_CYAN "[DEBUG] " msg, ##__VA_ARGS__))
+#else
+	#define LOG_DEBUG(msg, ...)
+#endif
+
+#if ENABLE_DATA
+	#define LOG_DATA(msg, ...)  (printf(ANSI_YELLOW "[DATA] " msg, ##__VA_ARGS__))
+#else
+	#define LOG_DATA(msg, ...)
+#endif
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-void get_adc_percentage(void);
-void SDinit(const char *folder_name);
-void SDclose(void);
-void read_sensors_data(void);
-void control_battery_state(struct state *st, uint16_t *INA219_Voltage);
-void handle_battery_state(struct state *st);
 int get_state_int(void);
 
 /* USER CODE END EFP */
