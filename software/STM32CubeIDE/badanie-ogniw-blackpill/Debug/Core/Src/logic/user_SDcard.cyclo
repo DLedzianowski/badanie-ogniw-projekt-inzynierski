@@ -1,3 +1,0 @@
-../Core/Src/logic/user_SDcard.c:12:6:SDcardInit	7
-../Core/Src/logic/user_SDcard.c:51:6:SDcardWriteData	4
-../Core/Src/logic/user_SDcard.c:78:6:SDcardClose	2

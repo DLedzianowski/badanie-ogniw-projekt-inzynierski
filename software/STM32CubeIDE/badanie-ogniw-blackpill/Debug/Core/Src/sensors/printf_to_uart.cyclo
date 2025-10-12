@@ -1,2 +1,0 @@
-../Core/Src/sensors/printf_to_uart.c:16:9:serial_transmit	1
-../Core/Src/sensors/printf_to_uart.c:22:5:_write	1

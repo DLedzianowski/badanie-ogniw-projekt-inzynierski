@@ -1,2 +1,0 @@
-../Core/Src/sensors/sensirion_common.c:39:4:sensirion_common_generate_crc	4
-../Core/Src/sensors/sensirion_common.c:58:4:sensirion_common_check_crc	2

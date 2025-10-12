@@ -1,5 +1,0 @@
-../Core/Src/logic/user_fnc.c:12:6:get_adc_percentage	1
-../Core/Src/logic/user_fnc.c:21:6:set_adc_percentage	1
-../Core/Src/logic/user_fnc.c:25:6:read_sensors_data	2
-../Core/Src/logic/user_fnc.c:47:6:control_battery_state	15
-../Core/Src/logic/user_fnc.c:97:6:handle_battery_state	5
