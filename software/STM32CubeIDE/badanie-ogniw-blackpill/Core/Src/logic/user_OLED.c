@@ -33,10 +33,11 @@ MenuFunc_t menu_actions[] = {
 void OLED_manage(struct state *st, struct sensors *s) {
 	switch (st->current_screen_type) {
 	case SCREEN_MENU:
-		if (st->is_enc_pressed || st->update_actions) {
+		if (st->is_enc_pressed) {
 			menu_actions[st->menu_current](st);
-			st->enc_offset = st->enc_count;
+			st->enc_offset = __HAL_TIM_GET_COUNTER(&htim1) / 4;
 			st->is_enc_pressed = false;
+			st->screen_clear = true;
 		}
 		if (st->screen_clear == true && st->current_screen_type == SCREEN_MENU) {
 			st->screen_clear = false;
@@ -225,11 +226,16 @@ void display_menu_battery_type(struct state *st) {
 void display_menu_adc(struct state *st) {
 	char buffer[20];
 
-	snprintf(buffer, sizeof(buffer), "PWM: %.1f%%", s.adc_percentage);
+    static uint16_t prev_enc_count = 0;
+    st->adc_percentage_prev += fmaxf(fminf((int16_t)(st->enc_count - prev_enc_count), 1), -1) * 5;
+    st->adc_percentage_prev = fminf(fmaxf(st->adc_percentage_prev, 0.0f), 100.0f);
+    prev_enc_count = st->enc_count;
+
+	snprintf(buffer, sizeof(buffer), "PWM: %.1f%%", st->adc_percentage_prev);
 	uint16_t x_pos = (ST7735_WIDTH - (strlen(buffer) * Font_7x10.width)) / 2;
 	uint16_t y_pos = (ST7735_WIDTH + Font_7x10.height)/2;
 	ST7735_WriteString(x_pos, y_pos, buffer, Font_7x10, ST7735_WHITE, ST7735_BLACK);
-	st->update_actions = true;
+	//st->update_actions = true;
 }
 
 void display_menu_state(struct state *st) {
@@ -265,12 +271,10 @@ void display_menu_stop(struct state *st) {
  */
 
 void action_menu_main(struct state *st) {
-	st->screen_clear = true;
 	st->menu_current = st->menu_current_ptr;
 }
 
 void action_menu_start(struct state *st) {
-	st->screen_clear = true;
 	ST7735_FillScreenFast(ST7735_BLACK);
 
 	// SD
@@ -278,14 +282,14 @@ void action_menu_start(struct state *st) {
 		SDcardInit("test.csv");
 	}
 
-	st->current_screen_type = SCREEN_SENSOR;
 	st->is_measurements_started = true;
 
+	st->current_screen_type = SCREEN_SENSOR;
+	st->menu_current_ptr = MENU_START;
 	st->menu_current = MENU_MAIN;
 }
 
 void action_menu_battery_type(struct state *st) {
-	st->screen_clear = true;
 	st->battery_current = st->battery_ptr;
 
 //	if (batteries[st->battery_current] == "Li-Pol") {
@@ -296,44 +300,46 @@ void action_menu_battery_type(struct state *st) {
 //	}
 
 	st->current_screen_type = SCREEN_MENU;
+	st->menu_current_ptr = MENU_START;
 	st->menu_current = MENU_MAIN;
 }
 
 void action_menu_adc(struct state *st) {
-	if (st->update_actions == true) {
-		// update adc every 1s
-	    static uint32_t last_update = 0;
-	    uint32_t now = HAL_GetTick();
+//	if (st->update_actions == true) {
+//		// update adc every 1s
+//	    static uint32_t last_update = 0;
+//	    uint32_t now = HAL_GetTick();
+//
+//	    if (now - last_update >= 1000) {
+//	        last_update = now;
+//			get_adc_percentage();
+//
+//			// refresh adc val
+//			st->screen_clear = true;
+//			st->update_actions = false;
+//	    }
+//	}
+	set_adc_percentage(st->adc_percentage_prev);
 
-	    if (now - last_update >= 1000) {
-	        last_update = now;
-			get_adc_percentage();
-
-			// refresh adc val
-			st->screen_clear = true;
-			st->update_actions = false;
-	    }
-	}
-	if (st->is_enc_pressed == true) {
-		st->update_actions = false;
-		st->menu_current = MENU_MAIN;
-		st->current_screen_type = SCREEN_MENU;
-	}
+	st->current_screen_type = SCREEN_MENU;
+	st->menu_current_ptr = MENU_START;
+	st->menu_current = MENU_MAIN;
 }
 
 void action_menu_state(struct state *st) {
-	st->screen_clear = true;
 	st->status_current = st->status_ptr;
 	st->battery_state = (enum BatteryStatus)(st->status_ptr);
 
-	st->menu_current = MENU_MAIN;
 	st->current_screen_type = SCREEN_MENU;
+	st->menu_current_ptr = MENU_START;
+	st->menu_current = MENU_MAIN;
 }
 
 void action_menu_stop(struct state *st) {
-	st->screen_clear = true;
-	st->current_screen_type = SCREEN_MENU;
 	st->is_measurements_started = false;
+
+	st->current_screen_type = SCREEN_MENU;
+	st->menu_current_ptr = MENU_START;
 	st->menu_current = MENU_MAIN;
 
 	SDcardClose();

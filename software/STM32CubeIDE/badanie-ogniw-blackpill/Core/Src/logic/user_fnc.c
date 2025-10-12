@@ -18,9 +18,13 @@ void get_adc_percentage(void) {
 	s.adc_percentage = fminf(fmaxf(adc_position, 0.0f), 100.0f);
 }
 
+void set_adc_percentage(float val) {
+	s.adc_percentage = val;
+}
+
 void read_sensors_data(void) {
 	// ADC
-	get_adc_percentage();
+//	get_adc_percentage();
 	// PWM
 	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, s.adc_percentage*10);
 

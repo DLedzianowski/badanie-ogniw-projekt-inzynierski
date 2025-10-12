@@ -83,11 +83,11 @@ struct state {
 	uint16_t enc_count;
 	uint16_t prev_enc_count;
 	uint16_t enc_offset;
+    float adc_percentage_prev;
 
     bool _interrupt_flag;
 	bool is_measurements_started;
 	bool is_enc_pressed;
-	bool update_actions;
 	bool is_screen_menu;
 	bool screen_clear;
 	bool discharging_relay;
@@ -134,19 +134,19 @@ extern const char* menu[SCREENS_MENU_NUM];
 #define ENABLE_DEBUG   1
 #define ENABLE_DATA    1
 
-#define ANSI_YELLOW  "\033[33m"
-#define ANSI_CYAN    "\033[36m"
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
 #if ENABLE_DEBUG
+	#define ANSI_CYAN    "\033[36m"
 	#define LOG_DEBUG(msg, ...) (printf(ANSI_CYAN "[DEBUG] " msg, ##__VA_ARGS__))
 #else
 	#define LOG_DEBUG(msg, ...)
 #endif
 
 #if ENABLE_DATA
+	#define ANSI_YELLOW  "\033[33m"
 	#define LOG_DATA(msg, ...)  (printf(ANSI_YELLOW "[DATA] " msg, ##__VA_ARGS__))
 #else
 	#define LOG_DATA(msg, ...)

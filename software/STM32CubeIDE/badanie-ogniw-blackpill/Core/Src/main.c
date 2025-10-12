@@ -112,11 +112,13 @@ struct state st = {
 	.enc_count = 0,
 	.prev_enc_count = 0,
 	.enc_offset = 0,
+	.adc_percentage_prev = 0,
 
 	.is_screen_menu = true,
 	.screen_clear = true,
 };
 struct sensors s = {0};
+
 const char* menu[SCREENS_MENU_NUM] = {
 	"Start",
 	"Typ baterii",
@@ -210,7 +212,7 @@ int main(void)
 		LOG_DEBUG("INA sensor error\r\n");
 	}
 
-	get_adc_percentage();
+	//get_adc_percentage();
 
 	// TIMER
 	HAL_TIM_Encoder_Start_IT(&htim1, TIM_CHANNEL_ALL);
@@ -308,7 +310,7 @@ void SystemClock_Config(void)
 // encoder
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
 	if (htim->Instance == TIM1) {
-    	st.enc_count = (__HAL_TIM_GET_COUNTER(htim) - st.enc_offset) / 4;
+    	st.enc_count = ((__HAL_TIM_GET_COUNTER(htim) / 4) - st.enc_offset);
 		st.sensor_current = (enum SensorScreen)(st.enc_count % SENSOR_SCREEN_COUNT);
 		st.menu_current_ptr = (enum MenuScreen)(1 + (st.enc_count % (MENU_SCREEN_COUNT - 1)));
 		st.battery_ptr = st.enc_count % BATERYS_NUM;
