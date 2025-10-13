@@ -23,7 +23,7 @@ void SDcardInit(const char *folder_name) {
 
 	retry_count = 2;
 	while (retry_count--) {
-		sd.res = f_open(&sd.fil, folder_name, FA_OPEN_ALWAYS | FA_WRITE);
+		sd.res = f_open(&sd.fil, folder_name, FA_OPEN_ALWAYS | FA_WRITE | FA_READ);
 		if (sd.res == FR_OK) {
 			break;
 		}
@@ -72,14 +72,17 @@ void SDcardWriteData(struct sensors *s) {
 	if (f_sync(&sd.fil) != FR_OK) {
 		LOG_DEBUG("Error syncing file!\r\n");
 	}
-	f_sync(&sd.fil);
 }
 
 void SDcardClose(void) {
-	if (f_close(&sd.fil) == FR_OK) {
-		LOG_DEBUG("Closing file!\r\n");
-	}
-	else {
+	if (f_close(&sd.fil) != FR_OK) {
 		LOG_DEBUG("Error closing file!\r\n");
+	}
+
+	sd.res = f_mount(NULL, "", 1);
+	if (sd.res == FR_OK) {
+		LOG_DEBUG("Filesystem unmounted successfully!\r\n");
+	} else {
+		LOG_DEBUG("Error unmounting filesystem! (%d)\r\n", sd.res);
 	}
 }
