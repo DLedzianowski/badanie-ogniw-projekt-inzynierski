@@ -39,9 +39,9 @@ void read_sensors_data(void) {
 	//sgp_set_absolute_humidity()
 
 	// INA219
-	s.INA219_Current = INA219_ReadCurrent(&myina219);
-	s.INA219_Voltage = INA219_ReadBusVoltage(&myina219);
-	s.INA219_Power = INA219_ReadPower(&myina219);
+	//s.INA219_Current = INA219_ReadCurrent(&myina219);
+	//s.INA219_Voltage = INA219_ReadBusVoltage(&myina219);
+	//s.INA219_Power = INA219_ReadPower(&myina219);
 }
 
 void control_battery_state(struct state *st, uint16_t *INA219_Voltage) {

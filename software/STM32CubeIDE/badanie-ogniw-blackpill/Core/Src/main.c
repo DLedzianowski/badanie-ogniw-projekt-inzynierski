@@ -197,7 +197,7 @@ int main(void)
 	ST7735_FillScreen(ST7735_BLACK);
 
 	// BMP x3
-	for (uint8_t index = 0; index < BMP_SENSOR_COUNT; ++index) {
+	for (uint8_t index = 0; index < 1 ; ++index) {
 		if (!BMP280_Init(&hspi1, BMP280_TEMPERATURE_16BIT, BMP280_STANDARD, BMP280_FORCEDMODE, index)) {
 			LOG_DEBUG("BMP280 sensor error\r\n");
 		}
@@ -208,9 +208,9 @@ int main(void)
 		LOG_DEBUG("SGP sensor error\r\n");
 	}
 	// INA
-	if (!INA219_Init(&myina219, &hi2c1, INA219_ADDRESS)){
-		LOG_DEBUG("INA sensor error\r\n");
-	}
+	//if (!INA219_Init(&myina219, &hi2c1, INA219_ADDRESS)){
+	//	LOG_DEBUG("INA sensor error\r\n");
+	//}
 
 	//get_adc_percentage();
 
@@ -233,7 +233,7 @@ int main(void)
 			read_sensors_data();
 
 			// charging state
-			s.adc_voltage = ((ADC_Convert_Channel(ADC_CHANNEL_8) * 3.3f) / 4096.0f) * 2.0f * 1000.0f;  // batery mV
+			//s.adc_voltage = ((ADC_Convert_Channel(ADC_CHANNEL_8) * 3.3f) / 4096.0f) * 2.0f * 1000.0f;  // batery mV
 			//control_battery_state(&st, &s.INA219_Voltage);
 			handle_battery_state(&st);
 
