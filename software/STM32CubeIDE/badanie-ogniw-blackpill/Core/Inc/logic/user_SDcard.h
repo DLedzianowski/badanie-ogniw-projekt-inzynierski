@@ -21,7 +21,7 @@ typedef struct {
 extern SDcard_t sd;
 
 void SDcardInit(const char *folder_name);
-void SDcardWriteData(struct sensors *s);
+void SDcardWriteData(void);
 void SDcardClose(void);
 
 #endif /* SRC_LOGIC_USER_SDCARD_H_ */

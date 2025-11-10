@@ -102,6 +102,7 @@ struct state st = {
 	.menu_current_ptr = MENU_START,
 	.sensor_current = SENSOR_FIRST,
 	.battery_state = BATTERY_IDLE,
+	.auto_mode_current = MANUAL_MODE,
 
 	.screen_menu_ptr = 0,
 	.screen_menu_current = 0,
@@ -109,10 +110,12 @@ struct state st = {
 	.battery_current = 0,
 	.status_ptr = 0,
 	.status_current = 0,
+	.auto_mode_ptr = 0,
+	.auto_mode_current = 0,
 	.enc_count = 0,
 	.prev_enc_count = 0,
 	.enc_offset = 0,
-	.adc_percentage_prev = 0,
+	.set_current_prev = 0,
 
 	.is_screen_menu = true,
 	.screen_clear = true,
@@ -122,8 +125,9 @@ struct sensors s = {0};
 const char* menu[SCREENS_MENU_NUM] = {
 	"Start",
 	"Typ baterii",
-	"ADC",
+	"Prad",
 	"Status",
+	"Tryb auto",
 	"Stop"
 };
 
@@ -138,6 +142,11 @@ const char* status[STATUS_NUM] = {
 	"Rozladowyw."
 };
 
+const char* auto_mode[AUTO_MODE_NUM] = {
+	"Auto.",
+	"Reczny"
+};
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -148,9 +157,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-int get_state_int() {
-	return (int)(st.battery_state);
-}
+
 /* USER CODE END 0 */
 
 /**
@@ -207,18 +214,14 @@ int main(void)
 	if (sgp_probe() != STATUS_OK) {
 		LOG_DEBUG("SGP sensor error\r\n");
 	}
-	// INA
-	//if (!INA219_Init(&myina219, &hi2c1, INA219_ADDRESS)){
-	//	LOG_DEBUG("INA sensor error\r\n");
-	//}
 
-	//get_adc_percentage();
 
 	// TIMER
 	HAL_TIM_Encoder_Start_IT(&htim1, TIM_CHANNEL_ALL);
 	HAL_TIM_Base_Start_IT(&htim4);
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 
+	LOG_DEBUG("Complete peripheral initialization\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -233,29 +236,28 @@ int main(void)
 			read_sensors_data();
 
 			// charging state
-			//s.adc_voltage = ((ADC_Convert_Channel(ADC_CHANNEL_8) * 3.3f) / 4096.0f) * 2.0f * 1000.0f;  // batery mV
-			//control_battery_state(&st, &s.INA219_Voltage);
-			handle_battery_state(&st);
+			control_battery_state(&s.voltage);
+			handle_battery_state();
 
 			// OLED
-			OLED_manage(&st, &s);
+			OLED_manage();
 
 			// SD
-			SDcardWriteData(&s);
+			SDcardWriteData();
 
 			// Transmit over uart
 			LOG_DATA("{%u,%u,%.2f,%.2f,"
 					"%.2f,%ld,%.2f,%ld,%.2f,%ld,"
-					"%u,%d,%u,%i,%i}\r\n",
+					"%f,%f,%.2f,%i}\r\n",
 					s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f,
 					s.BMP280temperature[0], s.BMP280pressure[0], s.BMP280temperature[1], s.BMP280pressure[1], s.BMP280temperature[2], s.BMP280pressure[2],
-					s.INA219_Voltage, s.INA219_Current, s.INA219_Power, (int)s.adc_percentage, st.battery_state);
+					s.voltage, s.current, s.set_current, st.battery_state);
 
 			st._interrupt_flag = false;
 		}
 		// menu poczatkowe
 		else if (st.is_measurements_started == false || st.screen_clear == true) {
-			OLED_manage(&st, &s);
+			OLED_manage();
 		}
 	}
   /* USER CODE END 3 */
@@ -315,8 +317,9 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
 		st.menu_current_ptr = (enum MenuScreen)(1 + (st.enc_count % (MENU_SCREEN_COUNT - 1)));
 		st.battery_ptr = st.enc_count % BATERYS_NUM;
 		st.status_ptr = st.enc_count % STATUS_NUM;
+		st.auto_mode_ptr = st.enc_count % AUTO_MODE_NUM;
 
-    	if (st.prev_enc_count != st.enc_count) {
+		if (st.prev_enc_count != st.enc_count) {
     		st.screen_clear = true;
     	}
     	st.prev_enc_count = st.enc_count;

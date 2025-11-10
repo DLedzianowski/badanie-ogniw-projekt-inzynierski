@@ -49,8 +49,9 @@ enum MenuScreen {
     MENU_MAIN,
     MENU_START,
     MENU_BATTERY_TYPE,
-    MENU_ADC,
+    MENU_SET_CURRENT,
 	MENU_STATUS,
+	MENU_AUTO_MODE,
     MENU_STOP,
 	MENU_SCREEN_COUNT
 };
@@ -67,12 +68,18 @@ enum BatteryStatus {
 	BATTERY_DISCHARGING
 };
 
+enum AutoMode {
+	AUTO_MODE,
+	MANUAL_MODE
+};
+
 struct state {
     enum ScreenType current_screen_type;
     enum MenuScreen menu_current;
     enum MenuScreen menu_current_ptr;
     enum SensorScreen sensor_current;
     enum BatteryStatus battery_state;
+    enum AutoMode auto_mode_current;
 
 	uint8_t screen_menu_ptr;
 	uint8_t screen_menu_current;
@@ -80,10 +87,12 @@ struct state {
 	uint8_t battery_current;
 	uint8_t status_ptr;
 	uint8_t status_current;
+	uint8_t auto_mode_ptr;
+	//uint8_t auto_mode_current;
 	uint16_t enc_count;
 	uint16_t prev_enc_count;
 	uint16_t enc_offset;
-    float adc_percentage_prev;
+    float set_current_prev;
 
     bool _interrupt_flag;
 	bool is_measurements_started;
@@ -106,12 +115,10 @@ struct sensors {
     uint16_t scaled_ethanol_signal;
     uint16_t scaled_h2_signal;
 
-    uint16_t adc_voltage;
-    int16_t INA219_Current;
-    uint16_t INA219_Voltage;
-    uint16_t INA219_Power;
+    float voltage;
+    float current;
 
-    float adc_percentage;
+    float set_current;
 };
 extern struct sensors s;
 
@@ -121,8 +128,11 @@ extern const char* batteries[BATERYS_NUM];
 #define STATUS_NUM 3
 extern const char* status[STATUS_NUM];
 
+#define AUTO_MODE_NUM 2
+extern const char* auto_mode[AUTO_MODE_NUM];
+
 #define SCREENS_MENU_VISIBLE_ITEMS 3  // number of visible opcions in menu
-#define SCREENS_MENU_NUM 5  // numbers of all menu elements
+#define SCREENS_MENU_NUM 6  // numbers of all menu elements
 extern const char* menu[SCREENS_MENU_NUM];
 /* USER CODE END ET */
 
@@ -157,7 +167,6 @@ extern const char* menu[SCREENS_MENU_NUM];
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-int get_state_int(void);
 
 /* USER CODE END EFP */
 
@@ -179,6 +188,8 @@ int get_state_int(void);
 #define R1IN1_GPIO_Port GPIOB
 #define R1IN2_Pin GPIO_PIN_13
 #define R1IN2_GPIO_Port GPIOB
+#define R1IN3_Pin GPIO_PIN_14
+#define R1IN3_GPIO_Port GPIOB
 #define enc_KEY_Pin GPIO_PIN_10
 #define enc_KEY_GPIO_Port GPIOA
 #define enc_KEY_EXTI_IRQn EXTI15_10_IRQn

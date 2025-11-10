@@ -13,30 +13,32 @@
 #include "logic/user_fnc.h"
 #include "logic/user_SDcard.h"
 
-void OLED_manage(struct state *st, struct sensors *s);
+void OLED_manage(void);
 
 
-typedef void (*MenuFunc_t)(struct state *st);
+typedef void (*MenuFunc_t)(void);
 extern MenuFunc_t menu_display[];
-void display_menu_main(struct state *st);
-void display_menu_start(struct state *st);
-void display_menu_battery_type(struct state *st);
-void display_menu_adc(struct state *st);
-void display_menu_state(struct state *st);
-void display_menu_stop(struct state *st);
+void display_menu_main(void);
+void display_menu_start(void);
+void display_menu_battery_type(void);
+void display_menu_current(void);
+void display_menu_state(void);
+void display_menu_auto_mode(void);
+void display_menu_stop(void);
 
 extern MenuFunc_t menu_actions[];
-void action_menu_main(struct state *st);
-void action_menu_start(struct state *st);
-void action_menu_battery_type(struct state *st);
-void action_menu_adc(struct state *st);
-void action_menu_state(struct state *st);
-void action_menu_stop(struct state *st);
+void action_menu_main(void);
+void action_menu_start(void);
+void action_menu_battery_type(void);
+void action_menu_current(void);
+void action_menu_state(void);
+void action_menu_auto_mode(void);
+void action_menu_stop(void);
 
-typedef void (*SensorsFunc_t)(struct sensors *s);
+typedef void (*SensorsFunc_t)(void);
 extern SensorsFunc_t sensor_display[];
-void display_sensor_first(struct sensors *s);
-void display_sensor_second(struct sensors *s);
+void display_sensor_first(void);
+void display_sensor_second(void);
 
 
 #endif /* SRC_LOGIC_USER_OLED_H_ */
