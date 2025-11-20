@@ -3671,6 +3671,16 @@
 		)
 		(uuid "ac81efb5-16fe-4759-8ec5-e13687483995")
 	)
+	(text "test"
+		(exclude_from_sim no)
+		(at 139.7 82.042 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "afc12b89-cf0c-4aa9-95e8-ffcc641c7622")
+	)
 	(text "https://piotr-gorecki.pl/yk012-wspolnie-projektujemy-uniwersalne-obciazenie-aktywne/"
 		(exclude_from_sim no)
 		(at 188.468 96.266 0)
