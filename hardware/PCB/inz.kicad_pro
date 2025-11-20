@@ -447,8 +447,12 @@
     }
   },
   "libraries": {
-    "pinned_footprint_libs": [],
-    "pinned_symbol_libs": []
+    "pinned_footprint_libs": [
+      "footprints"
+    ],
+    "pinned_symbol_libs": [
+      "footprints"
+    ]
   },
   "meta": {
     "filename": "inz.kicad_pro",
@@ -613,6 +617,10 @@
     [
       "3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0",
       "Root"
+    ],
+    [
+      "0d146a7f-c55b-4837-864c-e0f7f24def8d",
+      "Sensors1"
     ]
   ],
   "text_variables": {}
