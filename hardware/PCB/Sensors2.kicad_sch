@@ -3593,6 +3593,12 @@
 		(uuid "1fdff7eb-64cd-4d94-9708-d3bcd43817f6")
 	)
 	(junction
+		(at 254 40.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3190b9aa-a58d-48f2-9dfa-cbd27444e5ba")
+	)
+	(junction
 		(at 90.17 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3609,6 +3615,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3b5e0bb0-7fc1-4b0b-97a6-c50e4a3a0e14")
+	)
+	(junction
+		(at 259.08 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "41159b64-9238-4066-99f5-88a284288568")
 	)
 	(junction
 		(at 198.12 118.11)
@@ -3651,6 +3663,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "dffe0593-fc6a-4281-ac3b-6871da7a276d")
+	)
+	(junction
+		(at 256.54 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e211ad19-d040-4049-94df-1e47dfb0e5ad")
 	)
 	(junction
 		(at 222.25 49.53)
@@ -3936,6 +3954,16 @@
 	)
 	(wire
 		(pts
+			(xy 256.54 38.1) (xy 256.54 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2d3775fe-770c-49ca-a8ac-2f62e4fc38b6")
+	)
+	(wire
+		(pts
 			(xy 222.25 93.98) (xy 222.25 97.79)
 		)
 		(stroke
@@ -3956,7 +3984,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 40.64) (xy 250.19 40.64)
+			(xy 245.11 40.64) (xy 254 40.64)
 		)
 		(stroke
 			(width 0)
@@ -4216,7 +4244,7 @@
 	)
 	(wire
 		(pts
-			(xy 246.38 38.1) (xy 250.19 38.1)
+			(xy 246.38 38.1) (xy 256.54 38.1)
 		)
 		(stroke
 			(width 0)
@@ -4466,6 +4494,16 @@
 	)
 	(wire
 		(pts
+			(xy 254 40.64) (xy 262.89 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8b00ae3e-b198-4f92-9445-7688ddf57136")
+	)
+	(wire
+		(pts
 			(xy 222.25 152.4) (xy 222.25 151.13)
 		)
 		(stroke
@@ -4626,6 +4664,16 @@
 	)
 	(wire
 		(pts
+			(xy 254 40.64) (xy 254 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b4be40e2-cd64-463d-a971-e3ee3bc76da7")
+	)
+	(wire
+		(pts
 			(xy 246.38 91.44) (xy 246.38 82.55)
 		)
 		(stroke
@@ -4776,6 +4824,26 @@
 	)
 	(wire
 		(pts
+			(xy 259.08 35.56) (xy 259.08 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e2d1f843-eb88-4069-b792-54bb730be84a")
+	)
+	(wire
+		(pts
+			(xy 259.08 35.56) (xy 262.89 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e78afe93-3ca9-49f1-abc5-ddf8a1a21aec")
+	)
+	(wire
+		(pts
 			(xy 147.32 55.88) (xy 156.21 55.88)
 		)
 		(stroke
@@ -4886,6 +4954,16 @@
 	)
 	(wire
 		(pts
+			(xy 250.19 35.56) (xy 259.08 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc3fa07f-400a-4245-a55f-7dea71e28aa0")
+	)
+	(wire
+		(pts
 			(xy 213.36 137.16) (xy 222.25 137.16)
 		)
 		(stroke
@@ -4913,6 +4991,16 @@
 			(type default)
 		)
 		(uuid "ff4b5c8b-d89a-4923-bf4b-03a8cdaa1f0a")
+	)
+	(wire
+		(pts
+			(xy 256.54 38.1) (xy 262.89 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ffe6e606-cdc5-43d1-aef3-70e489cade72")
 	)
 	(label "RGND"
 		(at 153.67 68.58 180)
@@ -4943,6 +5031,16 @@
 			(justify right bottom)
 		)
 		(uuid "3dd5f3b5-d7d5-450a-a855-38783ad4feb2")
+	)
+	(label "K1_DA"
+		(at 214.63 49.53 0)
+		(effects
+			(font
+				(size 0.5 0.5)
+			)
+			(justify left bottom)
+		)
+		(uuid "3e12cddc-f870-46ec-b730-cd6e42f5cd70")
 	)
 	(label "CH3"
 		(at 153.67 60.96 180)
@@ -5214,6 +5312,17 @@
 		)
 		(uuid "35a2219f-a77e-4e2b-95b9-48acf0719234")
 	)
+	(hierarchical_label "K1_COM"
+		(shape input)
+		(at 256.54 43.18 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "39dee83e-471a-4869-90ce-60143a341803")
+	)
 	(hierarchical_label "pwm_current_sel"
 		(shape input)
 		(at 35.56 33.02 180)
@@ -5257,6 +5366,28 @@
 			(justify right)
 		)
 		(uuid "93cff991-20ee-42d5-9ac0-21d66dabae49")
+	)
+	(hierarchical_label "K1_NC"
+		(shape input)
+		(at 259.08 43.18 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9e9ba1aa-be55-4bed-bd2e-41bce215b674")
+	)
+	(hierarchical_label "K1_NO"
+		(shape input)
+		(at 254 43.18 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cc044602-494b-4adf-876e-39d47f811df0")
 	)
 	(hierarchical_label "R1_IN3"
 		(shape input)
@@ -6452,80 +6583,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Isolator:VO615A")
-		(at 189.23 128.27 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4fb51173-2eb0-4fe2-a38e-2627857808b8")
-		(property "Reference" "U5"
-			(at 189.23 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PC817C"
-			(at 189.23 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 189.23 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.vishay.com/docs/81753/vo615a.pdf"
-			(at 189.23 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "DC Optocoupler, Vce 70V, CTR 50-600% @ 5mA, Viso 5000Vrms, DIP4"
-			(at 189.23 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9fba4488-cc3c-4f44-a150-fc25b2568e7e")
-		)
-		(pin "2"
-			(uuid "480b64d2-81bf-44ad-aefa-9cdc062fc1f5")
-		)
-		(pin "4"
-			(uuid "7e0c041a-61f6-4267-a424-caa4cbc9b4d0")
-		)
-		(pin "3"
-			(uuid "2e6d0075-60a0-4b54-b5f1-652da244a75f")
-		)
-		(instances
-			(project "inz"
-				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/93e2d2b9-f608-4c3a-a51d-bc5725db10c7"
-					(reference "U5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Relay:SANYOU_SRD_Form_C")
 		(at 227.33 83.82 0)
 		(unit 1)
@@ -7130,7 +7187,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_DIP:DIP-4_W7.62mm_LongPads"
 			(at 189.23 40.64 0)
 			(effects
 				(font
@@ -7139,7 +7196,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://www.vishay.com/docs/81753/vo615a.pdf"
+		(property "Datasheet" "https://pl.aliexpress.com/item/1005009030409853.html?spm=a2g0o.order_list.order_list_main.10.4ae61c24tK3fpu&gatewayAdapt=glo2pol"
 			(at 189.23 40.64 0)
 			(effects
 				(font
@@ -7861,7 +7918,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Screw_Terminal_01x03")
-		(at 255.27 38.1 0)
+		(at 267.97 38.1 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -7870,7 +7927,7 @@
 		(fields_autoplaced yes)
 		(uuid "a4f0729b-625f-4a0a-990d-1249f8d51123")
 		(property "Reference" "J202"
-			(at 257.81 36.8299 0)
+			(at 270.51 36.8299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7879,7 +7936,7 @@
 			)
 		)
 		(property "Value" "Screw_Terminal_01x03"
-			(at 257.81 39.3699 0)
+			(at 270.51 39.3699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7888,7 +7945,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 255.27 38.1 0)
+			(at 267.97 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7897,7 +7954,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 255.27 38.1 0)
+			(at 267.97 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7906,7 +7963,7 @@
 			)
 		)
 		(property "Description" "Generic screw terminal, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 255.27 38.1 0)
+			(at 267.97 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7997,6 +8054,80 @@
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/93e2d2b9-f608-4c3a-a51d-bc5725db10c7"
 					(reference "J_R")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Isolator:VO615A")
+		(at 189.23 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "abea50ae-6a7e-4532-a7e1-5bcbbddfb9ca")
+		(property "Reference" "U2"
+			(at 189.23 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PC817C"
+			(at 189.23 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_DIP:DIP-4_W7.62mm_LongPads"
+			(at 189.23 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://pl.aliexpress.com/item/1005009030409853.html?spm=a2g0o.order_list.order_list_main.10.4ae61c24tK3fpu&gatewayAdapt=glo2pol"
+			(at 189.23 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "DC Optocoupler, Vce 70V, CTR 50-600% @ 5mA, Viso 5000Vrms, DIP4"
+			(at 189.23 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d0cb31aa-f806-42e1-8f07-964149a7deb6")
+		)
+		(pin "2"
+			(uuid "b517537c-d37c-4db0-bded-cc1f65dbdd63")
+		)
+		(pin "4"
+			(uuid "c1a3ce57-5635-4b45-b24b-345100afa227")
+		)
+		(pin "3"
+			(uuid "79b65642-1370-4af3-b354-805f0cb60339")
+		)
+		(instances
+			(project "inz"
+				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/93e2d2b9-f608-4c3a-a51d-bc5725db10c7"
+					(reference "U2")
 					(unit 1)
 				)
 			)
@@ -8159,80 +8290,6 @@
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/93e2d2b9-f608-4c3a-a51d-bc5725db10c7"
 					(reference "#PWR010")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Isolator:VO615A")
-		(at 189.23 85.09 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "bb4f7c1a-ecc2-43b4-a798-0547e6a2f1f1")
-		(property "Reference" "U2"
-			(at 189.23 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PC817C"
-			(at 189.23 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 189.23 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.vishay.com/docs/81753/vo615a.pdf"
-			(at 189.23 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "DC Optocoupler, Vce 70V, CTR 50-600% @ 5mA, Viso 5000Vrms, DIP4"
-			(at 189.23 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c8fefad7-e6a2-40fe-9f09-07de3e148e66")
-		)
-		(pin "2"
-			(uuid "effd3d83-fa69-4df7-a736-1547d8cd6036")
-		)
-		(pin "4"
-			(uuid "48501ffd-0ff2-4070-9bcd-9c0e6d9133d7")
-		)
-		(pin "3"
-			(uuid "f5a08492-4238-4cd9-b6d5-c7f57fc9c33b")
-		)
-		(instances
-			(project "inz"
-				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/93e2d2b9-f608-4c3a-a51d-bc5725db10c7"
-					(reference "U2")
 					(unit 1)
 				)
 			)
@@ -9302,6 +9359,80 @@
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/93e2d2b9-f608-4c3a-a51d-bc5725db10c7"
 					(reference "K2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Isolator:VO615A")
+		(at 189.23 128.27 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f09e2ee9-eb1e-42b1-b572-00b8e5035b51")
+		(property "Reference" "U5"
+			(at 189.23 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PC817C"
+			(at 189.23 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_DIP:DIP-4_W7.62mm_LongPads"
+			(at 189.23 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://pl.aliexpress.com/item/1005009030409853.html?spm=a2g0o.order_list.order_list_main.10.4ae61c24tK3fpu&gatewayAdapt=glo2pol"
+			(at 189.23 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "DC Optocoupler, Vce 70V, CTR 50-600% @ 5mA, Viso 5000Vrms, DIP4"
+			(at 189.23 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "85d27a94-0fba-4c27-adf9-d6a330ed6434")
+		)
+		(pin "2"
+			(uuid "59a50509-de20-4db0-996f-ab2f062ddfbd")
+		)
+		(pin "4"
+			(uuid "df67013c-d042-4ac5-a9b9-06c397ca3932")
+		)
+		(pin "3"
+			(uuid "a32f459b-5371-4940-aea5-53283a1080d1")
+		)
+		(instances
+			(project "inz"
+				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/93e2d2b9-f608-4c3a-a51d-bc5725db10c7"
+					(reference "U5")
 					(unit 1)
 				)
 			)
