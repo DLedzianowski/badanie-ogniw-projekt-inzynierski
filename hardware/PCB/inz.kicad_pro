@@ -606,9 +606,33 @@
           "label": "Alternatywa",
           "name": "Alternatywa",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Distributor",
+          "name": "Distributor",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Type",
+          "name": "Sim.Type",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Device",
+          "name": "Sim.Device",
+          "show": false
         }
       ],
-      "filter_string": "Q2",
+      "filter_string": "U4",
       "group_symbols": true,
       "include_excluded_from_bom": true,
       "name": "",

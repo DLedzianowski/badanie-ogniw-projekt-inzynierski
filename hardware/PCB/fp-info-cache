@@ -1,18 +1,4 @@
-26720671765475151
-1_Buzzers
-Bez_nazwy
-
-
-0
-0
-0
-1_Buzzers
-Buzzer_D30mm_H20mm_P15mm__668-1652-ND__AI-3035-TT-12V-R
-
-
-0
-2
-2
+26718909623551836
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -106371,3 +106357,10 @@ QNHC3
 0
 5
 4
+footprints
+STM32blackpill
+
+
+0
+40
+20
