@@ -632,7 +632,7 @@
           "show": false
         }
       ],
-      "filter_string": "U4",
+      "filter_string": "j",
       "group_symbols": true,
       "include_excluded_from_bom": true,
       "name": "",
@@ -695,6 +695,10 @@
     [
       "1dcd1198-aa22-4cf3-b3ba-8c43001473fa",
       "Connectors"
+    ],
+    [
+      "82120027-77bc-4013-a58b-b9881472ab49",
+      "Relays"
     ]
   ],
   "text_variables": {}

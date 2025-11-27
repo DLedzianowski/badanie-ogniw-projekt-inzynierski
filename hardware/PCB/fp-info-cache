@@ -1,4 +1,4 @@
-26717145694845862
+26724238040388729
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -106357,3 +106357,31 @@ STM32blackpill
 0
 40
 40
+footprints
+board_ina333
+
+
+0
+8
+8
+footprints
+board_smd_sd
+
+
+0
+6
+6
+footprints
+board_step-down
+
+
+0
+4
+4
+footprints
+microSD
+
+
+0
+10
+9

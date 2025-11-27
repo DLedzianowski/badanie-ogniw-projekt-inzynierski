@@ -1,0 +1,106 @@
+(footprint "board_step-down"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -15.9 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "099dbdba-8afa-4563-92f5-3d5b17ad8c9f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "board_step-down"
+		(at 0 -14.4 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "4029aac5-2d01-4cb0-8929-b48a95c49314")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://pl.aliexpress.com/item/1005009262112584.html?spm=a2g0o.productlist.main.6.7056772fA3cKrs&algo_pvid=886e8a39-9c67-4ad9-9949-50ebbabe1151&algo_exp_id=886e8a39-9c67-4ad9-9949-50ebbabe1151-5&pdp_ext_f=%7B%22order%22%3A%224%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21PLN%2119.90%2119.89%21%21%2137.65%2137.63%21%402103891017642439352228507eedfe%2112000048521057354%21sea%21PL%212442407001%21X%211%210%21n_tag%3A-29919%3Bd%3A14685e7e%3Bm03_new_user%3A-29895&curPageLogUid=K0fGRS3qPNz4&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005009262112584%7C_p_origin_prod%3A"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4fbb266a-c30d-4e1e-a504-acfe0ac2099d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f015b5ed-7320-4b8b-9b7d-db0b47da8f15")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole exclude_from_bom)
+	(fp_text user "${REFERENCE}"
+		(at 0 -12.9 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "e6c06301-8667-4047-9588-4e1006a07c3d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole roundrect
+		(at 0 0)
+		(size 2.5 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.15)
+		(uuid "dd2feb39-713b-40b3-b312-a81efbed6525")
+	)
+	(pad "2" thru_hole roundrect
+		(at 15.24 0)
+		(size 2.5 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.15)
+		(uuid "91bde0f0-8aec-4c42-92ca-d2bf575646f9")
+	)
+	(pad "3" thru_hole roundrect
+		(at 0 8.62)
+		(size 2.5 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.15)
+		(uuid "1bf94663-b43a-4955-9b7c-e0587dae2e1f")
+	)
+	(pad "4" thru_hole roundrect
+		(at 15.24 8.62)
+		(size 2.5 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.15)
+		(uuid "6970cd40-795c-4bd3-9c47-10fad1114e69")
+	)
+	(embedded_fonts no)
+)
