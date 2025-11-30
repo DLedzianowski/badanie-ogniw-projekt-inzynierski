@@ -4,7 +4,7 @@
 	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
-		(at -5.7 -9.6 0)
+		(at -9.1 -5.5 0)
 		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "a8cc750f-e146-4f99-87f9-f08136c73d26")
@@ -16,7 +16,7 @@
 		)
 	)
 	(property "Value" "QNHC3"
-		(at -5.7 -8.1 0)
+		(at -8.7 5.5 0)
 		(unlocked yes)
 		(layer "F.Fab")
 		(uuid "697b269a-89f7-4b95-9bb5-3f6a67d195b8")
@@ -54,18 +54,6 @@
 		)
 	)
 	(attr through_hole)
-	(fp_text user "${REFERENCE}"
-		(at -5.7 -6.6 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(uuid "3df058ff-33ec-440a-8c49-4b5f431f9388")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
 	(pad "1" thru_hole roundrect
 		(at 0 -2.54)
 		(size 1.5 1.5)

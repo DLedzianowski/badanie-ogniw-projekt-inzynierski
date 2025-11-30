@@ -117,8 +117,8 @@
 					)
 				)
 			)
-			(pin passive non_logic
-				(at 6.35 11.43 180)
+			(pin no_connect non_logic
+				(at -1.27 8.89 0)
 				(length 2.54)
 				(hide yes)
 				(name "NC"
@@ -1790,7 +1790,7 @@
 			(pin passive line
 				(at 2.54 -15.24 180)
 				(length 3.81)
-				(name "PB11"
+				(name "RST"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1884,7 +1884,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(property "Reference" "U"
+		(property "Reference" "J"
 			(at 3.556 6.35 0)
 			(effects
 				(font
@@ -2056,7 +2056,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" "U"
+		(property "Reference" "J"
 			(at 0 2.54 0)
 			(effects
 				(font
@@ -2243,7 +2243,7 @@
 			(pin passive line
 				(at 0 -5.08 0)
 				(length 3.81)
-				(name "3V3"
+				(name "5V"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2453,7 +2453,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" "U"
+		(property "Reference" "J"
 			(at 0 3.556 0)
 			(effects
 				(font

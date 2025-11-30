@@ -193,6 +193,8 @@ void Error_Handler(void);
 #define enc_KEY_Pin GPIO_PIN_10
 #define enc_KEY_GPIO_Port GPIOA
 #define enc_KEY_EXTI_IRQn EXTI15_10_IRQn
+#define OLED_TIM2_Pin GPIO_PIN_15
+#define OLED_TIM2_GPIO_Port GPIOA
 #define bmp2_CS_Pin GPIO_PIN_3
 #define bmp2_CS_GPIO_Port GPIOB
 #define bmp1_CS_Pin GPIO_PIN_5
