@@ -3058,6 +3058,16 @@
 		)
 		(uuid "2cdc7255-3d7c-44e7-961e-dfe3361f4659")
 	)
+	(label "I2C_SDA"
+		(at 240.03 78.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2d47753e-f726-4fb2-b93b-bae4b88663b6")
+	)
 	(label "K1_COM"
 		(at 153.67 60.96 180)
 		(effects
@@ -3237,6 +3247,16 @@
 			(justify right bottom)
 		)
 		(uuid "76e6fd5d-8029-47b2-bc5e-8453824b14cc")
+	)
+	(label "I2C_SCL"
+		(at 240.03 81.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "774813f3-e9f1-4fce-9054-d4b5a4690998")
 	)
 	(label "SPI_MISO"
 		(at 240.03 66.04 180)
@@ -6036,6 +6056,46 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+		(pin "I2C_SCL" input
+			(at 240.03 81.28 180)
+			(uuid "b20c597e-8ebf-40be-b903-a0513e3ead90")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "I2C_SDA" input
+			(at 240.03 78.74 180)
+			(uuid "b47e7085-3be4-4b78-9b65-a6fa5b7b70fd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "ChargingOUT-" input
+			(at 271.78 81.28 0)
+			(uuid "35ee6645-2bd9-42c2-9ef7-1c3a951e7edd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "ChargingOUT+" input
+			(at 271.78 78.74 0)
+			(uuid "4c164c5f-f4aa-4d98-b34b-e9d7e2a70075")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 		(instances

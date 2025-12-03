@@ -260,12 +260,7 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [
-      [
-        "pin_not_connected|317500|723900|64819f25-d012-4230-a2f2-fdf7271ba953|00000000-0000-0000-0000-000000000000|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/0d146a7f-c55b-4837-864c-e0f7f24def8d|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/0d146a7f-c55b-4837-864c-e0f7f24def8d|",
-        ""
-      ]
-    ],
+    "erc_exclusions": [],
     "meta": {
       "version": 0
     },
@@ -786,7 +781,7 @@
           "show": false
         }
       ],
-      "filter_string": "",
+      "filter_string": "U6",
       "group_symbols": true,
       "include_excluded_from_bom": true,
       "name": "",

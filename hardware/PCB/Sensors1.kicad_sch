@@ -5117,15 +5117,6 @@
 				(hide yes)
 			)
 		)
-		(property "Distributor" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
-			(at 171.45 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "MFR Part" "0805W8F1002T5E "
 			(at 171.45 39.37 0)
 			(effects
@@ -5153,7 +5144,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://jlcpcb.com/partdetail/39505-0805W8F1002T5E/C38522"
+		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
 			(at 171.45 39.37 0)
 			(effects
 				(font
@@ -6381,15 +6372,6 @@
 				(hide yes)
 			)
 		)
-		(property "Distributor" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
-			(at 160.02 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "MFR Part" "0805W8F1002T5E "
 			(at 160.02 30.48 0)
 			(effects
@@ -6417,7 +6399,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://jlcpcb.com/partdetail/39505-0805W8F1002T5E/C38522"
+		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
 			(at 160.02 30.48 0)
 			(effects
 				(font
@@ -7386,15 +7368,6 @@
 				(hide yes)
 			)
 		)
-		(property "Distributor" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
-			(at 160.02 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "MFR Part" "0805W8F1002T5E "
 			(at 160.02 97.79 0)
 			(effects
@@ -7422,7 +7395,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://jlcpcb.com/partdetail/39505-0805W8F1002T5E/C38522"
+		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
 			(at 160.02 97.79 0)
 			(effects
 				(font
@@ -7641,15 +7614,6 @@
 				(hide yes)
 			)
 		)
-		(property "Distributor" "https://jlcpcb.com/partdetail/29074-CL21B105KBFNNNE/C28323"
-			(at 180.34 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "MFR Part" "CL21B105KBFNNNE"
 			(at 180.34 113.03 0)
 			(effects
@@ -7756,15 +7720,6 @@
 				(hide yes)
 			)
 		)
-		(property "Distributor" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
-			(at 171.45 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "MFR Part" "0805W8F1002T5E "
 			(at 171.45 116.84 0)
 			(effects
@@ -7792,7 +7747,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://jlcpcb.com/partdetail/39505-0805W8F1002T5E/C38522"
+		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
 			(at 171.45 116.84 0)
 			(effects
 				(font
@@ -7937,15 +7892,6 @@
 				(hide yes)
 			)
 		)
-		(property "Distributor" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
-			(at 171.45 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "MFR Part" "0805W8F1002T5E "
 			(at 171.45 46.99 0)
 			(effects
@@ -7973,7 +7919,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://jlcpcb.com/partdetail/39505-0805W8F1002T5E/C38522"
+		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
 			(at 171.45 46.99 0)
 			(effects
 				(font
@@ -8946,15 +8892,6 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 180.34 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor" "https://jlcpcb.com/partdetail/29074-CL21B105KBFNNNE/C28323"
 			(at 180.34 43.18 0)
 			(effects
 				(font
