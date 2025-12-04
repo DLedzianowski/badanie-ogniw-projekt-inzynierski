@@ -260,7 +260,52 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [],
+    "erc_exclusions": [
+      [
+        "multiple_net_names|1612900|393700|705488e7-7528-4a01-a53d-91ff60854c6e|a3cb9a17-45fa-4d60-bc14-61707def4c2c|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49",
+        ""
+      ],
+      [
+        "multiple_net_names|1612900|901700|7eff174a-8697-42c9-bce7-d50136bf6303|a9fb5d63-d6a2-474a-81a8-b6dece905f1e|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49",
+        ""
+      ],
+      [
+        "multiple_net_names|1651000|1168400|81593e8d-553c-4ae4-a49d-df4ea98ac862|a9fb5d63-d6a2-474a-81a8-b6dece905f1e|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49",
+        ""
+      ],
+      [
+        "multiple_net_names|1727200|1371600|6ef23de9-7df4-4519-9aa9-05860c8161e6|0d9820d7-fd99-44ec-ae9b-3bdc07f5c8fb|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/1304d857-bb91-423b-9206-bff57d727608|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/1304d857-bb91-423b-9206-bff57d727608|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/1304d857-bb91-423b-9206-bff57d727608",
+        ""
+      ],
+      [
+        "multiple_net_names|1727200|698500|76e6fd5d-8029-47b2-bc5e-8453824b14cc|d4630e61-5cca-488f-a2e4-f99414b5ec25|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0",
+        ""
+      ],
+      [
+        "multiple_net_names|1968500|1041400|607f8f9d-64b5-43c7-ba23-2b21a5fdf982|da51639d-5e7b-4f6f-9c24-2709ed6b5c2b|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597",
+        ""
+      ],
+      [
+        "multiple_net_names|1968500|1041400|95655aab-bfdc-43e3-9482-d886c8e6af83|da51639d-5e7b-4f6f-9c24-2709ed6b5c2b|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597",
+        ""
+      ],
+      [
+        "multiple_net_names|2336800|203200|76e6fd5d-8029-47b2-bc5e-8453824b14cc|0bb1ae5a-f764-4a82-a009-7968e5e83272|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0",
+        ""
+      ],
+      [
+        "multiple_net_names|2400300|203200|76e6fd5d-8029-47b2-bc5e-8453824b14cc|0bb1ae5a-f764-4a82-a009-7968e5e83272|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0",
+        ""
+      ],
+      [
+        "multiple_net_names|368300|1371600|2297c252-307a-477c-8e09-0c9ff82f0f59|92cc976d-ee89-4e4b-b8f6-3e5d267018a0|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/1304d857-bb91-423b-9206-bff57d727608|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/1304d857-bb91-423b-9206-bff57d727608|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/1304d857-bb91-423b-9206-bff57d727608",
+        ""
+      ],
+      [
+        "multiple_net_names|368300|1371600|595a44c5-f100-455e-8470-9632addeb6f5|92cc976d-ee89-4e4b-b8f6-3e5d267018a0|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/1304d857-bb91-423b-9206-bff57d727608|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/1304d857-bb91-423b-9206-bff57d727608|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/1304d857-bb91-423b-9206-bff57d727608",
+        ""
+      ]
+    ],
     "meta": {
       "version": 0
     },
@@ -781,12 +826,12 @@
           "show": false
         }
       ],
-      "filter_string": "U6",
+      "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": true,
       "name": "",
       "sort_asc": true,
-      "sort_field": "Description"
+      "sort_field": "Footprint"
     },
     "connection_grid_size": 50.0,
     "drawing": {
@@ -846,8 +891,8 @@
       "Sensors1"
     ],
     [
-      "93e2d2b9-f608-4c3a-a51d-bc5725db10c7",
-      "Sensors2"
+      "2a8a0d6b-732e-472f-879d-01390f6ab597",
+      "BatteryLoad"
     ],
     [
       "1dcd1198-aa22-4cf3-b3ba-8c43001473fa",
@@ -856,6 +901,10 @@
     [
       "82120027-77bc-4013-a58b-b9881472ab49",
       "Relays"
+    ],
+    [
+      "1304d857-bb91-423b-9206-bff57d727608",
+      "XL4015"
     ]
   ],
   "text_variables": {}
