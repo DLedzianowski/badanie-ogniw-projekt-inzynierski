@@ -961,89 +961,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Mechanical:MountingHole"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(property "Reference" "H"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "MountingHole"
-				(at 0 3.175 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Mounting Hole without connection"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "mounting hole"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "MountingHole*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "MountingHole_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 1.27)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Transistor_FET:IRLZ44N"
 			(pin_names
 				(hide yes)
@@ -1663,6 +1580,12 @@
 		(uuid "b02a238e-98a8-47a5-9d0a-199b830c4644")
 	)
 	(junction
+		(at 90.17 90.17)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f120a892-d76e-4b65-b6e7-fa8c87bc2702")
+	)
+	(junction
 		(at 162.56 125.73)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1782,6 +1705,16 @@
 	)
 	(wire
 		(pts
+			(xy 90.17 90.17) (xy 93.98 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e3c5a34-57ec-4205-ba58-af5816b10cf7")
+	)
+	(wire
+		(pts
 			(xy 135.89 92.71) (xy 154.94 92.71)
 		)
 		(stroke
@@ -1872,7 +1805,7 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 90.17) (xy 93.98 90.17)
+			(xy 87.63 90.17) (xy 90.17 90.17)
 		)
 		(stroke
 			(width 0)
@@ -2003,7 +1936,7 @@
 	)
 	(hierarchical_label "pwm_current_sel"
 		(shape input)
-		(at 91.44 90.17 180)
+		(at 87.63 90.17 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2032,7 +1965,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "06243764-3962-443e-8228-88a59bb38935")
-		(property "Reference" "TP301"
+		(property "Reference" "TP302"
 			(at 107.95 85.09 0)
 			(effects
 				(font
@@ -2050,7 +1983,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 113.03 90.17 0)
 			(effects
 				(font
@@ -2077,13 +2010,31 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 107.95 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 107.95 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b8da56ae-b938-4646-b5ed-ffeab3eeb429")
 		)
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597"
-					(reference "TP301")
+					(reference "TP302")
 					(unit 1)
 				)
 			)
@@ -2099,7 +2050,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "08012f9a-c6f4-4f8b-92d6-254e710337c3")
-		(property "Reference" "#PWR0306"
+		(property "Reference" "#PWR0302"
 			(at 107.95 109.22 0)
 			(effects
 				(font
@@ -2150,7 +2101,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597"
-					(reference "#PWR0306")
+					(reference "#PWR0302")
 					(unit 1)
 				)
 			)
@@ -2236,6 +2187,24 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 97.79 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 97.79 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 97.79 90.17 90)
 			(effects
 				(font
@@ -2349,6 +2318,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 86.36 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 86.36 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "7"
 			(uuid "1ea91cd3-af0a-49dd-8ce5-369abaefde51")
 		)
@@ -2389,7 +2376,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "4d83ff59-48f5-4b59-a402-c9f626715a1b")
 		(property "Reference" "J301"
@@ -2437,6 +2424,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 200.66 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 200.66 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "95d63d87-ff26-404f-8a46-beea665544f5")
 		)
@@ -2453,69 +2458,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 185.42 115.57 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "5059a5a5-ab56-4806-b78e-055cc0830c87")
-		(property "Reference" "H406"
-			(at 185.42 112.522 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ResistorMountingHole"
-			(at 187.96 116.8399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
-			(at 185.42 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 185.42 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Mounting Hole without connection"
-			(at 185.42 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "inz"
-				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597"
-					(reference "H406")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 125.73 128.27 0)
 		(unit 1)
@@ -2525,7 +2467,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "53547b8a-12da-4912-85e2-a5856ce550f9")
-		(property "Reference" "#PWR0307"
+		(property "Reference" "#PWR0303"
 			(at 125.73 134.62 0)
 			(effects
 				(font
@@ -2576,7 +2518,91 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597"
-					(reference "#PWR0307")
+					(reference "#PWR0303")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 90.17 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "5c828287-e782-46e3-a591-c6d264dac910")
+		(property "Reference" "TP301"
+			(at 90.17 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 92.71 88.1379 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
+			(at 95.25 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 95.25 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 90.17 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 90.17 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 90.17 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "345dcee1-4306-4973-9192-d791c8e352a9")
+		)
+		(instances
+			(project "inz"
+				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597"
+					(reference "TP301")
 					(unit 1)
 				)
 			)
@@ -2667,6 +2693,24 @@
 			)
 		)
 		(property "Manufacturer" " Infineon Technologies"
+			(at 160.02 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 160.02 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 160.02 92.71 0)
 			(effects
 				(font
@@ -2781,6 +2825,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 128.27 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 128.27 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "1ff909cd-e99b-47c5-804c-0357dd736499")
 		)
@@ -2823,7 +2885,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7fe93f78-3d05-4eb0-b4a1-26251efc918e")
-		(property "Reference" "TP303"
+		(property "Reference" "TP304"
 			(at 149.86 99.06 0)
 			(effects
 				(font
@@ -2841,7 +2903,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 154.94 104.14 0)
 			(effects
 				(font
@@ -2868,13 +2930,31 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 149.86 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 149.86 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "cb483c68-fb72-4dec-8626-989d44e9ea3d")
 		)
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597"
-					(reference "TP303")
+					(reference "TP304")
 					(unit 1)
 				)
 			)
@@ -2889,7 +2969,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "951dcfa7-18fb-4f42-b6ed-425afada6d0b")
-		(property "Reference" "#PWR0302"
+		(property "Reference" "#PWR0301"
 			(at 125.73 88.9 0)
 			(effects
 				(font
@@ -2939,7 +3019,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597"
-					(reference "#PWR0302")
+					(reference "#PWR0301")
 					(unit 1)
 				)
 			)
@@ -2954,7 +3034,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "976b4506-5c92-4c89-a690-0e1938ec20a2")
-		(property "Reference" "TP302"
+		(property "Reference" "TP303"
 			(at 154.94 87.63 0)
 			(effects
 				(font
@@ -2972,7 +3052,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 160.02 92.71 0)
 			(effects
 				(font
@@ -2999,76 +3079,31 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 154.94 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 154.94 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d27ec5d6-f524-4bc9-8082-3078e5ef6597")
 		)
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597"
-					(reference "TP302")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 185.42 107.95 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "b0c4ea26-8bcf-457d-921e-699f5e8abca9")
-		(property "Reference" "H405"
-			(at 185.42 104.902 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ResistorMountingHole"
-			(at 187.96 109.2199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
-			(at 185.42 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 185.42 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Mounting Hole without connection"
-			(at 185.42 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "inz"
-				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597"
-					(reference "H405")
+					(reference "TP303")
 					(unit 1)
 				)
 			)
@@ -3083,7 +3118,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e7018ceb-dc75-4212-b761-58a6add671f6")
-		(property "Reference" "C303"
+		(property "Reference" "C301"
 			(at 110.744 93.98 0)
 			(effects
 				(font
@@ -3164,6 +3199,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 107.95 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 107.95 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "251639d6-2d0b-4fe6-a999-f16fea034a25")
 		)
@@ -3173,7 +3226,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597"
-					(reference "C303")
+					(reference "C301")
 					(unit 1)
 				)
 			)
@@ -3271,6 +3324,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 128.27 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 128.27 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "7"
 			(uuid "02560b6c-6908-4a15-a585-a22e9b8bdd69")
 		)
@@ -3306,15 +3377,16 @@
 	)
 	(symbol
 		(lib_id "Connector:Screw_Terminal_01x02")
-		(at 168.91 110.49 0)
+		(at 168.91 113.03 0)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "fb27e50b-774e-4425-8e0f-784cd12e29f2")
-		(property "Reference" "J303"
-			(at 170.688 110.236 0)
+		(property "Reference" "J302"
+			(at 170.688 113.284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3323,7 +3395,7 @@
 			)
 		)
 		(property "Value" "100W 1R"
-			(at 170.688 112.776 0)
+			(at 170.688 110.744 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3332,7 +3404,7 @@
 			)
 		)
 		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2_1x02_P5.00mm_Horizontal"
-			(at 168.91 110.49 0)
+			(at 168.91 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3341,7 +3413,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 168.91 110.49 0)
+			(at 168.91 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3350,7 +3422,25 @@
 			)
 		)
 		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 168.91 110.49 0)
+			(at 168.91 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 168.91 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 168.91 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3367,7 +3457,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/2a8a0d6b-732e-472f-879d-01390f6ab597"
-					(reference "J303")
+					(reference "J302")
 					(unit 1)
 				)
 			)

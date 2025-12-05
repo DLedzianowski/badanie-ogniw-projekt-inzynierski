@@ -3688,7 +3688,7 @@
 	)
 	(wire
 		(pts
-			(xy 160.02 101.6) (xy 160.02 104.14)
+			(xy 160.02 102.87) (xy 160.02 104.14)
 		)
 		(stroke
 			(width 0)
@@ -3905,6 +3905,16 @@
 			(type default)
 		)
 		(uuid "52b1f64f-ef4f-4e7f-a996-f5e36387a987")
+	)
+	(wire
+		(pts
+			(xy 160.02 33.02) (xy 160.02 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5478881d-8ed7-437f-895f-9be060310c2c")
 	)
 	(wire
 		(pts
@@ -4465,16 +4475,6 @@
 			(type default)
 		)
 		(uuid "a834d71b-63cb-4342-bd5c-c639e29c18d2")
-	)
-	(wire
-		(pts
-			(xy 160.02 92.71) (xy 160.02 93.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a8838c51-54ce-41db-8fcd-1589b22e70d6")
 	)
 	(wire
 		(pts
@@ -5855,6 +5855,17 @@
 	)
 	(hierarchical_label "Current_sensor_in+"
 		(shape input)
+		(at 35.56 127 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8c02da5c-34ff-4a33-8f7c-2c91077593be")
+	)
+	(hierarchical_label "Current_sensor_in-"
+		(shape input)
 		(at 35.56 116.84 180)
 		(effects
 			(font
@@ -5862,7 +5873,7 @@
 			)
 			(justify right)
 		)
-		(uuid "8c849903-1bf9-40ae-9cc4-7d7c142d553d")
+		(uuid "98808a73-369e-4e27-9b81-7a3021f3a1c4")
 	)
 	(hierarchical_label "BMP3_CS"
 		(shape input)
@@ -5885,17 +5896,6 @@
 			(justify right)
 		)
 		(uuid "9b1625e5-1bbb-4a4c-865d-babde763c6f9")
-	)
-	(hierarchical_label "Current_sensor_in-"
-		(shape input)
-		(at 35.56 127 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ac3e1d19-8a2c-4dfe-aca1-3c410aa11558")
 	)
 	(hierarchical_label "SPI_SCK"
 		(shape input)
@@ -6066,6 +6066,24 @@
 			)
 		)
 		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
+			(at 171.45 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 171.45 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 171.45 39.37 0)
 			(effects
 				(font
@@ -6245,6 +6263,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 171.45 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 171.45 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a11e7ccf-6fda-46af-a5de-e6b16bf5ae38")
 		)
@@ -6341,6 +6377,24 @@
 			)
 		)
 		(property "Manufacturer" " Microchip Tech"
+			(at 231.14 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 231.14 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 231.14 36.83 0)
 			(effects
 				(font
@@ -6540,6 +6594,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 53.34 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 53.34 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a40b032b-465a-4b3a-9985-317cf0ff2098")
 		)
@@ -6646,6 +6718,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 59.69 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 59.69 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "68edb0a0-e3d9-4528-8376-988abe39d7f4")
 		)
@@ -6736,7 +6826,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "197dcf15-9066-44a7-82c3-68999afd21b3")
-		(property "Reference" "JP202"
+		(property "Reference" "JP201"
 			(at 81.28 93.9799 90)
 			(effects
 				(font
@@ -6782,6 +6872,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 83.82 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 83.82 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "6ebeed42-1fa6-40c9-87c0-4f812601d425")
 		)
@@ -6794,7 +6902,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/0d146a7f-c55b-4837-864c-e0f7f24def8d"
-					(reference "JP202")
+					(reference "JP201")
 					(unit 1)
 				)
 			)
@@ -6810,7 +6918,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1fa3bcf6-7825-42a4-8ad9-c64a5f1d48dc")
-		(property "Reference" "C301"
+		(property "Reference" "C211"
 			(at 29.21 153.67 0)
 			(effects
 				(font
@@ -6891,6 +6999,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 31.75 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 31.75 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "26324443-3c83-4a18-9e50-f1881e6ec7ed")
 		)
@@ -6900,7 +7026,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/0d146a7f-c55b-4837-864c-e0f7f24def8d"
-					(reference "C301")
+					(reference "C211")
 					(unit 1)
 				)
 			)
@@ -6971,6 +7097,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 45.72 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 45.72 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "acb011c4-28a9-46d0-a6d1-04eaa876b8b0")
 		)
@@ -7031,7 +7175,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 271.78 106.68 0)
 			(effects
 				(font
@@ -7050,6 +7194,24 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 266.7 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 266.7 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 266.7 106.68 0)
 			(effects
 				(font
@@ -7159,6 +7321,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 212.09 39.37 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 212.09 39.37 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "510b7e79-f833-4964-82f4-fdbc37400bd5")
 		)
@@ -7184,7 +7364,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "27d240a0-d1f1-4ed2-96d8-c6fdadbe7638")
-		(property "Reference" "#PWR0303"
+		(property "Reference" "#PWR0227"
 			(at 31.75 167.64 0)
 			(effects
 				(font
@@ -7235,7 +7415,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/0d146a7f-c55b-4837-864c-e0f7f24def8d"
-					(reference "#PWR0303")
+					(reference "#PWR0227")
 					(unit 1)
 				)
 			)
@@ -7268,7 +7448,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 88.9 88.9 0)
 			(effects
 				(font
@@ -7287,6 +7467,24 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 83.82 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 83.82 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 83.82 88.9 0)
 			(effects
 				(font
@@ -7316,7 +7514,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2c95deb2-c535-4657-b280-2b20fa23cfa5")
-		(property "Reference" "#PWR0301"
+		(property "Reference" "#PWR0226"
 			(at 31.75 153.67 0)
 			(effects
 				(font
@@ -7366,7 +7564,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/0d146a7f-c55b-4837-864c-e0f7f24def8d"
-					(reference "#PWR0301")
+					(reference "#PWR0226")
 					(unit 1)
 				)
 			)
@@ -7462,6 +7660,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 57.15 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 57.15 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e6567f05-89d2-4235-ab83-0be33f74c130")
 		)
@@ -7479,7 +7695,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 160.02 30.48 0)
+		(at 160.02 29.21 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7487,7 +7703,7 @@
 		(dnp no)
 		(uuid "32972eba-c114-47fa-b72e-a840f44f28cc")
 		(property "Reference" "R202"
-			(at 153.67 29.21 0)
+			(at 153.67 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7496,7 +7712,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 153.924 31.496 0)
+			(at 153.924 30.226 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7505,7 +7721,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 158.242 30.48 90)
+			(at 158.242 29.21 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7514,7 +7730,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 160.02 30.48 0)
+			(at 160.02 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7523,7 +7739,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 160.02 30.48 0)
+			(at 160.02 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7532,7 +7748,7 @@
 			)
 		)
 		(property "MFR Part" "0805W8F1002T5E "
-			(at 160.02 30.48 0)
+			(at 160.02 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7541,7 +7757,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
-			(at 160.02 30.48 0)
+			(at 160.02 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7550,7 +7766,7 @@
 			)
 		)
 		(property "JLCPCB Part" "C38522"
-			(at 160.02 30.48 0)
+			(at 160.02 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7559,7 +7775,25 @@
 			)
 		)
 		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
-			(at 160.02 30.48 0)
+			(at 160.02 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 160.02 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 160.02 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7663,6 +7897,24 @@
 			)
 		)
 		(property "Manufacturer" " Microchip Tech"
+			(at 231.14 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 231.14 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 231.14 106.68 0)
 			(effects
 				(font
@@ -7890,6 +8142,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 64.77 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 64.77 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "26eaab27-d0c8-4bca-8638-c5bb92160d6b")
 		)
@@ -7913,9 +8183,9 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "4b423328-15ea-419e-a0b4-55d431648570")
-		(property "Reference" "J302"
+		(property "Reference" "J203"
 			(at 106.045 162.56 0)
 			(effects
 				(font
@@ -7976,6 +8246,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 106.68 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 106.68 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "4"
 			(uuid "23d2b0fa-de13-4a5a-8466-f9105d5caef0")
 		)
@@ -7997,7 +8285,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/0d146a7f-c55b-4837-864c-e0f7f24def8d"
-					(reference "J302")
+					(reference "J203")
 					(unit 1)
 				)
 			)
@@ -8030,7 +8318,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 210.82 34.29 0)
 			(effects
 				(font
@@ -8049,6 +8337,24 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 205.74 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 205.74 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 205.74 34.29 0)
 			(effects
 				(font
@@ -8225,6 +8531,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 261.62 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 261.62 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2c9291cf-ec49-487b-a1e6-6bafb8e7e178")
 		)
@@ -8308,7 +8632,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 160.02 26.67 0)
+		(at 160.02 25.4 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8316,7 +8640,7 @@
 		(dnp no)
 		(uuid "5f324602-964e-4139-a112-44cbb92e010b")
 		(property "Reference" "#PWR0203"
-			(at 160.02 30.48 0)
+			(at 160.02 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8325,7 +8649,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 160.02 23.114 0)
+			(at 160.02 21.844 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8333,7 +8657,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 160.02 26.67 0)
+			(at 160.02 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8342,7 +8666,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 160.02 26.67 0)
+			(at 160.02 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8351,7 +8675,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 160.02 26.67 0)
+			(at 160.02 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8440,7 +8764,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 160.02 92.71 0)
+		(at 160.02 95.25 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8448,7 +8772,7 @@
 		(dnp no)
 		(uuid "634cb5cb-7221-4397-8cd9-6c2899d513cb")
 		(property "Reference" "#PWR0216"
-			(at 160.02 96.52 0)
+			(at 160.02 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8457,7 +8781,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 160.02 89.154 0)
+			(at 160.02 91.694 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8465,7 +8789,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 160.02 92.71 0)
+			(at 160.02 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8474,7 +8798,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 160.02 92.71 0)
+			(at 160.02 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8483,7 +8807,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 160.02 92.71 0)
+			(at 160.02 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8513,7 +8837,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "66361ab1-be7c-4c2a-b287-1e732456ade4")
-		(property "Reference" "#PWR0304"
+		(property "Reference" "#PWR0228"
 			(at 100.33 167.64 0)
 			(effects
 				(font
@@ -8564,7 +8888,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/0d146a7f-c55b-4837-864c-e0f7f24def8d"
-					(reference "#PWR0304")
+					(reference "#PWR0228")
 					(unit 1)
 				)
 			)
@@ -8640,7 +8964,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 160.02 97.79 0)
+		(at 160.02 99.06 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8648,7 +8972,7 @@
 		(dnp no)
 		(uuid "6fd999a2-2f16-41f3-be2f-25d2ec932e04")
 		(property "Reference" "R211"
-			(at 153.416 96.52 0)
+			(at 153.416 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8657,7 +8981,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 154.686 98.806 0)
+			(at 154.686 100.076 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8666,7 +8990,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 158.242 97.79 90)
+			(at 158.242 99.06 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8675,7 +8999,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 160.02 97.79 0)
+			(at 160.02 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8684,7 +9008,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 160.02 97.79 0)
+			(at 160.02 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8693,7 +9017,7 @@
 			)
 		)
 		(property "MFR Part" "0805W8F1002T5E "
-			(at 160.02 97.79 0)
+			(at 160.02 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8702,7 +9026,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
-			(at 160.02 97.79 0)
+			(at 160.02 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8711,7 +9035,7 @@
 			)
 		)
 		(property "JLCPCB Part" "C38522"
-			(at 160.02 97.79 0)
+			(at 160.02 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8720,7 +9044,25 @@
 			)
 		)
 		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
-			(at 160.02 97.79 0)
+			(at 160.02 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 160.02 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 160.02 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8790,6 +9132,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 38.1 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 38.1 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 38.1 83.82 0)
 			(effects
 				(font
@@ -8974,6 +9334,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 180.34 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 180.34 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5cb20834-3eef-4d5f-a4b7-9cbef75be83c")
 		)
@@ -9072,6 +9450,24 @@
 			)
 		)
 		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
+			(at 171.45 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 171.45 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 171.45 116.84 0)
 			(effects
 				(font
@@ -9252,6 +9648,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 171.45 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 171.45 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "77302b9f-2fdd-4f6d-8d16-d2bb90fc6d66")
 		)
@@ -9349,6 +9763,24 @@
 		)
 		(property "JLCPCB Part" "C17828 "
 			(at 238.76 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 238.76 91.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 238.76 91.44 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9458,6 +9890,24 @@
 			)
 		)
 		(property "Manufacturer" "Texas Instruments"
+			(at 162.56 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 162.56 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 162.56 113.03 0)
 			(effects
 				(font
@@ -9638,6 +10088,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 223.52 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 223.52 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f8487310-fc6d-4bac-bb61-da6dfe5fb5c8")
 		)
@@ -9743,6 +10211,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 262.89 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 262.89 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "602fe7c4-ae6f-40f7-bcca-80cdbbc3a5c3")
 		)
@@ -9768,7 +10254,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8a72e9e7-87f8-4601-a6e8-9d0e0499f845")
-		(property "Reference" "C302"
+		(property "Reference" "C212"
 			(at 39.37 153.67 0)
 			(effects
 				(font
@@ -9849,6 +10335,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 41.91 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 41.91 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "49fbc5ec-3dac-4bf3-aa4a-4f1ffa920b17")
 		)
@@ -9858,7 +10362,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/0d146a7f-c55b-4837-864c-e0f7f24def8d"
-					(reference "C302")
+					(reference "C212")
 					(unit 1)
 				)
 			)
@@ -10086,6 +10590,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 212.09 104.14 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 212.09 104.14 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "89490812-e620-4857-937e-1593ebaf62a9")
 		)
@@ -10260,6 +10782,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 223.52 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 223.52 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "13d96e37-9a33-41f7-ab52-7aeee7c7748b")
 		)
@@ -10285,7 +10825,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "95d470e9-0e75-4500-b6b8-99292da09777")
-		(property "Reference" "U302"
+		(property "Reference" "U207"
 			(at 38.1 172.7199 0)
 			(effects
 				(font
@@ -10366,6 +10906,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 49.53 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 49.53 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "fef725df-c077-4fdc-9dbc-74c3dad9f838")
 		)
@@ -10393,7 +10951,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/0d146a7f-c55b-4837-864c-e0f7f24def8d"
-					(reference "U302")
+					(reference "U207")
 					(unit 1)
 				)
 			)
@@ -10482,6 +11040,24 @@
 			)
 		)
 		(property "Link" "https://jlcpcb.com/partdetail/29074-CL21B105KBFNNNE/C28323"
+			(at 180.34 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 180.34 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 180.34 43.18 0)
 			(effects
 				(font
@@ -10594,6 +11170,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 256.54 36.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 256.54 36.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e2325247-c078-4131-86c0-1b6daaecad73")
 		)
@@ -10694,6 +11288,24 @@
 			)
 		)
 		(property "Manufacturer" " Microchip Tech"
+			(at 231.14 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 231.14 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 231.14 36.83 0)
 			(effects
 				(font
@@ -10823,6 +11435,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 238.76 21.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 238.76 21.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c26969e1-7413-4cff-ab9e-45793e12059b")
 		)
@@ -10848,7 +11478,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a7cd42c2-02aa-47ec-ab9c-5e9e3c1e6b87")
-		(property "Reference" "#PWR0305"
+		(property "Reference" "#PWR0229"
 			(at 90.17 170.18 0)
 			(effects
 				(font
@@ -10900,7 +11530,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/0d146a7f-c55b-4837-864c-e0f7f24def8d"
-					(reference "#PWR0305")
+					(reference "#PWR0229")
 					(unit 1)
 				)
 			)
@@ -10933,7 +11563,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 271.78 36.83 0)
 			(effects
 				(font
@@ -10952,6 +11582,24 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 266.7 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 266.7 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 266.7 36.83 0)
 			(effects
 				(font
@@ -11055,6 +11703,24 @@
 			)
 		)
 		(property "JLCPCB Part" "C28233"
+			(at 71.12 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 71.12 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 71.12 22.86 0)
 			(effects
 				(font
@@ -11168,6 +11834,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 71.12 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 71.12 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "77711eab-93d2-4fb6-8cce-1884f8f4ca89")
 		)
@@ -11210,7 +11894,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 104.14 33.02 0)
 			(effects
 				(font
@@ -11229,6 +11913,24 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 99.06 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 99.06 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 99.06 33.02 0)
 			(effects
 				(font
@@ -11334,6 +12036,24 @@
 			)
 		)
 		(property "Manufacturer" " Allegro MicroSystems, LLC"
+			(at 45.72 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 45.72 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 45.72 121.92 0)
 			(effects
 				(font
@@ -11463,6 +12183,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 212.09 34.29 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 212.09 34.29 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "dc4f879c-457e-4c7e-b25c-a19098a675e7")
 		)
@@ -11534,6 +12272,24 @@
 			)
 		)
 		(property "Link" "https://pl.aliexpress.com/item/1005006230563668.html?spm=a2g0o.order_list.order_list_main.15.5b641c24b7gB50&gatewayAdapt=glo2pol"
+			(at 107.95 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 107.95 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 107.95 30.48 0)
 			(effects
 				(font
@@ -11730,6 +12486,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 81.28 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 81.28 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "9c3f4272-9d0f-4887-861c-2b38259e4b01")
 		)
@@ -11790,7 +12564,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 208.28 104.14 0)
 			(effects
 				(font
@@ -11809,6 +12583,24 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 203.2 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 203.2 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 203.2 104.14 0)
 			(effects
 				(font
@@ -11916,6 +12708,24 @@
 			)
 		)
 		(property "Manufacturer" "Texas Instruments"
+			(at 162.56 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 162.56 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 162.56 43.18 0)
 			(effects
 				(font
@@ -12033,6 +12843,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 40.64 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 40.64 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "6121d41f-562f-4a25-87ad-7ee1871f97ad")
 		)
@@ -12122,7 +12950,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "e83ef232-26a1-4c24-a9d9-fef5eab96581")
 		(property "Reference" "J202"
 			(at 80.01 129.54 0)
@@ -12170,6 +12998,24 @@
 			)
 		)
 		(property "Link" "https://pl.aliexpress.com/item/1005006207760044.html?spm=a2g0o.order_list.order_list_main.21.5b641c24b7gB50&gatewayAdapt=glo2pol"
+			(at 81.28 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 81.28 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 81.28 128.27 0)
 			(effects
 				(font
@@ -12290,7 +13136,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 78.74 101.6 0)
 			(effects
 				(font
@@ -12309,6 +13155,24 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 83.82 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 83.82 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 83.82 101.6 0)
 			(effects
 				(font
@@ -12471,7 +13335,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f28a1898-a2d4-4dcb-b3a5-23d3c479fe14")
-		(property "Reference" "#PWR0308"
+		(property "Reference" "#PWR0230"
 			(at 49.53 198.12 0)
 			(effects
 				(font
@@ -12522,7 +13386,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/0d146a7f-c55b-4837-864c-e0f7f24def8d"
-					(reference "#PWR0308")
+					(reference "#PWR0230")
 					(unit 1)
 				)
 			)
@@ -12682,6 +13546,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 212.09 109.22 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 212.09 109.22 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c1001ceb-bf9e-4ee7-8c88-7dba4d9ad2a4")
 		)
@@ -12779,6 +13661,24 @@
 		)
 		(property "JLCPCB Part" "C17673"
 			(at 255.27 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 255.27 106.68 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 255.27 106.68 90)
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -200,7 +200,8 @@
         0.5,
         0.6,
         0.8,
-        1.0
+        1.0,
+        2.0
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -232,6 +233,10 @@
         {
           "diameter": 0.0,
           "drill": 0.0
+        },
+        {
+          "diameter": 0.5,
+          "drill": 0.3
         },
         {
           "diameter": 0.7,
@@ -267,6 +272,10 @@
       ],
       [
         "multiple_net_names|1612900|901700|7eff174a-8697-42c9-bce7-d50136bf6303|a9fb5d63-d6a2-474a-81a8-b6dece905f1e|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49",
+        ""
+      ],
+      [
+        "multiple_net_names|1651000|1168400|7eff174a-8697-42c9-bce7-d50136bf6303|a9fb5d63-d6a2-474a-81a8-b6dece905f1e|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49|/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49",
         ""
       ],
       [
@@ -831,7 +840,7 @@
       "include_excluded_from_bom": true,
       "name": "",
       "sort_asc": true,
-      "sort_field": "Footprint"
+      "sort_field": "Reference"
     },
     "connection_grid_size": 50.0,
     "drawing": {

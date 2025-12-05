@@ -2143,6 +2143,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 148.59 135.89 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 148.59 135.89 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "23fd6f0b-c8fd-4a79-9d5d-da994df05b88")
 		)
@@ -2246,6 +2264,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 116.84 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 116.84 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "60701084-935d-48e8-9d9b-9fc383ee2c27")
 		)
@@ -2270,7 +2306,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2d4d8905-ca5b-4bcb-86bf-cdddb94263e9")
-		(property "Reference" "TP501"
+		(property "Reference" "TP502"
 			(at 146.05 74.93 0)
 			(effects
 				(font
@@ -2288,7 +2324,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 140.97 80.01 0)
 			(effects
 				(font
@@ -2315,13 +2351,31 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 140.97 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 140.97 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "fc5a810d-0c13-426a-9e45-a529e08ab288")
 		)
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49"
-					(reference "TP501")
+					(reference "TP502")
 					(unit 1)
 				)
 			)
@@ -2411,6 +2465,24 @@
 			)
 		)
 		(property "Manufacturer" "Jiangsu Changjing Electronics Technology Co., Ltd."
+			(at 162.56 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 162.56 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 162.56 135.89 0)
 			(effects
 				(font
@@ -2545,6 +2617,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 156.21 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 156.21 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b2e5b8e4-d8ec-4060-928e-bf223386c567")
 		)
@@ -2637,7 +2727,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5c8e3e61-d8b1-4dad-8392-93cce93be554")
-		(property "Reference" "#PWR0505"
+		(property "Reference" "#PWR0507"
 			(at 123.19 130.81 0)
 			(effects
 				(font
@@ -2688,7 +2778,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49"
-					(reference "#PWR0505")
+					(reference "#PWR0507")
 					(unit 1)
 				)
 			)
@@ -2703,7 +2793,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "79987db6-34fa-4ddf-9a2f-fb7f7ad2bb91")
-		(property "Reference" "TP505"
+		(property "Reference" "TP504"
 			(at 170.18 111.76 0)
 			(effects
 				(font
@@ -2721,7 +2811,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 165.1 116.84 0)
 			(effects
 				(font
@@ -2748,13 +2838,31 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 165.1 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 165.1 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "da700fdc-a79f-4338-8ef5-ea9e261fd516")
 		)
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49"
-					(reference "TP505")
+					(reference "TP504")
 					(unit 1)
 				)
 			)
@@ -2769,7 +2877,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "79c25739-fc56-447e-9f6e-d6a2b5f0bfdc")
-		(property "Reference" "TP504"
+		(property "Reference" "TP506"
 			(at 170.18 128.27 0)
 			(effects
 				(font
@@ -2787,7 +2895,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 165.1 133.35 0)
 			(effects
 				(font
@@ -2814,13 +2922,31 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 165.1 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 165.1 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "ea309d07-a985-4a1c-a9f0-ae1ab7c0f1e8")
 		)
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49"
-					(reference "TP504")
+					(reference "TP506")
 					(unit 1)
 				)
 			)
@@ -2831,9 +2957,9 @@
 		(at 69.85 99.06 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "7b6d5122-4cbe-4d1d-8ca3-003b395e9f8d")
 		(property "Reference" "J501"
 			(at 69.85 90.17 0)
@@ -2854,7 +2980,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 69.85 99.06 0)
 			(effects
 				(font
@@ -2873,6 +2999,24 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x04, script generated"
+			(at 69.85 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 69.85 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 69.85 99.06 0)
 			(effects
 				(font
@@ -2956,6 +3100,24 @@
 			)
 		)
 		(property "Link" "https://pl.aliexpress.com/item/1005009030409853.html?spm=a2g0o.order_list.order_list_main.10.1b421c24vYZudn&gatewayAdapt=glo2pol"
+			(at 132.08 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 132.08 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 132.08 69.85 0)
 			(effects
 				(font
@@ -3069,6 +3231,24 @@
 			)
 		)
 		(property "Manufacturer" "Jiangsu Changjing Electronics Technology Co., Ltd."
+			(at 162.56 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 162.56 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 162.56 85.09 0)
 			(effects
 				(font
@@ -3250,6 +3430,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 148.59 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 148.59 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "8bdf691b-fce0-4029-9f33-ad7faf1597ff")
 		)
@@ -3418,6 +3616,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 116.84 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 116.84 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "405f4a1e-ea79-4eed-9c46-75a0f867b4f3")
 		)
@@ -3487,6 +3703,24 @@
 			)
 		)
 		(property "Link" "https://pl.aliexpress.com/item/1005009030409853.html?spm=a2g0o.order_list.order_list_main.10.1b421c24vYZudn&gatewayAdapt=glo2pol"
+			(at 132.08 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 132.08 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 132.08 120.65 0)
 			(effects
 				(font
@@ -3610,7 +3844,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 165.1 82.55 0)
 			(effects
 				(font
@@ -3629,6 +3863,24 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 165.1 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Alternatywa" ""
+			(at 165.1 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
 			(at 165.1 77.47 0)
 			(effects
 				(font
@@ -3658,7 +3910,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b5a35191-d7e1-40d3-bfe0-4e7fac45eb77")
-		(property "Reference" "TP506"
+		(property "Reference" "TP501"
 			(at 170.18 60.96 0)
 			(effects
 				(font
@@ -3676,7 +3928,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 165.1 66.04 0)
 			(effects
 				(font
@@ -3703,13 +3955,31 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 165.1 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 165.1 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b34dbbbd-93e3-425e-a516-405999505e0a")
 		)
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49"
-					(reference "TP506")
+					(reference "TP501")
 					(unit 1)
 				)
 			)
@@ -3725,7 +3995,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "be7bd3ce-427a-4199-bd8a-648947a033d6")
-		(property "Reference" "#PWR0506"
+		(property "Reference" "#PWR0504"
 			(at 58.42 99.06 0)
 			(effects
 				(font
@@ -3776,7 +4046,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49"
-					(reference "#PWR0506")
+					(reference "#PWR0504")
 					(unit 1)
 				)
 			)
@@ -3791,7 +4061,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ca077020-afa2-4a76-8be6-ff0883cb8056")
-		(property "Reference" "TP502"
+		(property "Reference" "TP505"
 			(at 146.05 125.73 0)
 			(effects
 				(font
@@ -3809,7 +4079,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 140.97 130.81 0)
 			(effects
 				(font
@@ -3836,13 +4106,31 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 140.97 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 140.97 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "362c38f0-beed-4e36-aecb-a6e6a3a949ab")
 		)
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49"
-					(reference "TP502")
+					(reference "TP505")
 					(unit 1)
 				)
 			)
@@ -3857,7 +4145,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "cf46de70-bfc4-4bc5-8f16-21de8d9bdf9f")
-		(property "Reference" "#PWR0504"
+		(property "Reference" "#PWR0506"
 			(at 140.97 115.57 0)
 			(effects
 				(font
@@ -3907,7 +4195,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49"
-					(reference "#PWR0504")
+					(reference "#PWR0506")
 					(unit 1)
 				)
 			)
@@ -4021,6 +4309,24 @@
 				(hide yes)
 			)
 		)
+		(property "Alternatywa" ""
+			(at 156.21 119.38 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 156.21 119.38 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "7a43b111-61eb-496f-a120-de830e66c4cb")
 		)
@@ -4045,7 +4351,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e9d056c6-5f93-4a87-942d-da4b1a56e8fa")
-		(property "Reference" "#PWR0507"
+		(property "Reference" "#PWR0505"
 			(at 68.58 101.6 0)
 			(effects
 				(font
@@ -4095,7 +4401,7 @@
 		(instances
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/82120027-77bc-4013-a58b-b9881472ab49"
-					(reference "#PWR0507")
+					(reference "#PWR0505")
 					(unit 1)
 				)
 			)
