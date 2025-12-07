@@ -3654,156 +3654,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:D_Schottky"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "D_Schottky"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Schottky diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "diode Schottky"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "D_Schottky_0_1"
-				(polyline
-					(pts
-						(xy -1.905 0.635) (xy -1.905 1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -0.635 -1.27) (xy -0.635 -0.635)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 0) (xy -1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "D_Schottky_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:L"
 			(pin_numbers
 				(hide yes)
@@ -6078,16 +5928,16 @@
 		(uuid "d268d94a-a4b4-4a2b-8b04-8d8267da0d93")
 	)
 	(junction
-		(at 39.37 45.72)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d9222634-0d75-46e8-a1bc-1970c6c496ad")
-	)
-	(junction
 		(at 67.31 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "db428468-c8ef-4e90-a3b4-7dedf34c008f")
+	)
+	(junction
+		(at 49.53 45.72)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e24d0902-7156-4dd8-bd37-8264070476f7")
 	)
 	(junction
 		(at 106.68 176.53)
@@ -6207,7 +6057,7 @@
 	)
 	(wire
 		(pts
-			(xy 38.1 45.72) (xy 39.37 45.72)
+			(xy 38.1 45.72) (xy 49.53 45.72)
 		)
 		(stroke
 			(width 0)
@@ -6347,16 +6197,6 @@
 	)
 	(wire
 		(pts
-			(xy 53.34 45.72) (xy 57.15 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "278a994e-79c5-498b-ab1a-3720148f8d77")
-	)
-	(wire
-		(pts
 			(xy 199.39 34.29) (xy 198.12 34.29)
 		)
 		(stroke
@@ -6394,16 +6234,6 @@
 			(type default)
 		)
 		(uuid "2e5d9cbd-3b6e-4b4e-b149-68a4d3dd380e")
-	)
-	(wire
-		(pts
-			(xy 39.37 45.72) (xy 45.72 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2f8fd3dc-4f5a-4b9b-a045-7f8ce1465140")
 	)
 	(wire
 		(pts
@@ -6464,6 +6294,16 @@
 			(type default)
 		)
 		(uuid "4017b1dd-edb9-4e7a-a28b-6aafca4ad83e")
+	)
+	(wire
+		(pts
+			(xy 49.53 45.72) (xy 57.15 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4136b07a-deea-4a40-96f4-f27c75a1baf7")
 	)
 	(wire
 		(pts
@@ -13624,7 +13464,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 39.37 45.72 0)
+		(at 49.53 45.72 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -13632,7 +13472,7 @@
 		(dnp no)
 		(uuid "b3353c41-29b3-474e-973d-6b64d9b1af4d")
 		(property "Reference" "TP401"
-			(at 39.37 40.64 0)
+			(at 49.53 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13640,7 +13480,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 41.91 43.6879 0)
+			(at 52.07 43.6879 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13650,7 +13490,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
-			(at 44.45 45.72 0)
+			(at 54.61 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13659,7 +13499,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 44.45 45.72 0)
+			(at 54.61 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13668,7 +13508,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 39.37 45.72 0)
+			(at 49.53 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13677,7 +13517,7 @@
 			)
 		)
 		(property "Alternatywa" ""
-			(at 39.37 45.72 0)
+			(at 49.53 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13686,7 +13526,7 @@
 			)
 		)
 		(property "Sim.Type" ""
-			(at 39.37 45.72 0)
+			(at 49.53 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14597,128 +14437,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:D_Schottky")
-		(at 49.53 45.72 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cbface37-6471-49c1-855f-45445dd00447")
-		(property "Reference" "D401"
-			(at 49.8475 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "D_Schottky_5A"
-			(at 49.8475 41.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SMA"
-			(at 49.53 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 49.53 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Schottky diode"
-			(at 49.53 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "MDD(Microdiode Semiconductor)"
-			(at 49.53 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFR Part" "SS34"
-			(at 49.53 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Link" "https://jlcpcb.com/partdetail/MDD_Microdiode_Semiconductor-SS34/C8678"
-			(at 49.53 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB Part" "C8678"
-			(at 49.53 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Alternatywa" ""
-			(at 49.53 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" ""
-			(at 49.53 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "1f8ab9ae-8339-47fb-9f81-3f9626f0f078")
-		)
-		(pin "1"
-			(uuid "c5bbfdfe-4052-4fe0-9bd8-02218563bd03")
-		)
-		(instances
-			(project "inz"
-				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0/1dcd1198-aa22-4cf3-b3ba-8c43001473fa"
-					(reference "D401")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 242.57 160.02 0)
 		(unit 1)
@@ -15272,7 +14990,7 @@
 		(at 30.48 48.26 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "e126633e-eb89-4cea-b668-24593af33757")
@@ -15320,7 +15038,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://pl.aliexpress.com/item/33005175186.html?spm=a2g0o.productlist.main.2.46584999h0hQJo&algo_pvid=b1808c6d-ae88-44e2-b5d0-34e00a7523b1&algo_exp_id=b1808c6d-ae88-44e2-b5d0-34e00a7523b1-1&pdp_ext_f=%7B%22order%22%3A%22243%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21PLN%215.17%214.79%21%21%211.38%211.28%21%40211b61ae17645164079525576e2b82%2166974835404%21sea%21PL%212442407001%21X%211%210%21n_tag%3A-29919%3Bd%3A14685e7e%3Bm03_new_user%3A-29895&curPageLogUid=iN8p37Bcux95&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A33005175186%7C_p_origin_prod%3A"
+		(property "Link" "https://jlcpcb.com/partdetail/GSwitch-DC_005HD020/C5155559"
 			(at 30.48 48.26 0)
 			(effects
 				(font
@@ -15339,6 +15057,33 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 30.48 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part" " C5155559"
+			(at 30.48 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFR Part" " DC-005H-D020"
+			(at 30.48 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" " G-Switch"
 			(at 30.48 48.26 0)
 			(effects
 				(font

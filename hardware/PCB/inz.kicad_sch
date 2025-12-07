@@ -302,634 +302,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "FRT5_1"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "K101"
-				(at -20.32 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "FRT5"
-				(at -17.78 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "Relay_THT:Relay_DPDT_FRT5"
-				(at 16.51 -1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.elpro.org/de/index.php?controller=attachment&id_attachment=8663"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "FORWARD INDUSTRIAL, Miniature Dual Pole Relay, DIP-like package"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Alternatywa" ""
-				(at 0 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Type" ""
-				(at 0 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "JLCPCB Part" "C46047 "
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Link" "https://jlcpcb.com/partdetail/PANASONIC-TQ25V/C46047"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "MFR Part" "TQ2-5V "
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer" "PANASONIC "
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "relay monostable"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Relay*DPDT*FRT5*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "FRT5_1_0_0"
-				(text "+"
-					(at -9.271 2.921 0)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(symbol "FRT5_1_0_1"
-				(rectangle
-					(start -15.24 5.08)
-					(end 15.24 -5.08)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(rectangle
-					(start -13.335 1.905)
-					(end -6.985 -1.905)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -12.7 -1.905) (xy -7.62 1.905)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -10.16 5.08) (xy -10.16 1.905)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -10.16 -5.08) (xy -10.16 -1.905)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -6.985 0) (xy -6.35 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -5.715 0) (xy -5.08 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -4.445 0) (xy -3.81 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.175 0) (xy -2.54 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 5.08) (xy -2.54 2.54) (xy -1.905 3.175) (xy -2.54 3.81)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.905 0) (xy -1.27 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.635 0) (xy 0 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -2.54) (xy -1.905 3.81)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -2.54) (xy 0 -5.08)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 0) (xy 1.27 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.905 0) (xy 2.54 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 5.08) (xy 2.54 2.54) (xy 1.905 3.175) (xy 2.54 3.81)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.175 0) (xy 3.81 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 4.445 0) (xy 5.08 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.715 0) (xy 6.35 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 6.985 0) (xy 7.62 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 7.62 5.08) (xy 7.62 2.54) (xy 8.255 3.175) (xy 7.62 3.81)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 8.255 0) (xy 8.89 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 10.16 -2.54) (xy 8.255 3.81)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 10.16 -2.54) (xy 10.16 -5.08)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 12.7 5.08) (xy 12.7 2.54) (xy 12.065 3.175) (xy 12.7 3.81)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "FRT5_1_1_1"
-				(pin input line
-					(at -15.24 0 0)
-					(length 2.54)
-					(hide yes)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -15.24 0 0)
-					(length 2.54)
-					(hide yes)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -10.16 7.62 270)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -10.16 -7.62 90)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -2.54 7.62 270)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -7.62 90)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 7.62 270)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 7.62 270)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 10.16 -7.62 90)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 7.62 270)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Jumper:SolderJumper_2_Bridged"
 			(pin_numbers
 				(hide yes)
@@ -1313,27 +685,29 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Relay:FRT5"
+		(symbol "Relay:JW2"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "K102"
-				(at 20.32 0 90)
+			(property "Reference" "RL"
+				(at 16.51 3.81 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Value" "FRT5"
-				(at 17.78 0 90)
+			(property "Value" "JW2"
+				(at 16.51 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Footprint" "Relay_THT:Relay_DPDT_FRT5"
+			(property "Footprint" "Relay_THT:Relay_DPDT_Panasonic_JW2"
 				(at 16.51 -1.27 0)
 				(effects
 					(font
@@ -1343,7 +717,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://www.elpro.org/de/index.php?controller=attachment&id_attachment=8663"
+			(property "Datasheet" "http://www3.panasonic.biz/ac/e_download/control/relay/power/catalog/mech_eng_jw.pdf?via=ok"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1352,7 +726,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "FORWARD INDUSTRIAL, Miniature Dual Pole Relay, DIP-like package"
+			(property "Description" "General Purpose Relay DPDT (2 Form C) Through Hole, Panasonic JW series"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1361,25 +735,7 @@
 					(hide yes)
 				)
 			)
-			(property "Alternatywa" ""
-				(at 0 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Type" ""
-				(at 0 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "JLCPCB Part" "C46047 "
+			(property "ki_keywords" "Panasonic Relay Dual Pole"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1388,7 +744,7 @@
 					(hide yes)
 				)
 			)
-			(property "Link" "https://jlcpcb.com/partdetail/PANASONIC-TQ25V/C46047"
+			(property "ki_fp_filters" "Relay*DPDT*Panasonic*JW2*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1397,53 +753,7 @@
 					(hide yes)
 				)
 			)
-			(property "MFR Part" "TQ2-5V "
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer" "PANASONIC "
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "relay monostable"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Relay*DPDT*FRT5*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "FRT5_0_0"
-				(text "+"
-					(at -9.271 2.921 0)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(symbol "FRT5_0_1"
+			(symbol "JW2_0_1"
 				(rectangle
 					(start -15.24 5.08)
 					(end 15.24 -5.08)
@@ -1755,45 +1065,7 @@
 					)
 				)
 			)
-			(symbol "FRT5_1_1"
-				(pin input line
-					(at -15.24 0 0)
-					(length 2.54)
-					(hide yes)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -15.24 0 0)
-					(length 2.54)
-					(hide yes)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
+			(symbol "JW2_1_1"
 				(pin passive line
 					(at -10.16 7.62 270)
 					(length 2.54)
@@ -1822,7 +1094,7 @@
 							)
 						)
 					)
-					(number "10"
+					(number "8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1894,7 +1166,7 @@
 							)
 						)
 					)
-					(number "9"
+					(number "7"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1912,7 +1184,7 @@
 							)
 						)
 					)
-					(number "8"
+					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1930,7 +1202,7 @@
 							)
 						)
 					)
-					(number "7"
+					(number "5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3914,14 +3186,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0884f887-d469-4018-a0f3-55009804b072")
-	)
-	(no_connect
-		(at 121.92 35.56)
-		(uuid "83b6feb2-2e33-4088-b782-dbaf9f5fe56d")
-	)
-	(no_connect
-		(at 121.92 106.68)
-		(uuid "e122fa5e-0b80-48f1-a9d6-9ad2af695f07")
 	)
 	(wire
 		(pts
@@ -6108,154 +5372,6 @@
 		)
 	)
 	(symbol
-		(lib_name "FRT5_1")
-		(lib_id "Relay:FRT5")
-		(at 121.92 50.8 90)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "74e2986b-0906-429a-91a8-905e9cb30d5e")
-		(property "Reference" "K101"
-			(at 121.92 30.48 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "FRT5"
-			(at 121.92 33.02 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Relay_THT:Relay_DPDT_FRT5"
-			(at 123.19 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.elpro.org/de/index.php?controller=attachment&id_attachment=8663"
-			(at 121.92 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "FORWARD INDUSTRIAL, Miniature Dual Pole Relay, DIP-like package"
-			(at 121.92 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB Part" "C46047 "
-			(at 121.92 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Link" "https://jlcpcb.com/partdetail/PANASONIC-TQ25V/C46047"
-			(at 121.92 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFR Part" "TQ2-5V "
-			(at 121.92 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "PANASONIC "
-			(at 121.92 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Alternatywa" ""
-			(at 121.92 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" ""
-			(at 121.92 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d9e04af3-5bda-4000-b76c-00e28150153b")
-		)
-		(pin "4"
-			(uuid "3d4fc7f8-9fda-43e2-956c-67fbee7caab5")
-		)
-		(pin "9"
-			(uuid "1117a667-bb24-4506-a4c8-652ca8629677")
-		)
-		(pin "7"
-			(uuid "b7ccea29-702c-495c-bde0-40d9993130fe")
-		)
-		(pin "10"
-			(uuid "6b10b995-caa7-4f84-88ac-7c9fa675519e")
-		)
-		(pin "3"
-			(uuid "3c04a2a8-0507-4f95-b29a-5ed1bc3c8001")
-		)
-		(pin "8"
-			(uuid "c4147c3b-6c1b-47a9-9202-9e7a37e21ae8")
-		)
-		(pin "2"
-			(uuid "92a67c8d-999e-4b17-8189-81cc19f06eac")
-		)
-		(pin "6"
-			(uuid "362d15b3-645b-4c85-b4fa-8fd8fb0e65ae")
-		)
-		(pin "5"
-			(uuid "5fa42e17-e833-4152-9a9b-403c11caf094")
-		)
-		(instances
-			(project "inz"
-				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0"
-					(reference "K101")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 114.3 48.26 90)
 		(unit 1)
@@ -6826,153 +5942,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Relay:FRT5")
-		(at 121.92 91.44 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b1ce42c0-a784-422d-bd2c-17925a7a488d")
-		(property "Reference" "K102"
-			(at 121.92 71.12 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "FRT5"
-			(at 121.92 73.66 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Relay_THT:Relay_DPDT_FRT5"
-			(at 123.19 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.elpro.org/de/index.php?controller=attachment&id_attachment=8663"
-			(at 121.92 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "FORWARD INDUSTRIAL, Miniature Dual Pole Relay, DIP-like package"
-			(at 121.92 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB Part" "C46047 "
-			(at 121.92 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Link" "https://jlcpcb.com/partdetail/PANASONIC-TQ25V/C46047"
-			(at 121.92 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFR Part" "TQ2-5V "
-			(at 121.92 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "PANASONIC "
-			(at 121.92 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Alternatywa" ""
-			(at 121.92 91.44 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" ""
-			(at 121.92 91.44 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e06fcef0-e699-4319-a792-4a38b10c2071")
-		)
-		(pin "4"
-			(uuid "06f1488a-99cd-43e0-82f4-cfce0c4ad2ab")
-		)
-		(pin "9"
-			(uuid "07a453fb-cb62-4637-af31-175e4c02245c")
-		)
-		(pin "7"
-			(uuid "82497fdf-83a1-4aee-b247-735264ed9149")
-		)
-		(pin "10"
-			(uuid "5267cdd4-64ec-4568-90ed-ee7b9e26eaf7")
-		)
-		(pin "3"
-			(uuid "9ef80513-d237-466b-9dd8-2e81560b0df4")
-		)
-		(pin "8"
-			(uuid "7f879542-4db7-466a-8a6e-eaf839a82b7e")
-		)
-		(pin "2"
-			(uuid "074b1160-fec6-40c2-a2f5-0753d384b44b")
-		)
-		(pin "5"
-			(uuid "100fb81f-6083-49ea-895e-a1b1b053333e")
-		)
-		(pin "6"
-			(uuid "97b1601d-f6b4-4e94-9e99-be4f910eb73f")
-		)
-		(instances
-			(project "inz"
-				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0"
-					(reference "K102")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 74.93 184.15 270)
 		(unit 1)
@@ -7377,6 +6346,110 @@
 		)
 	)
 	(symbol
+		(lib_id "Relay:JW2")
+		(at 121.92 91.44 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "ebeb26e4-9ec4-4843-9e8b-2aeb47d440bc")
+		(property "Reference" "RL102"
+			(at 121.92 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "JW2"
+			(at 121.92 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Relay_THT:Relay_DPDT_Panasonic_JW2"
+			(at 123.19 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www3.panasonic.biz/ac/e_download/control/relay/power/catalog/mech_eng_jw.pdf?via=ok"
+			(at 121.92 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "General Purpose Relay DPDT (2 Form C) Through Hole, Panasonic JW series"
+			(at 121.92 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Link" "https://www.mouser.pl/ProductDetail/Panasonic-Industrial-Devices/JW2SN-DC5V?qs=HLLy2pIPwuus9vgayzgjwA%3D%3D&fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExVWxEanFFZzJlSWQ5R1kzRXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR595QmnkxscnY405kBsxiHo1KKnDeAY4MNzVni5CdaQucTLS9L6uVALJXTvCA_aem_T6HqZvwlGQ0UrUEglSbvGA"
+			(at 121.92 91.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFR Part" "JW2SN-DC5V "
+			(at 121.92 91.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "2c0ba3dc-93e6-443d-a9b2-2120b69ea473")
+		)
+		(pin "7"
+			(uuid "079015af-ed79-4431-b7ef-5d0710cdbf3e")
+		)
+		(pin "8"
+			(uuid "5005bf53-ade1-4409-859f-18c1c97ee984")
+		)
+		(pin "1"
+			(uuid "1f2645e6-e9b1-4086-ac78-9ba2a999e922")
+		)
+		(pin "2"
+			(uuid "23e98ccc-31f1-4a1a-bdf4-978e8784f36d")
+		)
+		(pin "4"
+			(uuid "93bda20a-b92f-4ba2-b722-ff56ef3018fd")
+		)
+		(pin "6"
+			(uuid "1e70f844-13ab-48e9-b991-e22300c8db9a")
+		)
+		(pin "5"
+			(uuid "d702532f-977a-4dba-85f3-79abdfe80e06")
+		)
+		(instances
+			(project "inz"
+				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0"
+					(reference "RL102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 59.69 40.64 0)
 		(unit 1)
@@ -7520,6 +6593,112 @@
 			(project "inz"
 				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0"
 					(reference "TP107")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Relay:JW2")
+		(at 121.92 50.8 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fa931bce-f863-4d10-8593-c9326aaf0dc0")
+		(property "Reference" "RL101"
+			(at 121.92 30.48 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "JW2"
+			(at 121.92 33.02 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Relay_THT:Relay_DPDT_Panasonic_JW2"
+			(at 123.19 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www3.panasonic.biz/ac/e_download/control/relay/power/catalog/mech_eng_jw.pdf?via=ok"
+			(at 121.92 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "General Purpose Relay DPDT (2 Form C) Through Hole, Panasonic JW series"
+			(at 121.92 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Link" "https://www.mouser.pl/ProductDetail/Panasonic-Industrial-Devices/JW2SN-DC5V?qs=HLLy2pIPwuus9vgayzgjwA%3D%3D&fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExVWxEanFFZzJlSWQ5R1kzRXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR595QmnkxscnY405kBsxiHo1KKnDeAY4MNzVni5CdaQucTLS9L6uVALJXTvCA_aem_T6HqZvwlGQ0UrUEglSbvGA"
+			(at 121.92 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFR Part" "JW2SN-DC5V "
+			(at 121.92 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "2665f882-e83f-4022-a6c6-1e00d9466990")
+		)
+		(pin "7"
+			(uuid "1ce8ff70-55f0-4cb3-b5b2-676862218291")
+		)
+		(pin "8"
+			(uuid "6702128e-6d84-4766-87b9-bb7d7274ff2a")
+		)
+		(pin "1"
+			(uuid "01853672-409a-4cc7-bc7a-fcc944868216")
+		)
+		(pin "2"
+			(uuid "0d030d9c-b188-4ac5-98ba-f1673cf415dd")
+		)
+		(pin "4"
+			(uuid "8c41f604-5141-4d5f-9bbe-af36b9891077")
+		)
+		(pin "6"
+			(uuid "e5ace2a6-79e7-41fc-a3fd-de35c9215daa")
+		)
+		(pin "5"
+			(uuid "e99fb1bd-cf73-4747-a252-66368342850e")
+		)
+		(instances
+			(project ""
+				(path "/3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0"
+					(reference "RL101")
 					(unit 1)
 				)
 			)

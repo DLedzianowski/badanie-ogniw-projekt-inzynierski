@@ -1,4 +1,4 @@
-26729540107368219
+26731305213292724
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -106357,6 +106357,13 @@ QNHC3
 0
 5
 4
+footprints
+Relay_DPDT_Finder_40.52
+DPDT relay, Finder 40.52, 8A, 250V, body size 29x12.4mm, height 25mm, pitch 5x7.5mm, https://cdn.findernet.com/app/uploads/S40EN.pdf
+2-Form-C
+0
+8
+8
 footprints
 SMD,10.4x10.3mm
 
