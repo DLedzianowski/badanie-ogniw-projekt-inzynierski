@@ -525,7 +525,7 @@
       },
       {
         "name": "GND",
-        "pcb_color": "rgba(70, 71, 109, 0.502)",
+        "pcb_color": "rgba(78, 79, 122, 0.800)",
         "priority": 2,
         "schematic_color": "rgba(0, 0, 0, 0.000)"
       },
@@ -636,7 +636,7 @@
       },
       {
         "netclass": "GND",
-        "pattern": "GND*"
+        "pattern": "*GND*"
       }
     ]
   },
