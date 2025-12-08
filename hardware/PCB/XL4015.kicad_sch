@@ -4454,7 +4454,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "0655d68f-1bd3-4dcc-a93a-976b68c1f646")
 		(property "Reference" "RV601"
@@ -4789,7 +4789,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" " C2297"
+		(property "JLCPCB Part" "C2297"
 			(at 166.37 115.57 90)
 			(effects
 				(font
@@ -4807,7 +4807,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" " KT-0805G"
+		(property "MFR Part" "KT-0805G"
 			(at 166.37 115.57 90)
 			(effects
 				(font
@@ -4816,7 +4816,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" " Hubei KENTO Elec"
+		(property "Manufacturer" "Hubei KENTO Elec"
 			(at 166.37 115.57 90)
 			(effects
 				(font
@@ -6339,7 +6339,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" " C51661"
+		(property "JLCPCB Part" "C51661"
 			(at 102.87 72.39 0)
 			(effects
 				(font
@@ -6366,7 +6366,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" " XLSEMI"
+		(property "Manufacturer" "XLSEMI"
 			(at 102.87 72.39 0)
 			(effects
 				(font
@@ -6979,7 +6979,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" " C2296"
+		(property "JLCPCB Part" "C2296"
 			(at 157.48 102.87 90)
 			(effects
 				(font
@@ -6997,7 +6997,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" " KT-0805Y"
+		(property "MFR Part" "KT-0805Y"
 			(at 157.48 102.87 90)
 			(effects
 				(font
@@ -7006,7 +7006,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" " Hubei KENTO Elec"
+		(property "Manufacturer" "Hubei KENTO Elec"
 			(at 157.48 102.87 90)
 			(effects
 				(font
@@ -7313,7 +7313,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470u 50V"
+		(property "Value" "470u"
 			(at 60.96 75.3109 0)
 			(effects
 				(font
@@ -7349,7 +7349,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" "C2887271"
+		(property "JLCPCB Part" "C3351"
 			(at 64.77 74.93 0)
 			(effects
 				(font
@@ -7358,7 +7358,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://jlcpcb.com/partdetail/KNSCHA-RVT220UF50V67RV0021/C2887271"
+		(property "Link" "https://jlcpcb.com/partdetail/HonorElec-RVT1E471M1010/C3351"
 			(at 64.77 74.93 0)
 			(effects
 				(font
@@ -7367,7 +7367,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" "RVT220UF50V67RV0021"
+		(property "MFR Part" "RVT1E471M1010"
 			(at 64.77 74.93 0)
 			(effects
 				(font
@@ -7376,7 +7376,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" " KNSCHA"
+		(property "Manufacturer" "Honor Elec"
 			(at 64.77 74.93 0)
 			(effects
 				(font
@@ -7639,7 +7639,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" " UNI-ROYAL(Uniroyal Elec)"
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 151.13 137.16 90)
 			(effects
 				(font
@@ -7765,7 +7765,7 @@
 				)
 			)
 		)
-		(property "Value" "90k9"
+		(property "Value" "90.9k"
 			(at 139.7 124.714 90)
 			(effects
 				(font
@@ -7954,7 +7954,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470u 50V"
+		(property "Value" "470u"
 			(at 158.75 75.3109 0)
 			(effects
 				(font
@@ -7990,7 +7990,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" "C2887271"
+		(property "JLCPCB Part" "C3351"
 			(at 154.94 74.93 0)
 			(effects
 				(font
@@ -7999,7 +7999,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://jlcpcb.com/partdetail/KNSCHA-RVT220UF50V67RV0021/C2887271"
+		(property "Link" "https://jlcpcb.com/partdetail/HonorElec-RVT1E471M1010/C3351"
 			(at 154.94 74.93 0)
 			(effects
 				(font
@@ -8008,7 +8008,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" "RVT220UF50V67RV0021"
+		(property "MFR Part" "RVT1E471M1010"
 			(at 154.94 74.93 0)
 			(effects
 				(font
@@ -8017,7 +8017,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" " KNSCHA"
+		(property "Manufacturer" "Honor Elec"
 			(at 154.94 74.93 0)
 			(effects
 				(font
@@ -8122,7 +8122,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" " C84256"
+		(property "JLCPCB Part" "C84256"
 			(at 124.46 95.25 0)
 			(effects
 				(font
@@ -8140,7 +8140,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" " NCD0805R1"
+		(property "MFR Part" "NCD0805R1"
 			(at 124.46 95.25 0)
 			(effects
 				(font
@@ -9035,7 +9035,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" "0805W8F1002T5E "
+		(property "MFR Part" "0805W8F1002T5E"
 			(at 139.7 130.81 0)
 			(effects
 				(font
@@ -9044,7 +9044,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 139.7 130.81 0)
 			(effects
 				(font
@@ -9053,7 +9053,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" "C38522"
+		(property "JLCPCB Part" "C17414"
 			(at 139.7 130.81 0)
 			(effects
 				(font
@@ -9364,7 +9364,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" ""
+		(property "MFR Part" "0805W8F2700T5E"
 			(at 132.08 93.98 0)
 			(effects
 				(font
@@ -9373,7 +9373,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 132.08 93.98 0)
 			(effects
 				(font
@@ -9382,7 +9382,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" ""
+		(property "JLCPCB Part" "C17590"
 			(at 132.08 93.98 0)
 			(effects
 				(font
@@ -9401,6 +9401,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 132.08 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Link" "https://jlcpcb.com/partdetail/18278-0805W8F2700T5E/C17590"
 			(at 132.08 93.98 0)
 			(effects
 				(font

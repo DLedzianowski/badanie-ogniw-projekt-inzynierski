@@ -2121,7 +2121,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 148.59 135.89 90)
 			(effects
 				(font
@@ -2242,7 +2242,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 116.84 118.11 90)
 			(effects
 				(font
@@ -2442,7 +2442,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" " C20526"
+		(property "JLCPCB Part" "C20526"
 			(at 162.56 135.89 0)
 			(effects
 				(font
@@ -2460,7 +2460,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" " MMBT3904(RANGE:100-300)"
+		(property "MFR Part" "MMBT3904(RANGE:100-300)"
 			(at 162.56 135.89 0)
 			(effects
 				(font
@@ -2568,7 +2568,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" " C81598"
+		(property "JLCPCB Part" "C81598"
 			(at 156.21 68.58 90)
 			(effects
 				(font
@@ -2586,7 +2586,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" " 1N4148W"
+		(property "MFR Part" "1N4148W"
 			(at 156.21 68.58 90)
 			(effects
 				(font
@@ -2962,7 +2962,7 @@
 		(at 69.85 99.06 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp yes)
 		(uuid "7b6d5122-4cbe-4d1d-8ca3-003b395e9f8d")
@@ -3069,7 +3069,7 @@
 				)
 			)
 		)
-		(property "Value" "PC817C"
+		(property "Value" "LTV-217"
 			(at 132.08 63.5 0)
 			(effects
 				(font
@@ -3077,7 +3077,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DIP:DIP-4_W7.62mm_LongPads"
+		(property "Footprint" "Package_SO:SOP-4_4.4x2.6mm_P1.27mm"
 			(at 132.08 69.85 0)
 			(effects
 				(font
@@ -3104,7 +3104,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://pl.aliexpress.com/item/1005009030409853.html?spm=a2g0o.order_list.order_list_main.10.1b421c24vYZudn&gatewayAdapt=glo2pol"
+		(property "Link" "https://jlcpcb.com/partdetail/LiteOn-LTV_217_BG/C115450"
 			(at 132.08 69.85 0)
 			(effects
 				(font
@@ -3123,6 +3123,33 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 132.08 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part" "C115450"
+			(at 132.08 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFR Part" "LTV-217-B-G"
+			(at 132.08 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Lite-On"
 			(at 132.08 69.85 0)
 			(effects
 				(font
@@ -3208,7 +3235,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" " C20526"
+		(property "JLCPCB Part" "C20526"
 			(at 162.56 85.09 0)
 			(effects
 				(font
@@ -3226,7 +3253,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" " MMBT3904(RANGE:100-300)"
+		(property "MFR Part" "MMBT3904(RANGE:100-300)"
 			(at 162.56 85.09 0)
 			(effects
 				(font
@@ -3408,7 +3435,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 148.59 85.09 90)
 			(effects
 				(font
@@ -3594,7 +3621,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 116.84 67.31 90)
 			(effects
 				(font
@@ -3672,7 +3699,7 @@
 				)
 			)
 		)
-		(property "Value" "PC817C"
+		(property "Value" "LTV-217"
 			(at 132.08 114.3 0)
 			(effects
 				(font
@@ -3680,7 +3707,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DIP:DIP-4_W7.62mm_LongPads"
+		(property "Footprint" "Package_SO:SOP-4_4.4x2.6mm_P1.27mm"
 			(at 132.08 120.65 0)
 			(effects
 				(font
@@ -3707,7 +3734,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://pl.aliexpress.com/item/1005009030409853.html?spm=a2g0o.order_list.order_list_main.10.1b421c24vYZudn&gatewayAdapt=glo2pol"
+		(property "Link" "https://jlcpcb.com/partdetail/LiteOn-LTV_217_BG/C115450"
 			(at 132.08 120.65 0)
 			(effects
 				(font
@@ -3726,6 +3753,33 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 132.08 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part" "C115450"
+			(at 132.08 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFR Part" "LTV-217-B-G"
+			(at 132.08 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Lite-On"
 			(at 132.08 120.65 0)
 			(effects
 				(font
@@ -4260,7 +4314,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" " C81598"
+		(property "JLCPCB Part" "C81598"
 			(at 156.21 119.38 90)
 			(effects
 				(font
@@ -4278,7 +4332,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" " 1N4148W"
+		(property "MFR Part" "1N4148W"
 			(at 156.21 119.38 90)
 			(effects
 				(font

@@ -2606,7 +2606,7 @@
 							)
 						)
 					)
-					(number "21"
+					(number "40"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2624,7 +2624,7 @@
 							)
 						)
 					)
-					(number "22"
+					(number "39"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2642,7 +2642,7 @@
 							)
 						)
 					)
-					(number "23"
+					(number "38"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2660,7 +2660,7 @@
 							)
 						)
 					)
-					(number "24"
+					(number "37"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2678,7 +2678,7 @@
 							)
 						)
 					)
-					(number "25"
+					(number "36"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2696,7 +2696,7 @@
 							)
 						)
 					)
-					(number "26"
+					(number "35"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2714,7 +2714,7 @@
 							)
 						)
 					)
-					(number "27"
+					(number "34"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2732,7 +2732,7 @@
 							)
 						)
 					)
-					(number "28"
+					(number "33"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2750,7 +2750,7 @@
 							)
 						)
 					)
-					(number "29"
+					(number "32"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2768,7 +2768,7 @@
 							)
 						)
 					)
-					(number "30"
+					(number "31"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2786,7 +2786,7 @@
 							)
 						)
 					)
-					(number "31"
+					(number "30"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2804,7 +2804,7 @@
 							)
 						)
 					)
-					(number "32"
+					(number "29"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2822,7 +2822,7 @@
 							)
 						)
 					)
-					(number "33"
+					(number "28"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2840,7 +2840,7 @@
 							)
 						)
 					)
-					(number "34"
+					(number "27"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2858,7 +2858,7 @@
 							)
 						)
 					)
-					(number "35"
+					(number "26"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2876,7 +2876,7 @@
 							)
 						)
 					)
-					(number "36"
+					(number "25"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2894,7 +2894,7 @@
 							)
 						)
 					)
-					(number "37"
+					(number "24"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2912,7 +2912,7 @@
 							)
 						)
 					)
-					(number "38"
+					(number "23"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2930,7 +2930,7 @@
 							)
 						)
 					)
-					(number "39"
+					(number "22"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2948,7 +2948,7 @@
 							)
 						)
 					)
-					(number "40"
+					(number "21"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4224,7 +4224,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "0d126994-12fe-4bd5-98c7-ceebd41adfbe")
 		(property "Reference" "J101"
@@ -4379,7 +4379,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "1cdf66c1-b51a-4ff4-9dc2-ad5f1146c447")
 		(property "Reference" "JP102"
 			(at 165.1 74.676 0)
@@ -4788,7 +4788,7 @@
 				)
 			)
 		)
-		(property "Footprint" "footprints:STM32blackpill"
+		(property "Footprint" "Package_DIP:DIP-40_W15.24mm"
 			(at 62.23 161.29 0)
 			(effects
 				(font
@@ -4797,7 +4797,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pl.aliexpress.com/item/1005001456186625.html?spm=a2g0o.order_list.order_list_main.5.5b641c24b7gB50&gatewayAdapt=glo2pol"
 			(at 62.23 161.29 0)
 			(effects
 				(font
@@ -4815,7 +4815,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://pl.aliexpress.com/item/1005001456186625.html?spm=a2g0o.order_list.order_list_main.5.5b641c24b7gB50&gatewayAdapt=glo2pol"
+		(property "Link" "https://jlcpcb.com/partdetail/2706-ICSockets40P/C2332"
 			(at 62.23 161.29 0)
 			(effects
 				(font
@@ -4834,6 +4834,33 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 62.23 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part" "C2332"
+			(at 62.23 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFR Part" "ICSockets-40P"
+			(at 62.23 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "BOOMELE(Boom Precision Elec)"
 			(at 62.23 161.29 0)
 			(effects
 				(font
@@ -6357,7 +6384,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "ebeb26e4-9ec4-4843-9e8b-2aeb47d440bc")
 		(property "Reference" "RL102"
 			(at 121.92 71.12 90)
@@ -6611,7 +6638,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "fa931bce-f863-4d10-8593-c9326aaf0dc0")
 		(property "Reference" "RL101"
@@ -6737,7 +6764,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "footprints:STM32blackpill"
+		(property "Footprint" "Package_DIP:DIP-40_W15.24mm"
 			(at 41.91 161.29 0)
 			(effects
 				(font
@@ -6746,7 +6773,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pl.aliexpress.com/item/1005001456186625.html?spm=a2g0o.order_list.order_list_main.5.5b641c24b7gB50&gatewayAdapt=glo2pol"
 			(at 41.91 161.29 0)
 			(effects
 				(font
@@ -6764,7 +6791,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://pl.aliexpress.com/item/1005001456186625.html?spm=a2g0o.order_list.order_list_main.5.5b641c24b7gB50&gatewayAdapt=glo2pol"
+		(property "Link" "https://jlcpcb.com/partdetail/2706-ICSockets40P/C2332"
 			(at 41.91 161.29 0)
 			(effects
 				(font
@@ -6783,6 +6810,33 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 41.91 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part" "C2332"
+			(at 41.91 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFR Part" "ICSockets-40P"
+			(at 41.91 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "BOOMELE(Boom Precision Elec)"
 			(at 41.91 161.29 0)
 			(effects
 				(font
@@ -6818,7 +6872,7 @@
 		(pin "2"
 			(uuid "e3cc95de-c561-4ae6-968f-537bea40160d")
 		)
-		(pin "24"
+		(pin "20"
 			(uuid "dc71dbf1-a856-4ad2-a181-4280976ed871")
 		)
 		(pin "22"
@@ -6833,7 +6887,7 @@
 		(pin "25"
 			(uuid "c4b9a851-13c4-49b6-9157-deb8ed22a437")
 		)
-		(pin "20"
+		(pin "24"
 			(uuid "829b8f05-6526-43b8-b922-f4e2f1116ce8")
 		)
 		(pin "3"

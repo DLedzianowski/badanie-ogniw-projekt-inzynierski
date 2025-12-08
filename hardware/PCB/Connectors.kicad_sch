@@ -8381,7 +8381,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://pl.aliexpress.com/item/1005010374454394.html?spm=a2g0o.productlist.main.8.3c401b61g5XxPf&algo_pvid=baae26a5-38ea-4203-b323-6292c26fe97b&algo_exp_id=baae26a5-38ea-4203-b323-6292c26fe97b-7&pdp_ext_f=%7B%22order%22%3A%226%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21PLN%214.37%2117.06%21%21%218.25%2132.23%21%40211b61d017645175851318884eae23%2112000052186034800%21sea%21PL%212442407001%21X%211%210%21n_tag%3A-29919%3Bd%3A14685e7e%3Bm03_new_user%3A-29895%3BpisId%3A5000000194154135&curPageLogUid=f7RTlW4GIqOO&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005010374454394%7C_p_origin_prod%3A"
 			(at 266.7 30.48 0)
 			(effects
 				(font
@@ -8399,7 +8399,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://pl.aliexpress.com/item/1005010374454394.html?spm=a2g0o.productlist.main.8.3c401b61g5XxPf&algo_pvid=baae26a5-38ea-4203-b323-6292c26fe97b&algo_exp_id=baae26a5-38ea-4203-b323-6292c26fe97b-7&pdp_ext_f=%7B%22order%22%3A%226%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21PLN%214.37%2117.06%21%21%218.25%2132.23%21%40211b61d017645175851318884eae23%2112000052186034800%21sea%21PL%212442407001%21X%211%210%21n_tag%3A-29919%3Bd%3A14685e7e%3Bm03_new_user%3A-29895%3BpisId%3A5000000194154135&curPageLogUid=f7RTlW4GIqOO&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005010374454394%7C_p_origin_prod%3A"
+		(property "Link" "https://jlcpcb.com/partdetail/JST-B4B_XH_A_LF_SN/C144395"
 			(at 266.7 30.48 0)
 			(effects
 				(font
@@ -8418,6 +8418,33 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 266.7 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part" "C144395"
+			(at 266.7 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFR Part" "B4B-XH-A(LF)(SN)"
+			(at 266.7 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "JST"
 			(at 266.7 30.48 0)
 			(effects
 				(font
@@ -8794,15 +8821,6 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 82.55 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Distributor" "https://jlcpcb.com/partdetail/29074-CL21B105KBFNNNE/C28323"
 			(at 82.55 161.29 0)
 			(effects
 				(font
@@ -9204,7 +9222,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" " UNI-ROYAL(Uniroyal Elec)"
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 121.92 63.5 90)
 			(effects
 				(font
@@ -9412,7 +9430,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 194.31 34.29 90)
 			(effects
 				(font
@@ -9498,7 +9516,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://pl.aliexpress.com/item/1005006960863510.html?spm=a2g0o.productlist.main.4.2ead5e20lTkzE6&aem_p4p_detail=202511300747415200334175380820002415606&algo_pvid=cfa784ab-e4a2-400b-9f76-eccbe9d650c9&algo_exp_id=cfa784ab-e4a2-400b-9f76-eccbe9d650c9-3&pdp_ext_f=%7B%22order%22%3A%223%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21PLN%219.74%219.69%21%21%212.60%212.58%21%40211b653717645176616042110eb2bf%2112000038865780700%21sea%21PL%212442407001%21X%211%210%21n_tag%3A-29919%3Bd%3A14685e7e%3Bm03_new_user%3A-29895&curPageLogUid=e1Z9DyuPyLJG&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005006960863510%7C_p_origin_prod%3A&search_p4p_id=202511300747415200334175380820002415606_2"
 			(at 266.7 72.39 0)
 			(effects
 				(font
@@ -9516,7 +9534,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://pl.aliexpress.com/item/1005006960863510.html?spm=a2g0o.productlist.main.4.2ead5e20lTkzE6&aem_p4p_detail=202511300747415200334175380820002415606&algo_pvid=cfa784ab-e4a2-400b-9f76-eccbe9d650c9&algo_exp_id=cfa784ab-e4a2-400b-9f76-eccbe9d650c9-3&pdp_ext_f=%7B%22order%22%3A%223%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21PLN%219.74%219.69%21%21%212.60%212.58%21%40211b653717645176616042110eb2bf%2112000038865780700%21sea%21PL%212442407001%21X%211%210%21n_tag%3A-29919%3Bd%3A14685e7e%3Bm03_new_user%3A-29895&curPageLogUid=e1Z9DyuPyLJG&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005006960863510%7C_p_origin_prod%3A&search_p4p_id=202511300747415200334175380820002415606_2"
+		(property "Link" "https://jlcpcb.com/partdetail/JST-B6B_XH_A_LF_SN/C144397"
 			(at 266.7 72.39 0)
 			(effects
 				(font
@@ -9535,6 +9553,33 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 266.7 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part" "C144397"
+			(at 266.7 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFR Part" "B6B-XH-A(LF)(SN)"
+			(at 266.7 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "JST"
 			(at 266.7 72.39 0)
 			(effects
 				(font
@@ -9711,7 +9756,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "40e44473-0e3f-4047-9043-8581256c1fe7")
 		(property "Reference" "J405"
 			(at 71.12 64.262 0)
@@ -9740,7 +9785,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pl.aliexpress.com/item/1005010319587802.html?spm=a2g0o.productlist.main.8.c09114deUBPMdn&algo_pvid=910395f1-2a0c-4917-acfc-e67fe0e95d0e&algo_exp_id=910395f1-2a0c-4917-acfc-e67fe0e95d0e-7&pdp_ext_f=%7B%22order%22%3A%2217%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21PLN%215.93%215.93%21%21%2111.21%2111.20%21%402103894417645174882906033e0ba8%2112000051937616566%21sea%21PL%212442407001%21X%211%210%21n_tag%3A-29919%3Bd%3A14685e7e%3Bm03_new_user%3A-29895&curPageLogUid=wazd3WQjYmKS&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005010319587802%7C_p_origin_prod%3A"
 			(at 71.12 67.31 0)
 			(effects
 				(font
@@ -9758,7 +9803,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://pl.aliexpress.com/item/1005010319587802.html?spm=a2g0o.productlist.main.8.c09114deUBPMdn&algo_pvid=910395f1-2a0c-4917-acfc-e67fe0e95d0e&algo_exp_id=910395f1-2a0c-4917-acfc-e67fe0e95d0e-7&pdp_ext_f=%7B%22order%22%3A%2217%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21PLN%215.93%215.93%21%21%2111.21%2111.20%21%402103894417645174882906033e0ba8%2112000051937616566%21sea%21PL%212442407001%21X%211%210%21n_tag%3A-29919%3Bd%3A14685e7e%3Bm03_new_user%3A-29895&curPageLogUid=wazd3WQjYmKS&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005010319587802%7C_p_origin_prod%3A"
+		(property "Link" ""
 			(at 71.12 67.31 0)
 			(effects
 				(font
@@ -9814,7 +9859,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "45c7ad04-bb13-45e4-8aa2-9e721dd996e7")
 		(property "Reference" "J410"
 			(at 39.37 166.116 0)
@@ -9916,7 +9961,7 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp yes)
 		(fields_autoplaced yes)
@@ -10196,6 +10241,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Value" "USBC"
@@ -10207,7 +10253,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal"
+		(property "Footprint" "footprints:USB_C_16P"
 			(at 170.18 39.37 0)
 			(effects
 				(font
@@ -10234,7 +10280,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://jlcpcb.com/partdetail/3554049-USB4105_GF_A060/C3025063"
+		(property "Link" "https://jlcpcb.com/partdetail/Korean_HropartsElec-TYPE_C_31_M48/C47817612"
 			(at 166.37 39.37 0)
 			(effects
 				(font
@@ -10243,7 +10289,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" "C3025063 "
+		(property "JLCPCB Part" "C47817612"
 			(at 166.37 39.37 0)
 			(effects
 				(font
@@ -10252,7 +10298,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" "USB4105-GF-A-060 "
+		(property "MFR Part" "TYPE-C-31-M-48"
 			(at 166.37 39.37 0)
 			(effects
 				(font
@@ -10261,7 +10307,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Global Connector Technology"
+		(property "Manufacturer" "Korean Hroparts Elec"
 			(at 166.37 39.37 0)
 			(effects
 				(font
@@ -10562,7 +10608,7 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "5f3de74a-02ce-4a5f-8b4b-2a8d7d0b02db")
@@ -10591,7 +10637,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://pl.aliexpress.com/item/1005006960863510.html?spm=a2g0o.productlist.main.4.2ead5e20lTkzE6&aem_p4p_detail=202511300747415200334175380820002415606&algo_pvid=cfa784ab-e4a2-400b-9f76-eccbe9d650c9&algo_exp_id=cfa784ab-e4a2-400b-9f76-eccbe9d650c9-3&pdp_ext_f=%7B%22order%22%3A%223%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21PLN%219.74%219.69%21%21%212.60%212.58%21%40211b653717645176616042110eb2bf%2112000038865780700%21sea%21PL%212442407001%21X%211%210%21n_tag%3A-29919%3Bd%3A14685e7e%3Bm03_new_user%3A-29895&curPageLogUid=e1Z9DyuPyLJG&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005006960863510%7C_p_origin_prod%3A&search_p4p_id=202511300747415200334175380820002415606_2"
 			(at 266.7 50.8 0)
 			(effects
 				(font
@@ -10609,7 +10655,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://pl.aliexpress.com/item/1005006960863510.html?spm=a2g0o.productlist.main.4.2ead5e20lTkzE6&aem_p4p_detail=202511300747415200334175380820002415606&algo_pvid=cfa784ab-e4a2-400b-9f76-eccbe9d650c9&algo_exp_id=cfa784ab-e4a2-400b-9f76-eccbe9d650c9-3&pdp_ext_f=%7B%22order%22%3A%223%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21PLN%219.74%219.69%21%21%212.60%212.58%21%40211b653717645176616042110eb2bf%2112000038865780700%21sea%21PL%212442407001%21X%211%210%21n_tag%3A-29919%3Bd%3A14685e7e%3Bm03_new_user%3A-29895&curPageLogUid=e1Z9DyuPyLJG&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005006960863510%7C_p_origin_prod%3A&search_p4p_id=202511300747415200334175380820002415606_2"
+		(property "Link" "https://jlcpcb.com/partdetail/JST-B6B_XH_A_LF_SN/C144397"
 			(at 266.7 50.8 0)
 			(effects
 				(font
@@ -10628,6 +10674,33 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 266.7 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part" "C144397"
+			(at 266.7 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFR Part" "B6B-XH-A(LF)(SN)"
+			(at 266.7 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "JST"
 			(at 266.7 50.8 0)
 			(effects
 				(font
@@ -10936,7 +11009,7 @@
 				(hide yes)
 			)
 		)
-		(property "Distributor" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
+		(property "MFR Part" "0805W8F1002T5E"
 			(at 114.3 161.29 0)
 			(effects
 				(font
@@ -10945,7 +11018,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" "0805W8F1002T5E "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 114.3 161.29 0)
 			(effects
 				(font
@@ -10954,7 +11027,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "JLCPCB Part" "C17414"
 			(at 114.3 161.29 0)
 			(effects
 				(font
@@ -10963,16 +11036,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" "C38522"
-			(at 114.3 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Link" "https://jlcpcb.com/partdetail/39505-0805W8F1002T5E/C38522"
+		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
 			(at 114.3 161.29 0)
 			(effects
 				(font
@@ -11069,7 +11133,7 @@
 				(hide yes)
 			)
 		)
-		(property "Distributor" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
+		(property "MFR Part" "0805W8F1002T5E"
 			(at 106.68 161.29 0)
 			(effects
 				(font
@@ -11078,7 +11142,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" "0805W8F1002T5E "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 106.68 161.29 0)
 			(effects
 				(font
@@ -11087,7 +11151,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "JLCPCB Part" "C17414"
 			(at 106.68 161.29 0)
 			(effects
 				(font
@@ -11096,16 +11160,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" "C38522"
-			(at 106.68 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Link" "https://jlcpcb.com/partdetail/39505-0805W8F1002T5E/C38522"
+		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
 			(at 106.68 161.29 0)
 			(effects
 				(font
@@ -11202,7 +11257,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" " Samsung Electro-Mechanics"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 77.47 50.8 0)
 			(effects
 				(font
@@ -11326,7 +11381,7 @@
 				(hide yes)
 			)
 		)
-		(property "Distributor" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
+		(property "MFR Part" "0805W8F1002T5E"
 			(at 99.06 161.29 0)
 			(effects
 				(font
@@ -11335,7 +11390,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" "0805W8F1002T5E "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 99.06 161.29 0)
 			(effects
 				(font
@@ -11344,7 +11399,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "JLCPCB Part" "C17414"
 			(at 99.06 161.29 0)
 			(effects
 				(font
@@ -11353,16 +11408,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" "C38522"
-			(at 99.06 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Link" "https://jlcpcb.com/partdetail/39505-0805W8F1002T5E/C38522"
+		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
 			(at 99.06 161.29 0)
 			(effects
 				(font
@@ -12681,6 +12727,42 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part" "C157991"
+			(at 83.82 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Link" "https://jlcpcb.com/partdetail/JST-B5B_XH_A_LF_SN/C157991"
+			(at 83.82 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFR Part" "B5B-XH-A(LF)(SN)"
+			(at 83.82 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "JST"
+			(at 83.82 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "97c0c7b5-d059-4f92-b786-1abf03925024")
 		)
@@ -12780,7 +12862,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "949db4e0-9e6c-4d0b-87e6-e6375ea67f26")
 		(property "Reference" "J405"
 			(at 52.07 64.008 0)
@@ -12810,7 +12892,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pl.aliexpress.com/item/1005010319587802.html?spm=a2g0o.productlist.main.8.c09114deUBPMdn&algo_pvid=910395f1-2a0c-4917-acfc-e67fe0e95d0e&algo_exp_id=910395f1-2a0c-4917-acfc-e67fe0e95d0e-7&pdp_ext_f=%7B%22order%22%3A%2217%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21PLN%215.93%215.93%21%21%2111.21%2111.20%21%402103894417645174882906033e0ba8%2112000051937616566%21sea%21PL%212442407001%21X%211%210%21n_tag%3A-29919%3Bd%3A14685e7e%3Bm03_new_user%3A-29895&curPageLogUid=wazd3WQjYmKS&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005010319587802%7C_p_origin_prod%3A"
 			(at 52.07 67.31 0)
 			(effects
 				(font
@@ -12828,7 +12910,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://pl.aliexpress.com/item/1005010319587802.html?spm=a2g0o.productlist.main.8.c09114deUBPMdn&algo_pvid=910395f1-2a0c-4917-acfc-e67fe0e95d0e&algo_exp_id=910395f1-2a0c-4917-acfc-e67fe0e95d0e-7&pdp_ext_f=%7B%22order%22%3A%2217%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21PLN%215.93%215.93%21%21%2111.21%2111.20%21%402103894417645174882906033e0ba8%2112000051937616566%21sea%21PL%212442407001%21X%211%210%21n_tag%3A-29919%3Bd%3A14685e7e%3Bm03_new_user%3A-29895&curPageLogUid=wazd3WQjYmKS&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005010319587802%7C_p_origin_prod%3A"
+		(property "Link" ""
 			(at 52.07 67.31 0)
 			(effects
 				(font
@@ -12946,7 +13028,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 194.31 27.94 90)
 			(effects
 				(font
@@ -13081,7 +13163,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" " STMicroelectronics"
+		(property "Manufacturer" "STMicroelectronics"
 			(at 210.82 40.64 0)
 			(effects
 				(font
@@ -13390,7 +13472,7 @@
 				(hide yes)
 			)
 		)
-		(property "Distributor" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
+		(property "MFR Part" "0805W8F1002T5E"
 			(at 121.92 161.29 0)
 			(effects
 				(font
@@ -13399,7 +13481,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" "0805W8F1002T5E "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 121.92 161.29 0)
 			(effects
 				(font
@@ -13408,7 +13490,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "JLCPCB Part" "C17414"
 			(at 121.92 161.29 0)
 			(effects
 				(font
@@ -13417,16 +13499,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" "C38522"
-			(at 121.92 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Link" "https://jlcpcb.com/partdetail/39505-0805W8F1002T5E/C38522"
+		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
 			(at 121.92 161.29 0)
 			(effects
 				(font
@@ -13606,7 +13679,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" " Samsung Electro-Mechanics"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 127 53.34 0)
 			(effects
 				(font
@@ -13748,7 +13821,7 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "bd37667a-3b6d-42b9-a2c1-182a58ce012d")
@@ -13805,6 +13878,42 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 266.7 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part" "C157966"
+			(at 266.7 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Link" "https://jlcpcb.com/partdetail/JST-B9B_XH_A_LF_SN/C157966"
+			(at 266.7 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFR Part" "B9B-XH-A(LF)(SN) "
+			(at 266.7 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "JST"
 			(at 266.7 105.41 0)
 			(effects
 				(font
@@ -14314,7 +14423,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 59.69 95.25 90)
 			(effects
 				(font
@@ -14515,7 +14624,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "d45df822-71aa-4ee9-b1e9-5a43e19ca201")
 		(property "Reference" "F401"
@@ -14666,7 +14775,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 121.92 53.34 90)
 			(effects
 				(font
@@ -14675,7 +14784,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" " 0805W8F1003T5E"
+		(property "MFR Part" "0805W8F1003T5E"
 			(at 121.92 53.34 90)
 			(effects
 				(font
@@ -14684,7 +14793,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://jlcpcb.com/partdetail/28584-0805W8F5101T5E/C27834"
+		(property "Link" "https://jlcpcb.com/partdetail/160838-0805W8F1003T5E/C149504"
 			(at 121.92 53.34 90)
 			(effects
 				(font
@@ -14797,7 +14906,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 69.85 92.71 90)
 			(effects
 				(font
@@ -15071,7 +15180,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" " C5155559"
+		(property "JLCPCB Part" "C5155559"
 			(at 30.48 48.26 0)
 			(effects
 				(font
@@ -15080,7 +15189,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" " DC-005H-D020"
+		(property "MFR Part" "DC-005H-D020"
 			(at 30.48 48.26 0)
 			(effects
 				(font
@@ -15089,7 +15198,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" " G-Switch"
+		(property "Manufacturer" "G-Switch"
 			(at 30.48 48.26 0)
 			(effects
 				(font
@@ -15392,7 +15501,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 49.53 97.79 90)
 			(effects
 				(font
@@ -15651,7 +15760,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" " CL21A225KBQNNNE"
+		(property "MFR Part" "CL21A225KBQNNNE"
 			(at 67.31 50.8 0)
 			(effects
 				(font
@@ -15669,7 +15778,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" " C377773"
+		(property "JLCPCB Part" "C377773"
 			(at 67.31 50.8 0)
 			(effects
 				(font
@@ -16239,7 +16348,7 @@
 				(hide yes)
 			)
 		)
-		(property "Distributor" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
+		(property "MFR Part" "0805W8F1002T5E"
 			(at 91.44 161.29 0)
 			(effects
 				(font
@@ -16248,7 +16357,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFR Part" "0805W8F1002T5E "
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
 			(at 91.44 161.29 0)
 			(effects
 				(font
@@ -16257,7 +16366,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec) "
+		(property "JLCPCB Part" "C17414"
 			(at 91.44 161.29 0)
 			(effects
 				(font
@@ -16266,16 +16375,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB Part" "C38522"
-			(at 91.44 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Link" "https://jlcpcb.com/partdetail/39505-0805W8F1002T5E/C38522"
+		(property "Link" "https://jlcpcb.com/partdetail/18102-0805W8F1002T5E/C17414"
 			(at 91.44 161.29 0)
 			(effects
 				(font
