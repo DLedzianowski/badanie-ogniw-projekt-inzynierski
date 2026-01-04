@@ -122,7 +122,7 @@ struct sensors {
 };
 extern struct sensors s;
 
-#define BATERYS_NUM 2
+#define BATERYS_NUM 3
 extern const char* batteries[BATERYS_NUM];
 
 #define STATUS_NUM 3
@@ -178,27 +178,35 @@ void Error_Handler(void);
 #define KEY_EXTI_IRQn EXTI0_IRQn
 #define oled_CS_Pin GPIO_PIN_1
 #define oled_CS_GPIO_Port GPIOA
-#define oled_DC_Pin GPIO_PIN_2
-#define oled_DC_GPIO_Port GPIOA
-#define oled_RST_Pin GPIO_PIN_3
+#define oled_RST_Pin GPIO_PIN_2
 #define oled_RST_GPIO_Port GPIOA
+#define oled_DC_Pin GPIO_PIN_3
+#define oled_DC_GPIO_Port GPIOA
 #define sd_CS_Pin GPIO_PIN_4
 #define sd_CS_GPIO_Port GPIOA
 #define R1IN1_Pin GPIO_PIN_12
 #define R1IN1_GPIO_Port GPIOB
 #define R1IN2_Pin GPIO_PIN_13
 #define R1IN2_GPIO_Port GPIOB
-#define R1IN3_Pin GPIO_PIN_14
-#define R1IN3_GPIO_Port GPIOB
+#define lipol_detection_Pin GPIO_PIN_14
+#define lipol_detection_GPIO_Port GPIOB
+#define lipol_detection_EXTI_IRQn EXTI15_10_IRQn
+#define liion_detection_Pin GPIO_PIN_15
+#define liion_detection_GPIO_Port GPIOB
+#define liion_detection_EXTI_IRQn EXTI15_10_IRQn
 #define enc_KEY_Pin GPIO_PIN_10
 #define enc_KEY_GPIO_Port GPIOA
 #define enc_KEY_EXTI_IRQn EXTI15_10_IRQn
-#define OLED_TIM2_Pin GPIO_PIN_15
-#define OLED_TIM2_GPIO_Port GPIOA
+#define PWM_Pin GPIO_PIN_15
+#define PWM_GPIO_Port GPIOA
 #define bmp2_CS_Pin GPIO_PIN_3
 #define bmp2_CS_GPIO_Port GPIOB
+#define PWM_discharge_Pin GPIO_PIN_4
+#define PWM_discharge_GPIO_Port GPIOB
 #define bmp1_CS_Pin GPIO_PIN_5
 #define bmp1_CS_GPIO_Port GPIOB
+#define PWM_charge_Pin GPIO_PIN_7
+#define PWM_charge_GPIO_Port GPIOB
 #define bmp3_CS_Pin GPIO_PIN_8
 #define bmp3_CS_GPIO_Port GPIOB
 

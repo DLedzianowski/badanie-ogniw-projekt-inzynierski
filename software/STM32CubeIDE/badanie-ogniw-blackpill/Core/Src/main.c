@@ -132,8 +132,9 @@ const char* menu[SCREENS_MENU_NUM] = {
 };
 
 const char* batteries[BATERYS_NUM] = {
+	"Brak bat."
 	"Li-Pol",
-	"Li-On"
+	"Li-Ion"
 };
 
 const char* status[STATUS_NUM] = {
@@ -212,9 +213,9 @@ int main(void)
 	}
 
 	// SGP
-	if (sgp_probe() != STATUS_OK) {
-		LOG_DEBUG("SGP sensor error\r\n");
-	}
+	//if (sgp_probe() != STATUS_OK) {
+	//	LOG_DEBUG("SGP sensor error\r\n");
+	//}
 
 
 	// TIMER
@@ -237,14 +238,14 @@ int main(void)
 			read_sensors_data();
 
 			// charging state
-			control_battery_state(&s.voltage);
-			handle_battery_state();
+			//control_battery_state(&s.voltage);
+			//handle_battery_state();
 
 			// OLED
 			OLED_manage();
 
 			// SD
-			SDcardWriteData();
+			//SDcardWriteData();
 
 			// Transmit over uart
 			LOG_DATA("{%u,%u,%.2f,%.2f,"
@@ -339,18 +340,31 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	}
 }
 
-// User Button
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-    static uint32_t last_press_time = 0;
-    uint32_t now = HAL_GetTick();
-
+    // Encoder Button
     if (GPIO_Pin == enc_KEY_Pin) {
+        static uint32_t last_press_time = 0;
+        uint32_t now = HAL_GetTick();
+
         // debounce
         if (now - last_press_time >= 500) {
             st.is_enc_pressed = true;
             st.screen_clear = true;
             last_press_time = now;
         }
+    }
+    // Set battery type based on the state of PB14 and PB15 pins
+    else if (GPIO_Pin == GPIO_PIN_14) {
+        if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET)
+            st.battery_current = 1;
+        else
+            st.battery_current = 0;
+    }
+    else if (GPIO_Pin == GPIO_PIN_15) {
+        if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15) == GPIO_PIN_SET)
+            st.battery_current = 2;
+        else
+            st.battery_current = 0;
     }
 }
 

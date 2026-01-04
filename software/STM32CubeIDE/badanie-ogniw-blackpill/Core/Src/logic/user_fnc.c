@@ -53,8 +53,8 @@ void read_sensors_data(void) {
 	}
 
 	// SGP
-	sgp_measure_iaq_blocking_read(&s.tvoc_ppb, &s.co2_eq_ppm);
-	sgp_measure_signals_blocking_read(&s.scaled_ethanol_signal, &s.scaled_h2_signal);
+	//sgp_measure_iaq_blocking_read(&s.tvoc_ppb, &s.co2_eq_ppm);
+	//sgp_measure_signals_blocking_read(&s.scaled_ethanol_signal, &s.scaled_h2_signal);
 	//sgp_set_absolute_humidity();
 
 	// PWM

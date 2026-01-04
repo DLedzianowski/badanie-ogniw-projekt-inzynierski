@@ -648,7 +648,7 @@
       "plot": "../pcb_gerber_v1_1/",
       "pos_files": "../pcb_gerber_v1_1/",
       "specctra_dsn": "",
-      "step": "",
+      "step": "../../../../../Pulpit/inz/hw/cad/inz.stl",
       "svg": "",
       "vrml": ""
     },
