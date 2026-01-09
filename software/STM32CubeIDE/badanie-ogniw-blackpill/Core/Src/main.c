@@ -17,10 +17,6 @@
   */
 
 /*
- *  USER BUTTON - przelacznie ekranow
- *  potencjometr - ustawianie prądu rozładowania (PWM mosfeta)
- *
- *
  * 	PINOUT SPI1
  * 	CLK  	PA5
  * 	MISO	PA6
@@ -28,26 +24,23 @@
  *
  * 	OLED +3.3V
  *	--CS	PA1
- *	--DC	PA2
- *	--RST	PA3
+ *	--RST	PA2
+ *	--DC	PA3
  *
  *	BME1	+3.3V
  *	--CS	PB5
  *
- *	BME2	+3.3V
+ *	BMP2	+3.3V
  *	--CS	PB3
  *
- *	BME3	+3.3V
+ *	BMP3	+3.3V
  *	--CS	PB8
  *
  *	SD card	+3.3V  == exFAT
  *	--CS	PA4
  *
  *	PINOUT I2C
- *	SCL PB6
- *	SDA PB7
  *	SGP30 0x58
- *	INA219 0x40
  */
 
 /* USER CODE END Header */
@@ -66,13 +59,12 @@
 /* USER CODE BEGIN Includes */
 #include "usbd_cdc_if.h"
 #include "sensors/printf_to_uart.h"
-#include "sensors/st7735.h"
+#include "sensors/ILI9341_STM32_Driver.h"
+#include "sensors/ILI9341_GFX.h"
 #include "sensors/fonts.h"
-#include "sensors/testimg.h"
 #include "sensors/BMPXX80.h"
 #include "sensors/sensirion_common.h"
 #include "sensors/sgp30.h"
-#include "sensors/INA219.h"
 #include "logic/user_SDcard.h"
 #include "logic/user_OLED.h"
 #include "logic/user_fnc.h"
@@ -115,7 +107,8 @@ struct state st = {
 	.enc_count = 0,
 	.prev_enc_count = 0,
 	.enc_offset = 0,
-	.set_current_prev = 0,
+	.set_current_discharge_prev = 0,
+	.set_current_charge_prev = 0,
 
 	.is_screen_menu = true,
 	.screen_clear = true,
@@ -124,15 +117,16 @@ struct sensors s = {0};
 
 const char* menu[SCREENS_MENU_NUM] = {
 	"Start",
-	"Typ baterii",
-	"Prad",
+	//"Typ baterii",
+	"Prad rozadowania",
+	"Prad adowania",
 	"Status",
 	"Tryb auto",
 	"Stop"
 };
 
 const char* batteries[BATERYS_NUM] = {
-	"Brak bat."
+	"Brak ogniwa",
 	"Li-Pol",
 	"Li-Ion"
 };
@@ -140,11 +134,10 @@ const char* batteries[BATERYS_NUM] = {
 const char* status[STATUS_NUM] = {
 	"Bezczynny",
 	"Ladowanie",
-	"Rozladowyw."
+	"Rozladowywanie"
 };
-
 const char* auto_mode[AUTO_MODE_NUM] = {
-	"Auto.",
+	"Automatyczny",
 	"Reczny"
 };
 
@@ -200,30 +193,35 @@ int main(void)
   MX_FATFS_Init();
   MX_TIM1_Init();
   MX_TIM2_Init();
+  MX_TIM11_Init();
   /* USER CODE BEGIN 2 */
 	// OLED
-	ST7735_Init();
-	ST7735_FillScreen(ST7735_BLACK);
+	ILI9341_Init();
+	ILI9341_FillScreen(WHITE);
 
 	// BMP x3
-	for (uint8_t index = 0; index < 1 ; ++index) {
-		if (!BMP280_Init(&hspi1, BMP280_TEMPERATURE_16BIT, BMP280_STANDARD, BMP280_FORCEDMODE, index)) {
+	for (uint8_t index = 0; index < BME_SENSOR_COUNT ; ++index) {
+		if (!BME280_Init(&hspi1, BME280_TEMPERATURE_16BIT, BME280_PRESSURE_ULTRALOWPOWER, BME280_HUMINIDITY_ULTRAHIGH, BME280_FORCEDMODE, index)) {
 			LOG_DEBUG("BMP280 sensor error\r\n");
 		}
 	}
 
 	// SGP
-	//if (sgp_probe() != STATUS_OK) {
-	//	LOG_DEBUG("SGP sensor error\r\n");
-	//}
+	if (sgp_probe() != STATUS_OK) {
+		LOG_DEBUG("SGP sensor error\r\n");
+	}
 
 
 	// TIMER
-	HAL_TIM_Encoder_Start_IT(&htim1, TIM_CHANNEL_ALL);
+	HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
 	HAL_TIM_Base_Start_IT(&htim4);
+	HAL_TIM_Base_Start_IT(&htim11);
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 
+	OLED_options_init();
+
 	LOG_DEBUG("Complete peripheral initialization\r\n");
+	HAL_Delay(1000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -238,22 +236,24 @@ int main(void)
 			read_sensors_data();
 
 			// charging state
-			//control_battery_state(&s.voltage);
-			//handle_battery_state();
+			control_battery_state(&s.voltage, &s.current); // todo
+			handle_battery_state();
 
 			// OLED
 			OLED_manage();
 
 			// SD
-			//SDcardWriteData();
+			SDcardWriteData();
 
 			// Transmit over uart
-			LOG_DATA("{%u,%u,%.2f,%.2f,"
-					"%.2f,%ld,%.2f,%ld,%.2f,%ld,"
-					"%f,%f,%.2f,%i}\r\n",
+			LOG_DATA("%u,%u,%.2f,%.2f,"
+		             "%.2f,%ld,%.2f,%ld,%.2f,%ld,%.2f,"
+		             "%.2f,%.2f,%.2f,%.2f,"
+		             "%i,%i,%i,%i,%i\n",
 					s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f,
-					s.BMP280temperature[0], s.BMP280pressure[0], s.BMP280temperature[1], s.BMP280pressure[1], s.BMP280temperature[2], s.BMP280pressure[2],
-					s.voltage, s.current, s.set_current, st.battery_state);
+					s.BME280temperature[0], s.BME280pressure[0], s.BME280temperature[1], s.BME280pressure[1], s.BME280temperature[2], s.BME280pressure[2], s.BME280humidity,
+					s.voltage, s.current, s.set_current_charge, s.set_current_discharge,
+					st.battery_state, st.auto_mode_current, st.is_measurements_started, st.discharge_relay, st.charge_relay);
 
 			st._interrupt_flag = false;
 		}
@@ -311,25 +311,19 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-// encoder
-void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
-	if (htim->Instance == TIM1) {
-    	st.enc_count = ((__HAL_TIM_GET_COUNTER(htim) / 4) - st.enc_offset);
-		st.sensor_current = (enum SensorScreen)(st.enc_count % SENSOR_SCREEN_COUNT);
-		st.menu_current_ptr = (enum MenuScreen)(1 + (st.enc_count % (MENU_SCREEN_COUNT - 1)));
-		st.battery_ptr = st.enc_count % BATERYS_NUM;
-		st.status_ptr = st.enc_count % STATUS_NUM;
-		st.auto_mode_ptr = st.enc_count % AUTO_MODE_NUM;
-
-		if (st.prev_enc_count != st.enc_count) {
-    		st.screen_clear = true;
-    	}
-    	st.prev_enc_count = st.enc_count;
-    }
-}
-
-// main loop sensor data
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+	// encoder
+	if (htim->Instance == TIM11) {
+	    int16_t raw = (int16_t)__HAL_TIM_GET_COUNTER(&htim1);
+	    int8_t  pos = raw >> 2;   // /4
+
+	    if (pos != st.enc_count)
+	    {
+	        st.enc_count = pos;
+	        st.screen_clear = true;
+	    }
+	}
+	// main loop sensor data
 	if (htim == &htim4 && st.is_measurements_started == true){
 		if (st._interrupt_flag == true){
 			LOG_DEBUG("Flaga _interrupt_flag jest juz 1\r\n");

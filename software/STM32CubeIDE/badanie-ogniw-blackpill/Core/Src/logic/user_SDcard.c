@@ -17,7 +17,7 @@ void SDcardInit(const char *folder_name) {
 			break;
 		}
 		LOG_DEBUG("Error mounting filesystem! (%d). Retrying...\r\n", sd.res);
-		ST7735_WriteString(10, 140, "Error in file!", Font_7x10, ST7735_RED, ST7735_BLACK);
+		ILI9341_DrawText(((ILI9341_SCREEN_WIDTH - ILI9341_GetTextWidth("Error in file!", FONT1)) / 2), ILI9341_SCREEN_HEIGHT-FONT1h, "Error in file!", FONT1, RED, BLACK);
 		HAL_Delay(RETRY_DELAY_MS);
 	}
 
@@ -28,7 +28,6 @@ void SDcardInit(const char *folder_name) {
 			break;
 		}
 		LOG_DEBUG( "Error opening SDcard file! (%d). Retrying...\r\n", sd.res);
-		ST7735_WriteString(10, 140, "Error in file!", Font_7x10, ST7735_RED, ST7735_BLACK);
 		HAL_Delay(RETRY_DELAY_MS);
 	}
 
@@ -43,7 +42,10 @@ void SDcardInit(const char *folder_name) {
 	}
 
 	f_puts("\n--- Nowy pomiar ---\n", &sd.fil);
-	f_puts("TVOC_ppb,CO2_eq_ppm,Ethanol_signal,H2_signal,Temperatura1,Cisnienie1,Temperatura2,Cisnienie2,Temperatura3,Cisnienie3,Napiecie_V,Prad_A,Zadany_prad,Stan_pracy\n", &sd.fil);
+	f_puts("TVOC_ppb,CO2_eq_ppm,Ethanol_signal,H2_signal,"
+	       "Temperatura1,Cisnienie1,Temperatura2,Cisnienie2,Temperatura3,Cisnienie3,Wilgotnosc,"
+	       "Napiecie_V,Prad_A,Zadany_prad_Charge,Zadany_prad_Discharge,"
+	       "Stan_baterii,Tryb_auto,Czy_pomiar_aktywny,Rozladowanie_relay,Ladowanie_relay\n", &sd.fil);
 
 	f_sync(&sd.fil);
 }
@@ -52,18 +54,20 @@ void SDcardWriteData() {
 	// ERROR SDcard -> OLED
 	if (f_lseek(&sd.fil, f_size(&sd.fil)) != FR_OK) {
 		LOG_DEBUG("Error seeking in file!\r\n");
-		ST7735_WriteString(10, 140, "Error in file!", Font_7x10, ST7735_RED, ST7735_BLACK);
+		ILI9341_DrawText(((ILI9341_SCREEN_WIDTH - ILI9341_GetTextWidth("Error in file!", FONT1)) / 2), ILI9341_SCREEN_HEIGHT-FONT1h, "Error in file!", FONT1, RED, BLACK);
 		return;
 	}
 
 	char buffer[200];
 	snprintf(buffer, sizeof(buffer),
 			"%u,%u,%.2f,%.2f,"
-			"%.2f,%ld,%.2f,%ld,%.2f,%ld,"
-			"%f,%f,%0.2f,%i\n",
+			"%.2f,%ld,%.2f,%ld,%.2f,%ld,%.2f,"
+			"%.2f,%.2f,%.2f,%.2f,"
+			"%i,%i,%i,%i,%i\n",
 			s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f,
-			s.BMP280temperature[0], s.BMP280pressure[0], s.BMP280temperature[1], s.BMP280pressure[1], s.BMP280temperature[2], s.BMP280pressure[2],
-			s.voltage, s.current, s.set_current, st.battery_state);
+			s.BME280temperature[0], s.BME280pressure[0], s.BME280temperature[1], s.BME280pressure[1], s.BME280temperature[2], s.BME280pressure[2], s.BME280humidity,
+			s.voltage, s.current, s.set_current_charge, s.set_current_discharge,
+			st.battery_state, st.auto_mode_current, st.is_measurements_started, st.discharge_relay, st.charge_relay);
 
 	if (f_puts(buffer, &sd.fil) < 0) {
 		LOG_DEBUG("Error writing to file!\r\n");

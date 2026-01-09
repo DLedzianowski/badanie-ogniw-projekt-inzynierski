@@ -9,7 +9,8 @@
 #define SRC_LOGIC_USER_SDCARD_H_
 
 #include "fatfs.h"
-#include "sensors/st7735.h"
+#include "sensors/ILI9341_STM32_Driver.h"
+#include "sensors/ILI9341_GFX.h"
 #include "sensors/fatfs_sd.h"
 
 

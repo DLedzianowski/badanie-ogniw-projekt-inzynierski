@@ -23,7 +23,9 @@ extern uint8_t sample_idx;
 float current_filtered_read(void);
 void current_filter_reset(void);
 void read_sensors_data(void);
-void control_battery_state(float *voltage);
+void control_battery_state(float *voltage, float *current);
 void handle_battery_state(void);
+void ENC_SetPosition(int8_t pos);
+
 
 #endif /* INC_LOGIC_USER_FNC_H_ */

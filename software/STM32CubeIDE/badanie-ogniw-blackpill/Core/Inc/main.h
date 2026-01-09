@@ -49,7 +49,8 @@ enum MenuScreen {
     MENU_MAIN,
     MENU_START,
     MENU_BATTERY_TYPE,
-    MENU_SET_CURRENT,
+    MENU_SET_CURRENT_CHARGE,
+	MENU_SET_CURRENT_DISCHARGE,
 	MENU_STATUS,
 	MENU_AUTO_MODE,
     MENU_STOP,
@@ -92,23 +93,25 @@ struct state {
 	uint16_t enc_count;
 	uint16_t prev_enc_count;
 	uint16_t enc_offset;
-    float set_current_prev;
+    float set_current_charge_prev;
+    float set_current_discharge_prev;
 
     bool _interrupt_flag;
 	bool is_measurements_started;
 	bool is_enc_pressed;
 	bool is_screen_menu;
 	bool screen_clear;
-	bool discharging_relay;
-	bool charging_relay;
+	bool discharge_relay;
+	bool charge_relay;
 };
 extern struct state st;
 
 // Struktura z pomiarami
-#define BMP_SENSOR_COUNT 1
+#define BME_SENSOR_COUNT 3
 struct sensors {
-    float BMP280temperature[BMP_SENSOR_COUNT];
-    int32_t BMP280pressure[BMP_SENSOR_COUNT];
+    float BME280temperature[BME_SENSOR_COUNT];
+    int32_t BME280pressure[BME_SENSOR_COUNT];
+    float BME280humidity;
 
     uint16_t tvoc_ppb;
     uint16_t co2_eq_ppm;
@@ -118,7 +121,8 @@ struct sensors {
     float voltage;
     float current;
 
-    float set_current;
+    float set_current_charge;
+    float set_current_discharge;
 };
 extern struct sensors s;
 
@@ -131,7 +135,7 @@ extern const char* status[STATUS_NUM];
 #define AUTO_MODE_NUM 2
 extern const char* auto_mode[AUTO_MODE_NUM];
 
-#define SCREENS_MENU_VISIBLE_ITEMS 3  // number of visible opcions in menu
+#define SCREENS_MENU_VISIBLE_ITEMS 5  // number of visible opcions in menu
 #define SCREENS_MENU_NUM 6  // numbers of all menu elements
 extern const char* menu[SCREENS_MENU_NUM];
 /* USER CODE END ET */
