@@ -182,7 +182,13 @@ static bool SD_TxDataBlock(const BYTE *buff, BYTE token)
       i++;
     }
 
-    while (SPI_RxByte() == 0);
+    uint32_t t0 = HAL_GetTick();
+
+    while (SPI_RxByte() == 0)
+    {
+    	if ((HAL_GetTick() - t0) > 2000)	// SD BUSY state
+    		return FALSE;
+    }
   }
 
   if ((resp & 0x1F) == 0x05)

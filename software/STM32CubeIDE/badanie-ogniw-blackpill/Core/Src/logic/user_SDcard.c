@@ -51,31 +51,49 @@ void SDcardInit(const char *folder_name) {
 }
 
 void SDcardWriteData() {
-	// ERROR SDcard -> OLED
-	if (f_lseek(&sd.fil, f_size(&sd.fil)) != FR_OK) {
-		LOG_DEBUG("Error seeking in file!\r\n");
-		ILI9341_DrawText(((ILI9341_SCREEN_WIDTH - ILI9341_GetTextWidth("Error in file!", FONT1)) / 2), ILI9341_SCREEN_HEIGHT-FONT1h, "Error in file!", FONT1, RED, BLACK);
-		return;
-	}
+//	// ERROR SDcard -> OLED
+//	if (f_lseek(&sd.fil, f_size(&sd.fil)) != FR_OK) {
+//		LOG_DEBUG("Error seeking in file!\r\n");
+//		ILI9341_DrawText(((ILI9341_SCREEN_WIDTH - ILI9341_GetTextWidth("Error in file!", FONT1)) / 2), ILI9341_SCREEN_HEIGHT-FONT1h, "Error in file!", FONT1, RED, BLACK);
+//		return;
+//	}
 
 	char buffer[200];
-	snprintf(buffer, sizeof(buffer),
+	int32_t len = snprintf(buffer, sizeof(buffer),
 			"%u,%u,%.2f,%.2f,"
 			"%.2f,%ld,%.2f,%ld,%.2f,%ld,%.2f,"
 			"%.2f,%.2f,%.2f,%.2f,"
 			"%i,%i,%i,%i,%i\n",
 			s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f,
 			s.BME280temperature[0], s.BME280pressure[0], s.BME280temperature[1], s.BME280pressure[1], s.BME280temperature[2], s.BME280pressure[2], s.BME280humidity,
-			s.voltage, s.current, s.set_current_charge, s.set_current_discharge,
+			s.voltage, s.current, st.set_current_charge, st.set_current_discharge,
 			st.battery_state, st.auto_mode_current, st.is_measurements_started, st.discharge_relay, st.charge_relay);
 
+#if ENABLE_DEBUG
+	if (len >= sizeof(buffer)) {
+		LOG_DEBUG("SD buffer overflow!\r\n");
+		return;
+	}
+#endif
+
+
+	// inserting into package
 	if (f_puts(buffer, &sd.fil) < 0) {
 		LOG_DEBUG("Error writing to file!\r\n");
+		ILI9341_DrawText(((ILI9341_SCREEN_WIDTH - ILI9341_GetTextWidth("Error writing to file!", FONT1)) / 2), ILI9341_SCREEN_HEIGHT-FONT1h, "Error writing to file!", FONT1, RED, BLACK);
+		return;
 	}
 
-	if (f_sync(&sd.fil) != FR_OK) {
-		LOG_DEBUG("Error syncing file!\r\n");
+	// sending package to SD
+	static uint8_t sync_cnt = 0;
+	if (++sync_cnt >= 10) {
+		if (f_sync(&sd.fil) != FR_OK) {
+			LOG_DEBUG("Error sync sd!\r\n");
+			ILI9341_DrawText(((ILI9341_SCREEN_WIDTH - ILI9341_GetTextWidth("Error sync sd!", FONT1)) / 2), ILI9341_SCREEN_HEIGHT-FONT1h, "Error sync sd!", FONT1, RED, BLACK);
+		}
+		sync_cnt = 0;
 	}
+	// SPI_RxByte() - SD BUSY state max 2s
 }
 
 void SDcardClose(void) {

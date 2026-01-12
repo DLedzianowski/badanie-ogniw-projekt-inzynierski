@@ -107,8 +107,15 @@ struct state st = {
 	.enc_count = 0,
 	.prev_enc_count = 0,
 	.enc_offset = 0,
-	.set_current_discharge_prev = 0,
-	.set_current_charge_prev = 0,
+    .set_current_discharge = 0,
+    .set_current_discharge_prev = 0,
+    .set_current_charge = 0,
+    .set_current_charge_prev = 0,
+    .get_current_charge = 0,
+    .charge_end_current = 0.05,
+    .charge_end_current_prev = 0.05,
+    .discharge_cutoff_voltage = 3.0,
+    .discharge_cutoff_voltage_prev = 3.0,
 
 	.is_screen_menu = true,
 	.screen_clear = true,
@@ -118,8 +125,10 @@ struct sensors s = {0};
 const char* menu[SCREENS_MENU_NUM] = {
 	"Start",
 	//"Typ baterii",
+	//"Prad adowania",
+	"Min. prad adowania",
+	"Min. napiecie rozadowania",
 	"Prad rozadowania",
-	"Prad adowania",
 	"Status",
 	"Tryb auto",
 	"Stop"
@@ -249,10 +258,10 @@ int main(void)
 			LOG_DATA("%u,%u,%.2f,%.2f,"
 		             "%.2f,%ld,%.2f,%ld,%.2f,%ld,%.2f,"
 		             "%.2f,%.2f,%.2f,%.2f,"
-		             "%i,%i,%i,%i,%i\n",
+		             "%i,%i,%i,%i,%i\r\n",
 					s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f,
 					s.BME280temperature[0], s.BME280pressure[0], s.BME280temperature[1], s.BME280pressure[1], s.BME280temperature[2], s.BME280pressure[2], s.BME280humidity,
-					s.voltage, s.current, s.set_current_charge, s.set_current_discharge,
+					s.voltage, s.current, st.set_current_charge, st.set_current_discharge,
 					st.battery_state, st.auto_mode_current, st.is_measurements_started, st.discharge_relay, st.charge_relay);
 
 			st._interrupt_flag = false;
@@ -260,6 +269,9 @@ int main(void)
 		// menu poczatkowe
 		else if (st.is_measurements_started == false || st.screen_clear == true) {
 			OLED_manage();
+		}
+		else if (st._interrupt_flag == true && st.current_screen_type == SCREEN_MENU) {
+			display_bottom_bar();
 		}
 	}
   /* USER CODE END 3 */
@@ -315,7 +327,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	// encoder
 	if (htim->Instance == TIM11) {
 	    int16_t raw = (int16_t)__HAL_TIM_GET_COUNTER(&htim1);
-	    int8_t  pos = raw >> 2;   // /4
+	    int16_t  pos = raw >> 2;   // /4
 
 	    if (pos != st.enc_count)
 	    {
@@ -324,7 +336,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	    }
 	}
 	// main loop sensor data
-	if (htim == &htim4 && st.is_measurements_started == true){
+	if (htim == &htim4 /*&& st.is_measurements_started == true*/){
 		if (st._interrupt_flag == true){
 			LOG_DEBUG("Flaga _interrupt_flag jest juz 1\r\n");
 		}

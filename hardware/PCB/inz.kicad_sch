@@ -4788,7 +4788,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DIP:DIP-40_W15.24mm"
+		(property "Footprint" "footprints:STM32blackpill"
 			(at 62.23 161.29 0)
 			(effects
 				(font
@@ -6764,7 +6764,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Package_DIP:DIP-40_W15.24mm"
+		(property "Footprint" "footprints:STM32blackpill"
 			(at 41.91 161.29 0)
 			(effects
 				(font

@@ -30,12 +30,17 @@ float current_filtered_read(void) {
 	return sum / (float)N_SAMPLES;
 }
 
+void get_current_charge_val() {
+	st.get_current_charge = (ADC_Convert_Channel(ADC_CHANNEL_1) * 100.0f) / 4095.0f;
+}
+
 void current_filter_reset(void) {
 	for (uint8_t i = 0; i < N_SAMPLES; i++) {
 		adc_buffer[i] = 0;
 	}
 	sample_idx = 0;
 }
+
 void read_sensors_data(void) {
 	// ADC
 	/* ina333 IN9
@@ -43,10 +48,14 @@ void read_sensors_data(void) {
 	 * 3.075V -> raw adc 2514
 	 */
 	//s.voltage = 0.001361f * ADC_Convert_Channel(ADC_CHANNEL_9) - 0.346f;
-	s.voltage = 0.5f * ADC_Convert_Channel(ADC_CHANNEL_9);
+	s.voltage = 2.0f * ADC_Convert_Channel(ADC_CHANNEL_9) * 3.3f / 4095.0f;
 
 	// moving average filter
 	s.current = current_filtered_read();
+
+	// charge potentiometer
+	get_current_charge_val();
+
 
 	// BMP
 	for (uint8_t index = 0; index < BME_SENSOR_COUNT; ++index) {
@@ -69,11 +78,11 @@ void read_sensors_data(void) {
 	 * 0.1A   0.2A   0.3A   0.4A   0.5A
 	 * 0.1052 0.2050 0.3050 0.4047 0.5040
 	 */
-	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, (uint32_t)((s.set_current_discharge / 3.3f) * (float)htim3.Init.Period));
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, (uint32_t)((st.set_current_discharge / 3.3f) * (float)htim3.Init.Period));
 
 
 	// PWM charge
-	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_2, (uint32_t)((s.set_current_charge / 3.3f) * (float)htim4.Init.Period));
+	//__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_2, (uint32_t)((st.set_current_charge / 3.3f) * (float)htim4.Init.Period));
 
 }
 

@@ -90,11 +90,18 @@ struct state {
 	uint8_t status_current;
 	uint8_t auto_mode_ptr;
 	//uint8_t auto_mode_current;
-	uint16_t enc_count;
+	int16_t enc_count;
 	uint16_t prev_enc_count;
 	uint16_t enc_offset;
-    float set_current_charge_prev;
+    float set_current_discharge;
     float set_current_discharge_prev;
+    float set_current_charge;
+    float set_current_charge_prev;
+    float get_current_charge;
+    float charge_end_current;
+    float charge_end_current_prev;
+    float discharge_cutoff_voltage;
+    float discharge_cutoff_voltage_prev;
 
     bool _interrupt_flag;
 	bool is_measurements_started;
@@ -107,7 +114,7 @@ struct state {
 extern struct state st;
 
 // Struktura z pomiarami
-#define BME_SENSOR_COUNT 3
+#define BME_SENSOR_COUNT 1
 struct sensors {
     float BME280temperature[BME_SENSOR_COUNT];
     int32_t BME280pressure[BME_SENSOR_COUNT];
@@ -121,8 +128,10 @@ struct sensors {
     float voltage;
     float current;
 
-    float set_current_charge;
-    float set_current_discharge;
+
+
+
+
 };
 extern struct sensors s;
 
@@ -136,7 +145,7 @@ extern const char* status[STATUS_NUM];
 extern const char* auto_mode[AUTO_MODE_NUM];
 
 #define SCREENS_MENU_VISIBLE_ITEMS 5  // number of visible opcions in menu
-#define SCREENS_MENU_NUM 6  // numbers of all menu elements
+#define SCREENS_MENU_NUM 7  // numbers of all menu elements
 extern const char* menu[SCREENS_MENU_NUM];
 /* USER CODE END ET */
 
@@ -177,9 +186,6 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define LED_Pin GPIO_PIN_13
 #define LED_GPIO_Port GPIOC
-#define KEY_Pin GPIO_PIN_0
-#define KEY_GPIO_Port GPIOA
-#define KEY_EXTI_IRQn EXTI0_IRQn
 #define oled_CS_Pin GPIO_PIN_1
 #define oled_CS_GPIO_Port GPIOA
 #define oled_RST_Pin GPIO_PIN_2
@@ -198,6 +204,10 @@ void Error_Handler(void);
 #define liion_detection_Pin GPIO_PIN_15
 #define liion_detection_GPIO_Port GPIOB
 #define liion_detection_EXTI_IRQn EXTI15_10_IRQn
+#define enc_CH1_Pin GPIO_PIN_8
+#define enc_CH1_GPIO_Port GPIOA
+#define enc_CH2_Pin GPIO_PIN_9
+#define enc_CH2_GPIO_Port GPIOA
 #define enc_KEY_Pin GPIO_PIN_10
 #define enc_KEY_GPIO_Port GPIOA
 #define enc_KEY_EXTI_IRQn EXTI15_10_IRQn
