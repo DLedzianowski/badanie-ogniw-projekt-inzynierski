@@ -86,7 +86,8 @@ void read_sensors_data(void) {
 
 }
 
-void control_battery_state(float *voltage, float *current) {
+#define MAXtemperature 60.0
+void control_battery_state(float *voltage, float *current, float *temperature) {
 	if(st.auto_mode_current == MANUAL_MODE) {
 		return;
 	}
@@ -98,20 +99,22 @@ void control_battery_state(float *voltage, float *current) {
 			break;
 
 		case BATTERY_CHARGING:
-			if (*voltage > 4.2f || *voltage < 2.8f) {
-				// if event ocurced
-				if (out_of_range_counter > 2) {
+			if (abs(*current) < st.charge_end_current) { // current condition
+				if (out_of_range_counter >= 3) {
 					out_of_range_counter = 0;
-					if (*voltage > 4.2f) {
-						st.battery_state = BATTERY_DISCHARGING;
-					}
-					if (*voltage < 2.8f) {
-						st.battery_state = BATTERY_IDLE;
-					}
+					st.battery_state = BATTERY_DISCHARGING;
 				}
 				else {
 					out_of_range_counter++;
 				}
+			}
+			else if(*temperature > MAXtemperature){ // temperature condition
+				out_of_range_counter = 0;
+				st.battery_state = BATTERY_IDLE;
+			}
+			else if (*voltage < 2.0f) { // no battery detected
+				out_of_range_counter = 0;
+				st.battery_state = BATTERY_IDLE;
 			}
 			else {
 				out_of_range_counter = 0;
@@ -119,19 +122,18 @@ void control_battery_state(float *voltage, float *current) {
 			break;
 
 		case BATTERY_DISCHARGING:
-			if (*voltage < 3.0f || *voltage > 4.4f) {
-				if (out_of_range_counter > 2) {
+			if (*voltage < st.discharge_cutoff_voltage) { // voltage condition
+				if (out_of_range_counter >= 3) {
 					out_of_range_counter = 0;
-					if (*voltage < 3.0f) {
-						st.battery_state = BATTERY_CHARGING;
-					}
-					if (*voltage > 4.4f) {
-						st.battery_state = BATTERY_IDLE;
-					}
+					st.battery_state = BATTERY_CHARGING;
 				}
 				else {
 					out_of_range_counter++;
 				}
+			}
+			else if(*temperature > MAXtemperature){ // temperature condition
+				out_of_range_counter = 0;
+				st.battery_state = BATTERY_IDLE;
 			}
 			else {
 				out_of_range_counter = 0;

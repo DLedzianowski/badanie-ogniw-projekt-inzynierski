@@ -24,7 +24,7 @@ float current_filtered_read(void);
 void get_current_charge_val();
 void current_filter_reset(void);
 void read_sensors_data(void);
-void control_battery_state(float *voltage, float *current);
+void control_battery_state(float *voltage, float *current, float *temperature);
 void handle_battery_state(void);
 void ENC_SetPosition(int8_t pos);
 

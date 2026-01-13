@@ -127,7 +127,7 @@ const char* menu[SCREENS_MENU_NUM] = {
 	//"Typ baterii",
 	//"Prad adowania",
 	"Min. prad adowania",
-	"Min. napiecie rozadowania",
+	"Min. napiecie roz.",
 	"Prad rozadowania",
 	"Status",
 	"Tryb auto",
@@ -245,7 +245,7 @@ int main(void)
 			read_sensors_data();
 
 			// charging state
-			control_battery_state(&s.voltage, &s.current); // todo
+			control_battery_state(&s.voltage, &s.current,&s.BME280temperature[0]); // todo
 			handle_battery_state();
 
 			// OLED
@@ -267,10 +267,11 @@ int main(void)
 			st._interrupt_flag = false;
 		}
 		// menu poczatkowe
-		else if (st.is_measurements_started == false || st.screen_clear == true) {
+		else if (st.is_measurements_started == false && st.screen_clear == true) {
 			OLED_manage();
 		}
 		else if (st._interrupt_flag == true && st.current_screen_type == SCREEN_MENU) {
+			st._interrupt_flag = false;
 			display_bottom_bar();
 		}
 	}

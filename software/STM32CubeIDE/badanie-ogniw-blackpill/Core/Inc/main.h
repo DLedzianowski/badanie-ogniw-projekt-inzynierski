@@ -114,7 +114,7 @@ struct state {
 extern struct state st;
 
 // Struktura z pomiarami
-#define BME_SENSOR_COUNT 1
+#define BME_SENSOR_COUNT 3
 struct sensors {
     float BME280temperature[BME_SENSOR_COUNT];
     int32_t BME280pressure[BME_SENSOR_COUNT];

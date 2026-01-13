@@ -37,7 +37,7 @@ SensorsFunc_t sensor_display[] = {
     display_sensor_second
 };
 
-MenuFunc_t menu_display[] = { //zakres ładowania(V), rozładowania(A)
+MenuFunc_t menu_display[] = {
 	display_menu_main,
 	display_menu_start,
 	//display_menu_battery_type,
