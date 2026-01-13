@@ -267,10 +267,10 @@ int main(void)
 			st._interrupt_flag = false;
 		}
 		// menu poczatkowe
-		else if (st.is_measurements_started == false && st.screen_clear == true) {
+		else if (st.is_measurements_started == false || st.screen_clear == true) {
 			OLED_manage();
 		}
-		else if (st._interrupt_flag == true && st.current_screen_type == SCREEN_MENU) {
+		if (st._interrupt_flag == true && st.current_screen_type == SCREEN_MENU && st.menu_current == MENU_MAIN) {
 			st._interrupt_flag = false;
 			display_bottom_bar();
 		}
