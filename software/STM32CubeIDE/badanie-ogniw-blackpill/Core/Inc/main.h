@@ -127,11 +127,6 @@ struct sensors {
 
     float voltage;
     float current;
-
-
-
-
-
 };
 extern struct sensors s;
 

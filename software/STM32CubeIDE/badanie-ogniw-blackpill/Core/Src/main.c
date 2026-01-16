@@ -130,7 +130,7 @@ const char* menu[SCREENS_MENU_NUM] = {
 	"Min. napiecie roz.",
 	"Prad rozadowania",
 	"Status",
-	"Tryb auto",
+	"Tryb",
 	"Stop"
 };
 
@@ -147,7 +147,7 @@ const char* status[STATUS_NUM] = {
 };
 const char* auto_mode[AUTO_MODE_NUM] = {
 	"Automatyczny",
-	"Reczny"
+	"Jednorazowy"
 };
 
 /* USER CODE END PV */

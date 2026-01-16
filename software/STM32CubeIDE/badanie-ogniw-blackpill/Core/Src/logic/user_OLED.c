@@ -167,10 +167,10 @@ void display_sensor_first(void) {
 	ILI9341_DrawText(5,  120, buffer, FONT4, WHITE, BLACK);
 
 	// CO2eq
-	snprintf(buffer, sizeof(buffer), "CO2:  %6u ppm", s.co2_eq_ppm);
-	x = ILI9341_GetTextWidth(buffer, FONT4);
-	ILI9341_DrawRectangle(x+5, 150, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
-	ILI9341_DrawText(5,  150, buffer, FONT4, WHITE, BLACK);
+//	snprintf(buffer, sizeof(buffer), "CO2:  %6u ppm", s.co2_eq_ppm);
+//	x = ILI9341_GetTextWidth(buffer, FONT4);
+//	ILI9341_DrawRectangle(x+5, 150, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
+//	ILI9341_DrawText(5,  150, buffer, FONT4, WHITE, BLACK);
 
 	// Etanol/512.0
 //	float ethanol = s.scaled_ethanol_signal / 512.0f;
@@ -184,26 +184,26 @@ void display_sensor_first(void) {
 	// ACS712_current
 	snprintf(buffer, sizeof(buffer), "Prad: %.2f A ", s.current);
 	x = ILI9341_GetTextWidth(buffer, FONT4);
-	ILI9341_DrawRectangle(x+5, 180, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
-	ILI9341_DrawText(5,  180, buffer, FONT4, WHITE, BLACK);
+	ILI9341_DrawRectangle(x+5, 150, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
+	ILI9341_DrawText(5,  150, buffer, FONT4, WHITE, BLACK);
 
 	// INA333_voltage
 	snprintf(buffer, sizeof(buffer), "Napiecie ogniwa: %.2f V ", s.voltage);
 	x = ILI9341_GetTextWidth(buffer, FONT4);
-	ILI9341_DrawRectangle(x+5, 210, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
-	ILI9341_DrawText(5,  210, buffer, FONT4, WHITE, BLACK);
+	ILI9341_DrawRectangle(x+5, 180, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
+	ILI9341_DrawText(5,  180, buffer, FONT4, WHITE, BLACK);
 
 	// PWM "ADC: %.2f%%\r\n",
 	snprintf(buffer, sizeof(buffer), "Prad ladowania: %.1fA", st.set_current_charge);
 	x = ILI9341_GetTextWidth(buffer, FONT4);
-	ILI9341_DrawRectangle(x+5, 240, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
-	ILI9341_DrawText(5, 240, buffer, FONT4, WHITE, BLACK);
+	ILI9341_DrawRectangle(x+5, 210, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
+	ILI9341_DrawText(5, 210, buffer, FONT4, WHITE, BLACK);
 
 	// PWM "ADC: %.2f%%\r\n",
 	snprintf(buffer, sizeof(buffer), "Prad rozladowania: %4.1f%%", st.get_current_charge);
 	x = ILI9341_GetTextWidth(buffer, FONT4);
-	ILI9341_DrawRectangle(x+5, 270, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
-	ILI9341_DrawText(5, 270, buffer, FONT4, WHITE, BLACK);
+	ILI9341_DrawRectangle(x+5, 240, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
+	ILI9341_DrawText(5, 240, buffer, FONT4, WHITE, BLACK);
 
 
 

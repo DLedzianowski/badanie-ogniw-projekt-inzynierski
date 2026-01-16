@@ -6,6 +6,7 @@
  */
 
 #include "logic/user_fnc.h"
+#include <stdlib.h>
 
 float adc_buffer[N_SAMPLES] = {0};
 uint8_t sample_idx = 0;
@@ -69,9 +70,9 @@ void read_sensors_data(void) {
 	}
 
 	// SGP
+	sgp_set_absolute_humidity((uint32_t)s.BME280humidity);
 	sgp_measure_iaq_blocking_read(&s.tvoc_ppb, &s.co2_eq_ppm);
 	sgp_measure_signals_blocking_read(&s.scaled_ethanol_signal, &s.scaled_h2_signal);
-	sgp_set_absolute_humidity((uint32_t)s.BME280humidity);
 
 	// PWM discharge
 	/*
@@ -86,12 +87,8 @@ void read_sensors_data(void) {
 
 }
 
-#define MAXtemperature 60.0
+#define MAXtemperature 50.0
 void control_battery_state(float *voltage, float *current, float *temperature) {
-	if(st.auto_mode_current == MANUAL_MODE) {
-		return;
-	}
-
 	static uint8_t out_of_range_counter = 0;
 
 	switch (st.battery_state) {
@@ -102,7 +99,12 @@ void control_battery_state(float *voltage, float *current, float *temperature) {
 			if (abs(*current) < st.charge_end_current) { // current condition
 				if (out_of_range_counter >= 3) {
 					out_of_range_counter = 0;
-					st.battery_state = BATTERY_DISCHARGING;
+					if(st.auto_mode_current == MANUAL_MODE) {
+						st.battery_state = BATTERY_IDLE;
+					}
+					else {
+						st.battery_state = BATTERY_DISCHARGING;
+					}
 				}
 				else {
 					out_of_range_counter++;
@@ -125,7 +127,12 @@ void control_battery_state(float *voltage, float *current, float *temperature) {
 			if (*voltage < st.discharge_cutoff_voltage) { // voltage condition
 				if (out_of_range_counter >= 3) {
 					out_of_range_counter = 0;
-					st.battery_state = BATTERY_CHARGING;
+					if(st.auto_mode_current == MANUAL_MODE) {
+						st.battery_state = BATTERY_IDLE;
+					}
+					else {
+						st.battery_state = BATTERY_CHARGING;
+					}
 				}
 				else {
 					out_of_range_counter++;
