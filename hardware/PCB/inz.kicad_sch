@@ -5,8 +5,9 @@
 	(uuid "3ad3be82-7cab-4f72-ad1b-fa82ddc3a5e0")
 	(paper "A4")
 	(title_block
-		(date "2025-12-07")
-		(rev "1.0")
+		(title "Stanowisko do badania parametrów pracy ogniw Li-Ion Li-Pol")
+		(date "2025-12-10")
+		(rev "0.1")
 		(company "Authors: D. Ledzianowski K. Lewandowska T. Majchrzak")
 	)
 	(lib_symbols
@@ -4224,7 +4225,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0d126994-12fe-4bd5-98c7-ceebd41adfbe")
 		(property "Reference" "J101"
@@ -4379,7 +4380,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "1cdf66c1-b51a-4ff4-9dc2-ad5f1146c447")
 		(property "Reference" "JP102"
 			(at 165.1 74.676 0)
@@ -6384,7 +6385,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "ebeb26e4-9ec4-4843-9e8b-2aeb47d440bc")
 		(property "Reference" "RL102"
 			(at 121.92 71.12 90)
@@ -6638,7 +6639,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fa931bce-f863-4d10-8593-c9326aaf0dc0")
 		(property "Reference" "RL101"

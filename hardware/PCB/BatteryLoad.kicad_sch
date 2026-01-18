@@ -5,8 +5,9 @@
 	(uuid "93db76c3-fdc8-471e-a384-0f439bdbcbd4")
 	(paper "A4")
 	(title_block
-		(date "2025-12-07")
-		(rev "1.0")
+		(title "Stanowisko do badania parametrów pracy ogniw Li-Ion Li-Pol")
+		(date "2025-12-10")
+		(rev "0.1")
 		(company "Authors: D. Ledzianowski K. Lewandowska T. Majchrzak")
 	)
 	(lib_symbols
@@ -1503,7 +1504,7 @@
 	)
 	(text "Bat-"
 		(exclude_from_sim no)
-		(at 200.152 100.838 0)
+		(at 173.482 100.838 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1534,7 +1535,7 @@
 	)
 	(text "Bat+"
 		(exclude_from_sim no)
-		(at 200.152 92.456 0)
+		(at 173.482 92.456 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1549,7 +1550,7 @@
 		(uuid "63c43eb3-7c16-4401-b403-d34707253c39")
 	)
 	(junction
-		(at 195.58 88.9)
+		(at 168.91 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "63f989ff-7ef7-4c9e-aab5-88e26db4a178")
@@ -1567,7 +1568,7 @@
 		(uuid "7dc20708-a524-47da-8049-4c63704abeeb")
 	)
 	(junction
-		(at 195.58 104.14)
+		(at 168.91 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b02a238e-98a8-47a5-9d0a-199b830c4644")
@@ -1610,7 +1611,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 88.9) (xy 195.58 80.01)
+			(xy 168.91 88.9) (xy 168.91 80.01)
 		)
 		(stroke
 			(width 0)
@@ -1640,7 +1641,17 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 88.9) (xy 196.85 88.9)
+			(xy 148.59 80.01) (xy 148.59 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "30c94900-4fcb-41fc-8093-028377ee6d33")
+	)
+	(wire
+		(pts
+			(xy 168.91 88.9) (xy 170.18 88.9)
 		)
 		(stroke
 			(width 0)
@@ -1650,7 +1661,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 104.14) (xy 196.85 104.14)
+			(xy 168.91 104.14) (xy 170.18 104.14)
 		)
 		(stroke
 			(width 0)
@@ -1710,7 +1721,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 95.25) (xy 195.58 88.9)
+			(xy 168.91 95.25) (xy 168.91 88.9)
 		)
 		(stroke
 			(width 0)
@@ -1730,7 +1741,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 104.14) (xy 195.58 113.03)
+			(xy 168.91 104.14) (xy 168.91 113.03)
 		)
 		(stroke
 			(width 0)
@@ -1750,16 +1761,6 @@
 	)
 	(wire
 		(pts
-			(xy 148.59 113.03) (xy 195.58 113.03)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7ed4b11e-db10-463c-9917-f0222c0da6c8")
-	)
-	(wire
-		(pts
 			(xy 119.38 114.3) (xy 119.38 113.03)
 		)
 		(stroke
@@ -1770,7 +1771,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 97.79) (xy 195.58 104.14)
+			(xy 168.91 97.79) (xy 168.91 104.14)
 		)
 		(stroke
 			(width 0)
@@ -1800,7 +1801,7 @@
 	)
 	(wire
 		(pts
-			(xy 148.59 80.01) (xy 195.58 80.01)
+			(xy 148.59 80.01) (xy 168.91 80.01)
 		)
 		(stroke
 			(width 0)
@@ -1817,16 +1818,6 @@
 			(type default)
 		)
 		(uuid "bec403fe-646c-425a-a933-39e14357fa3d")
-	)
-	(wire
-		(pts
-			(xy 148.59 80.01) (xy 148.59 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bf72334e-aa8c-4602-9e30-2af0ac59420e")
 	)
 	(wire
 		(pts
@@ -1878,8 +1869,18 @@
 		)
 		(uuid "eda7cdac-e073-4ebf-ad44-d2e15358e5f0")
 	)
+	(wire
+		(pts
+			(xy 148.59 113.03) (xy 168.91 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9b4bca8-549a-4b07-a1c0-f85d20bbfd74")
+	)
 	(label "Bat_load+"
-		(at 149.86 80.01 0)
+		(at 166.37 80.01 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1920,7 +1921,7 @@
 	)
 	(hierarchical_label "Bat_load+"
 		(shape input)
-		(at 196.85 88.9 0)
+		(at 170.18 88.9 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1942,7 +1943,7 @@
 	)
 	(hierarchical_label "Bat_load-"
 		(shape input)
-		(at 196.85 104.14 0)
+		(at 170.18 104.14 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2366,7 +2367,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
-		(at 200.66 95.25 0)
+		(at 173.99 95.25 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -2375,7 +2376,7 @@
 		(fields_autoplaced yes)
 		(uuid "4d83ff59-48f5-4b59-a402-c9f626715a1b")
 		(property "Reference" "J301"
-			(at 203.2 95.2499 0)
+			(at 176.53 95.2499 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2384,7 +2385,7 @@
 			)
 		)
 		(property "Value" "BAT_LOAD"
-			(at 203.2 97.7899 0)
+			(at 176.53 97.7899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2393,7 +2394,7 @@
 			)
 		)
 		(property "Footprint" "TerminalBlock:TerminalBlock_MaiXu_MX126-5.0-02P_1x02_P5.00mm"
-			(at 200.66 95.25 0)
+			(at 173.99 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2402,7 +2403,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 200.66 95.25 0)
+			(at 173.99 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2411,7 +2412,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 200.66 95.25 0)
+			(at 173.99 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2420,7 +2421,7 @@
 			)
 		)
 		(property "Alternatywa" ""
-			(at 200.66 95.25 0)
+			(at 173.99 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2429,7 +2430,7 @@
 			)
 		)
 		(property "Sim.Type" ""
-			(at 200.66 95.25 0)
+			(at 173.99 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)

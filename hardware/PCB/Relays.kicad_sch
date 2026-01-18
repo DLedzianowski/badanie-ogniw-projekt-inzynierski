@@ -5,8 +5,9 @@
 	(uuid "89ec24d9-9ec0-4e6d-b48f-bf8befddce61")
 	(paper "A4")
 	(title_block
-		(date "2025-12-07")
-		(rev "1.0")
+		(title "Stanowisko do badania parametrów pracy ogniw Li-Ion Li-Pol")
+		(date "2025-12-10")
+		(rev "0.1")
 		(company "Authors: D. Ledzianowski K. Lewandowska T. Majchrzak")
 	)
 	(lib_symbols
@@ -2964,7 +2965,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "7b6d5122-4cbe-4d1d-8ca3-003b395e9f8d")
 		(property "Reference" "J501"
 			(at 69.85 90.17 0)

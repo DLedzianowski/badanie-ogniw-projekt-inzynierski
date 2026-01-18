@@ -194,41 +194,39 @@ void display_sensor_first(void) {
 	ILI9341_DrawText(5,  180, buffer, FONT4, WHITE, BLACK);
 
 	// PWM "ADC: %.2f%%\r\n",
-	snprintf(buffer, sizeof(buffer), "Prad ladowania: %.1fA", st.set_current_charge);
+	snprintf(buffer, sizeof(buffer), "Prad ladowania:%4.1f%% ", st.get_current_charge);
 	x = ILI9341_GetTextWidth(buffer, FONT4);
 	ILI9341_DrawRectangle(x+5, 210, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
 	ILI9341_DrawText(5, 210, buffer, FONT4, WHITE, BLACK);
 
 	// PWM "ADC: %.2f%%\r\n",
-	snprintf(buffer, sizeof(buffer), "Prad rozladowania: %4.1f%%", st.get_current_charge);
+	snprintf(buffer, sizeof(buffer), "Prad rozladowania: %.1fA", st.set_current_discharge);
 	x = ILI9341_GetTextWidth(buffer, FONT4);
 	ILI9341_DrawRectangle(x+5, 240, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
 	ILI9341_DrawText(5, 240, buffer, FONT4, WHITE, BLACK);
 
-
-
+	// state
+	snprintf(buffer, sizeof(buffer), "Aktualny stan: %s", status[st.battery_state]);
+	x = ILI9341_GetTextWidth(buffer, FONT4);
+	ILI9341_DrawRectangle(x+5, 270, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
+	ILI9341_DrawText(5,  270, buffer, FONT4, WHITE, BLACK);
 }
 
 void display_sensor_second(void) {
 	char buffer[150];
 	uint8_t x;
 
-	// state
-	snprintf(buffer, sizeof(buffer), "Aktualny stan: %s", status[st.battery_state]);
-	x = ILI9341_GetTextWidth(buffer, FONT4);
-	ILI9341_DrawRectangle(x+5, 5, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
-	ILI9341_DrawText(5,  5, buffer, FONT4, WHITE, BLACK);
 
 	// Battery current
 	snprintf(buffer, sizeof(buffer), "Aktualne ogniwo: %s", (st.battery_current == 0) ? "Brak" : batteries[st.battery_current]);
 	x = ILI9341_GetTextWidth(buffer, FONT4);
-	ILI9341_DrawRectangle(x+5, 30, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
+	ILI9341_DrawRectangle(x+5, 5, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
 	ILI9341_DrawText(5,  30, buffer, FONT4, WHITE, BLACK);
 
 	// Current auto mode
 	snprintf(buffer, sizeof(buffer), "Aktualny tryb:%s", auto_mode[st.auto_mode_current]);
 	x = ILI9341_GetTextWidth(buffer, FONT4);
-	ILI9341_DrawRectangle(x+5, 60, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
+	ILI9341_DrawRectangle(x+5, 35, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
 	ILI9341_DrawText(5,  60, buffer, FONT4, WHITE, BLACK);
 }
 

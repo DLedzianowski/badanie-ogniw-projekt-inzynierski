@@ -143,7 +143,7 @@ const char* batteries[BATERYS_NUM] = {
 const char* status[STATUS_NUM] = {
 	"Bezczynny",
 	"Ladowanie",
-	"Rozladowywanie"
+	"Rozladow."
 };
 const char* auto_mode[AUTO_MODE_NUM] = {
 	"Automatyczny",
@@ -255,14 +255,14 @@ int main(void)
 			SDcardWriteData();
 
 			// Transmit over uart
-			LOG_DATA("%u,%u,%.2f,%.2f,"
+			LOG_DATA("%u,%u,"
 		             "%.2f,%ld,%.2f,%ld,%.2f,%ld,%.2f,"
 		             "%.2f,%.2f,%.2f,%.2f,"
-		             "%i,%i,%i,%i,%i\r\n",
-					s.tvoc_ppb, s.co2_eq_ppm, s.scaled_ethanol_signal/512.0f, s.scaled_h2_signal/512.0f,
+		             "%i,%i,%i,%i,%i,%i\r\n",
+					s.tvoc_ppb, s.co2_eq_ppm,
 					s.BME280temperature[0], s.BME280pressure[0], s.BME280temperature[1], s.BME280pressure[1], s.BME280temperature[2], s.BME280pressure[2], s.BME280humidity,
-					s.voltage, s.current, st.set_current_charge, st.set_current_discharge,
-					st.battery_state, st.auto_mode_current, st.is_measurements_started, st.discharge_relay, st.charge_relay);
+					s.voltage, s.current, st.get_current_charge, st.set_current_discharge,
+					st.battery_state, st.auto_mode_current, st.battery_current, st.is_measurements_started, st.discharge_relay, st.charge_relay);
 
 			st._interrupt_flag = false;
 		}
@@ -362,13 +362,13 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
     }
     // Set battery type based on the state of PB14 and PB15 pins
     else if (GPIO_Pin == GPIO_PIN_14) {
-        if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET)
+        if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
             st.battery_current = 1;
         else
             st.battery_current = 0;
     }
     else if (GPIO_Pin == GPIO_PIN_15) {
-        if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15) == GPIO_PIN_SET)
+        if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15) == GPIO_PIN_RESET)
             st.battery_current = 2;
         else
             st.battery_current = 0;
