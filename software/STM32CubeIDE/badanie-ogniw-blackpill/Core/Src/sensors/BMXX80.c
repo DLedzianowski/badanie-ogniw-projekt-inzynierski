@@ -9,13 +9,16 @@
  *
  */
 #define CS1_GPIO_Port GPIOB
-#define CS1_Pin GPIO_PIN_5
+#define CS1_Pin GPIO_PIN_8
 
 #define CS2_GPIO_Port GPIOB
 #define CS2_Pin GPIO_PIN_3
 
 #define CS3_GPIO_Port GPIOB
-#define CS3_Pin GPIO_PIN_8
+#define CS3_Pin GPIO_PIN_5
+
+
+
 
 #include "main.h"
 #include "stm32f4xx_hal.h"

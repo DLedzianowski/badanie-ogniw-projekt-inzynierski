@@ -136,8 +136,9 @@ const char* menu[SCREENS_MENU_NUM] = {
 
 const char* batteries[BATERYS_NUM] = {
 	"Brak ogniwa",
-	"Li-Pol",
-	"Li-Ion"
+	"Li-Ion",
+	"Li-Pol"
+
 };
 
 const char* status[STATUS_NUM] = {
@@ -252,7 +253,7 @@ int main(void)
 			OLED_manage();
 
 			// SD
-			SDcardWriteData();
+			//SDcardWriteData();
 
 			// Transmit over uart
 			LOG_DATA("%u,%u,"

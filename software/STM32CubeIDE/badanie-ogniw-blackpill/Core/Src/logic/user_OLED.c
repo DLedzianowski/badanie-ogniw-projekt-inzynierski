@@ -528,7 +528,7 @@ void action_menu_start(void) {
 
 	// SD
 	if (st.is_measurements_started == false) {
-		SDcardInit("test.csv");
+		//SDcardInit("test.csv");
 	}
 
 	st.is_measurements_started = true;
@@ -628,6 +628,8 @@ void display_bottom_bar(void) {
 
 	// charge potentiometer
 	get_current_charge_val();
+
+	BATT_state();
 
 	// Arrow up current_charging
 	uint16_t x_pos = 5;

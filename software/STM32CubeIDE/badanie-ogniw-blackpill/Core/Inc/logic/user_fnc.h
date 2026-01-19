@@ -27,6 +27,6 @@ void read_sensors_data(void);
 void control_battery_state(float *voltage, float *current, float *temperature);
 void handle_battery_state(void);
 void ENC_SetPosition(int8_t pos);
-
-
+void BATT_state(void);
+float absolute_humidity_calc(float RH, float T);
 #endif /* INC_LOGIC_USER_FNC_H_ */

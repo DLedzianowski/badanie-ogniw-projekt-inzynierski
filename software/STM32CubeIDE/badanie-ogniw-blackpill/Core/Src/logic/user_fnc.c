@@ -15,11 +15,11 @@ float current_filtered_read(void) {
 	/* IN8
 	 * ACS712
 	 */
+	float current = (float)ADC_Convert_Channel(ADC_CHANNEL_8);
 
-	float adc_val = (float)ADC_Convert_Channel(ADC_CHANNEL_8);
-	//float current = 0.007536f * adc_val - 15.76f;4095.0f
-	float voltage = adc_val * 3.3f / 4095.0f; // adc * Vref / 2^12
-	float current = (voltage - 2.5f) / 0.185f; // (V - Voff) / ACS_Sensitivity
+	//float adc_val = (float)ADC_Convert_Channel(ADC_CHANNEL_8);
+	//float voltage = adc_val * 3.3f / 4095.0f; // adc * Vref / 2^12
+	//float current = (voltage - 1.65f) / 0.0625f; // (V - Voff) / ACS_Sensitivity(0.625/10)
 
 	// Current filtering
 	adc_buffer[sample_idx] = current;
@@ -32,7 +32,8 @@ float current_filtered_read(void) {
 }
 
 void get_current_charge_val() {
-	st.get_current_charge = (ADC_Convert_Channel(ADC_CHANNEL_1) * 100.0f) / 4095.0f;
+	// st.get_current_charge = (ADC_Convert_Channel(ADC_CHANNEL_0) * 100.0f) / 4095.0f;
+	st.get_current_charge = ADC_Convert_Channel(ADC_CHANNEL_0);
 }
 
 void current_filter_reset(void) {
@@ -48,14 +49,16 @@ void read_sensors_data(void) {
 	 * 4.195V -> raw adc 3337
 	 * 3.075V -> raw adc 2514
 	 */
-	//s.voltage = 0.001361f * ADC_Convert_Channel(ADC_CHANNEL_9) - 0.346f;
-	s.voltage = 2.0f * ADC_Convert_Channel(ADC_CHANNEL_9) * 3.3f / 4095.0f;
+	//s.voltage = 2.0f * ADC_Convert_Channel(ADC_CHANNEL_9) * 3.3f / 4095.0f;
+	s.voltage = ADC_Convert_Channel(ADC_CHANNEL_9);
 
 	// moving average filter
 	s.current = current_filtered_read();
 
 	// charge potentiometer
 	get_current_charge_val();
+
+	BATT_state();
 
 
 	// BMP
@@ -70,7 +73,7 @@ void read_sensors_data(void) {
 	}
 
 	// SGP
-	sgp_set_absolute_humidity((uint32_t)s.BME280humidity);
+	sgp_set_absolute_humidity((uint32_t)absolute_humidity_calc(s.BME280humidity, s.BME280temperature[0]));
 	sgp_measure_iaq_blocking_read(&s.tvoc_ppb, &s.co2_eq_ppm);
 	sgp_measure_signals_blocking_read(&s.scaled_ethanol_signal, &s.scaled_h2_signal);
 
@@ -150,6 +153,15 @@ void control_battery_state(float *voltage, float *current, float *temperature) {
 }
 
 void handle_battery_state() {
+	static uint8_t prev_state = BATTERY_IDLE;
+    if (st.battery_state != prev_state) {
+        prev_state = st.battery_state;
+
+    	HAL_GPIO_WritePin(R1IN1_GPIO_Port, R1IN1_Pin, false);
+    	HAL_GPIO_WritePin(R1IN2_GPIO_Port, R1IN2_Pin, false);
+        return;
+    }
+
 	switch (st.battery_state) {
 	case BATTERY_IDLE:
 		st.discharge_relay = false;
@@ -165,12 +177,31 @@ void handle_battery_state() {
 		st.discharge_relay = true;
 		st.charge_relay = false;
 		break;
+	default:
+		st.discharge_relay = false;
+		st.charge_relay = false;
 	}
-	HAL_GPIO_WritePin(R1IN1_GPIO_Port, R1IN1_Pin, !st.charge_relay);
-	HAL_GPIO_WritePin(R1IN2_GPIO_Port, R1IN2_Pin, !st.discharge_relay);
+	HAL_GPIO_WritePin(R1IN1_GPIO_Port, R1IN1_Pin, st.charge_relay);
+	HAL_GPIO_WritePin(R1IN2_GPIO_Port, R1IN2_Pin, st.discharge_relay);
 }
 
 void ENC_SetPosition(int8_t pos) {
     __HAL_TIM_SET_COUNTER(&htim1, (int16_t)(pos << 2));
     st.enc_count = pos;
+}
+
+void BATT_state(void) {
+    if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
+        st.battery_current = 1;
+    else
+        st.battery_current = 0;
+
+    if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15) == GPIO_PIN_RESET)
+        st.battery_current = 2;
+    else
+        st.battery_current = 0;
+}
+
+float absolute_humidity_calc(float RH, float T) {
+	return 216.78f*((RH/100.0f)*6.112f*expf((17.62f*T)/(243.12f+T)))/(273.15f+T);
 }
