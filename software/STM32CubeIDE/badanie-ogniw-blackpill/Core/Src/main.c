@@ -255,7 +255,7 @@ int main(void)
 			// SD
 			//SDcardWriteData();
 
-			// Transmit over uart
+			// Transmit over usb
 			LOG_DATA("%u,%u,"
 		             "%.2f,%ld,%.2f,%ld,%.2f,%ld,%.2f,"
 		             "%.2f,%.2f,%.2f,%.2f,"

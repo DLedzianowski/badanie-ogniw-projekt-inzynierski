@@ -12,12 +12,20 @@ float adc_buffer[N_SAMPLES] = {0};
 uint8_t sample_idx = 0;
 
 float current_filtered_read(void) {
-	/* IN8
+	/* IN9
 	 * ACS712
 	 */
-	float current = (float)ADC_Convert_Channel(ADC_CHANNEL_8);
+	//float current = (float)ADC_Convert_Channel(ADC_CHANNEL_9);
+//2042 0A
+//2005 0.5A
+//2080 -0.5A
+	#define ADC_ZERO   2042.0f
+	#define ADC_PER_A  (37.0f / 0.5f)
 
-	//float adc_val = (float)ADC_Convert_Channel(ADC_CHANNEL_8);
+	float adc = (float)ADC_Convert_Channel(ADC_CHANNEL_9);
+	float current = (adc - ADC_ZERO) / ADC_PER_A;
+
+	//float adc_val = (float)ADC_Convert_Channel(ADC_CHANNEL_9);
 	//float voltage = adc_val * 3.3f / 4095.0f; // adc * Vref / 2^12
 	//float current = (voltage - 1.65f) / 0.0625f; // (V - Voff) / ACS_Sensitivity(0.625/10)
 
@@ -33,7 +41,7 @@ float current_filtered_read(void) {
 
 void get_current_charge_val() {
 	// st.get_current_charge = (ADC_Convert_Channel(ADC_CHANNEL_0) * 100.0f) / 4095.0f;
-	st.get_current_charge = ADC_Convert_Channel(ADC_CHANNEL_0);
+	st.get_current_charge = 4095.0f - ADC_Convert_Channel(ADC_CHANNEL_0);
 }
 
 void current_filter_reset(void) {
@@ -44,14 +52,22 @@ void current_filter_reset(void) {
 }
 
 void read_sensors_data(void) {
-	// ADC
-	/* ina333 IN9
-	 * 4.195V -> raw adc 3337
-	 * 3.075V -> raw adc 2514
+	/* IN8
+	 * INA333
+	 * 3.3636V -> adc 3.44
 	 */
-	//s.voltage = 2.0f * ADC_Convert_Channel(ADC_CHANNEL_9) * 3.3f / 4095.0f;
-	s.voltage = ADC_Convert_Channel(ADC_CHANNEL_9);
+	// ADC
+	//s.voltage = 2.0f * ADC_Convert_Channel(ADC_CHANNEL_8) * 3.3f / 4095.0f;
+	//s.voltage = ADC_Convert_Channel(ADC_CHANNEL_8);
+	#define ADC_3V   1950.0f
+	#define ADC_4V2  2550.0f
+	#define V_3V     3.0f
+	#define V_4V2    4.2f
+	#define V_a  ((V_4V2 - V_3V) / (ADC_4V2 - ADC_3V))
+	#define V_b  (V_3V - V_a * ADC_3V)
 
+	s.voltage = V_a * (float)ADC_Convert_Channel(ADC_CHANNEL_8) + V_b;
+	
 	// moving average filter
 	s.current = current_filtered_read();
 
@@ -193,10 +209,7 @@ void ENC_SetPosition(int8_t pos) {
 void BATT_state(void) {
     if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
         st.battery_current = 1;
-    else
-        st.battery_current = 0;
-
-    if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15) == GPIO_PIN_RESET)
+    else if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15) == GPIO_PIN_RESET)
         st.battery_current = 2;
     else
         st.battery_current = 0;

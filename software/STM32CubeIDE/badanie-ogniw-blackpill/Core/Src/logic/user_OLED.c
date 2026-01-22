@@ -519,8 +519,18 @@ void display_menu_stop(void) {
  */
 
 void action_menu_main(void) {
-	ENC_SetPosition(0);
 	st.menu_current = st.menu_current_ptr;
+
+    if (st.menu_current_ptr == MENU_STATUS){  // current status ptr
+        ENC_SetPosition(st.status_current);
+    }
+    else if (st.menu_current_ptr == MENU_AUTO_MODE){  // current mode ptr
+        ENC_SetPosition(st.auto_mode_current);
+    }
+    else
+    {
+        ENC_SetPosition(1);
+    }
 }
 
 void action_menu_start(void) {
