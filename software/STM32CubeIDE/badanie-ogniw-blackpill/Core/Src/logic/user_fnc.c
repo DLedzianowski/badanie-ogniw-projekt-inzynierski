@@ -118,12 +118,7 @@ void control_battery_state(float *voltage, float *current, float *temperature) {
 			if (fabsf(*current) < st.charge_end_current) { // current condition
 				if (out_of_range_counter >= 3) {
 					out_of_range_counter = 0;
-					if(st.auto_mode_current == MANUAL_MODE) {
-						st.battery_state = BATTERY_IDLE;
-					}
-					else {
-						st.battery_state = BATTERY_DISCHARGING;
-					}
+					st.battery_state = BATTERY_DISCHARGING;
 				}
 				else {
 					out_of_range_counter++;

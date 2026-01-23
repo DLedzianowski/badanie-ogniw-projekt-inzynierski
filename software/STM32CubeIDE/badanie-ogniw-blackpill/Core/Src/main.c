@@ -100,22 +100,22 @@ struct state st = {
 	.screen_menu_current = 0,
 	.battery_ptr = 0,
 	.battery_current = 0,
-	.status_ptr = 0,
-	.status_current = 0,
-	.auto_mode_ptr = 0,
-	.auto_mode_current = 0,
+	.status_ptr = 1,     // BATTERY_CHARGING = 1, BATTERY_DISCHARGING = 2
+	.status_current = 1, // BATTERY_CHARGING = 1, BATTERY_DISCHARGING = 2
+	.auto_mode_ptr = 1,     // AUTO_MODE00 = 0, MANUAL_MODE = 1
+	.auto_mode_current = 1, // AUTO_MODE00 = 0, MANUAL_MODE = 1
 	.enc_count = 0,
 	.prev_enc_count = 0,
 	.enc_offset = 0,
-    .set_current_discharge = 0,
-    .set_current_discharge_prev = 0,
+    .set_current_discharge = 0.5,      // prad rozłaowywania
+    .set_current_discharge_prev = 0.5, // prad rozłaowywania
     .set_current_charge = 0,
     .set_current_charge_prev = 0,
     .get_current_charge = 0,
-    .charge_end_current = 0.05,
-    .charge_end_current_prev = 0.05,
-    .discharge_cutoff_voltage = 3.0,
-    .discharge_cutoff_voltage_prev = 3.0,
+    .charge_end_current = 0.05,      // minimalny prad ladowania
+    .charge_end_current_prev = 0.05, // minimalny prad ladowania
+    .discharge_cutoff_voltage = 3.0,      // minimalne napiecie rozladowywania
+    .discharge_cutoff_voltage_prev = 3.0, // minimalne napiecie rozladowywania
 
 	.is_screen_menu = true,
 	.screen_clear = true,
@@ -214,11 +214,17 @@ int main(void)
 		if (!BME280_Init(&hspi1, BME280_TEMPERATURE_16BIT, BME280_PRESSURE_ULTRALOWPOWER, BME280_HUMINIDITY_ULTRAHIGH, BME280_FORCEDMODE, index)) {
 			LOG_DEBUG("BMP280 sensor error\r\n");
 		}
+		else{
+			LOG_DEBUG("BMP280 sensor ok\r\n");
+		}
 	}
 
 	// SGP
 	if (sgp_probe() != STATUS_OK) {
 		LOG_DEBUG("SGP sensor error\r\n");
+	}
+	else {
+		LOG_DEBUG("SGP sensor ok\r\n");
 	}
 
 
@@ -228,7 +234,7 @@ int main(void)
 	HAL_TIM_Base_Start_IT(&htim11);
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 
-	OLED_options_init();
+	//OLED_options_init();
 
 	LOG_DEBUG("Complete peripheral initialization\r\n");
 	HAL_Delay(1000);
@@ -246,7 +252,7 @@ int main(void)
 			read_sensors_data();
 
 			// charging state
-			control_battery_state(&s.voltage, &s.current,&s.BME280temperature[0]); // todo
+			//control_battery_state(&s.voltage, &s.current,&s.BME280temperature[0]); // todo
 			handle_battery_state();
 
 			// OLED
@@ -362,14 +368,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
         }
     }
     // Set battery type based on the state of PB14 and PB15 pins
-    else if (GPIO_Pin == GPIO_PIN_14) {
+    else if (GPIO_Pin == GPIO_PIN_14 || GPIO_Pin == GPIO_PIN_15) {
         if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
             st.battery_current = 1;
-        else
-            st.battery_current = 0;
-    }
-    else if (GPIO_Pin == GPIO_PIN_15) {
-        if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15) == GPIO_PIN_RESET)
+        else if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15) == GPIO_PIN_RESET)
             st.battery_current = 2;
         else
             st.battery_current = 0;
