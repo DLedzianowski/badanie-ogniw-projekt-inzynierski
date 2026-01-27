@@ -39,9 +39,42 @@ float current_filtered_read(void) {
 	return sum / (float)N_SAMPLES;
 }
 
-void get_current_charge_val() {
-	// st.get_current_charge = (ADC_Convert_Channel(ADC_CHANNEL_0) * 100.0f) / 4095.0f;
-	st.get_current_charge = 4095.0f - ADC_Convert_Channel(ADC_CHANNEL_0);
+void get_current_charge_val(void){
+	static const float adc_points[8] = {
+		40.0f, 200.0f, 430.0f, 660.0f,
+		850.0f, 1130.0f, 1600.0f, 3000.0f
+	};
+
+	static const float current_points[8] = {
+		0.05f, 0.15f, 0.28f, 0.40f,
+		0.55f, 0.70f, 0.85f, 0.95f
+	};
+
+    float adc = 4095.0f - ADC_Convert_Channel(ADC_CHANNEL_0);
+    float current = current_points[0];
+
+    // ograniczenia
+    if (adc <= adc_points[0]) {
+        current = current_points[0];
+    }
+    else if (adc >= adc_points[7]) {
+        current = current_points[7];
+    }
+    else {
+        for (int i = 0; i < 7; i++) {
+            if (adc <= adc_points[i + 1]) {
+                float x0 = adc_points[i];
+                float x1 = adc_points[i + 1];
+                float y0 = current_points[i];
+                float y1 = current_points[i + 1];
+
+                current = y0 + (adc - x0) * (y1 - y0) / (x1 - x0);
+                break;
+            }
+        }
+    }
+
+    st.get_current_charge = current;
 }
 
 void current_filter_reset(void) {
@@ -57,8 +90,6 @@ void read_sensors_data(void) {
 	 * 3.3636V -> adc 3.44
 	 */
 	// ADC
-	//s.voltage = 2.0f * ADC_Convert_Channel(ADC_CHANNEL_8) * 3.3f / 4095.0f;
-	//s.voltage = ADC_Convert_Channel(ADC_CHANNEL_8);
 	#define ADC_3V   1950.0f
 	#define ADC_4V2  2550.0f
 	#define V_3V     3.0f
@@ -94,10 +125,6 @@ void read_sensors_data(void) {
 	sgp_measure_signals_blocking_read(&s.scaled_ethanol_signal, &s.scaled_h2_signal);
 
 	// PWM discharge
-	/*
-	 * 0.1A   0.2A   0.3A   0.4A   0.5A
-	 * 0.1052 0.2050 0.3050 0.4047 0.5040
-	 */
 	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, (uint32_t)((st.set_current_discharge / 3.3f) * (float)htim3.Init.Period));
 
 

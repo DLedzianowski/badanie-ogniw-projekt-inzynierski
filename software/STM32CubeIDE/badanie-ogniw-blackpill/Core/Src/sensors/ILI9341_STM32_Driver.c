@@ -220,7 +220,7 @@ void ILI9341_Init(void)
 	ILI9341_WriteCommand(0x29);
 
 	//STARTING ROTATION
-	ILI9341_SetRotation(SCREEN_HORIZONTAL_1);
+	ILI9341_SetRotation(SCREEN_VERTICAL_1);// bylo SCREEN_HORIZONTAL_1
 }
 
 void ILI9341_SetRotation(uint8_t rotation)

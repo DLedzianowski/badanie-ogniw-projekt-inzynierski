@@ -16,33 +16,6 @@
   ******************************************************************************
   */
 
-/*
- * 	PINOUT SPI1
- * 	CLK  	PA5
- * 	MISO	PA6
- * 	MOSI 	PB7
- *
- * 	OLED +3.3V
- *	--CS	PA1
- *	--RST	PA2
- *	--DC	PA3
- *
- *	BME1	+3.3V
- *	--CS	PB5
- *
- *	BMP2	+3.3V
- *	--CS	PB3
- *
- *	BMP3	+3.3V
- *	--CS	PB8
- *
- *	SD card	+3.3V  == exFAT
- *	--CS	PA4
- *
- *	PINOUT I2C
- *	SGP30 0x58
- */
-
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -100,22 +73,22 @@ struct state st = {
 	.screen_menu_current = 0,
 	.battery_ptr = 0,
 	.battery_current = 0,
-	.status_ptr = 1,     // BATTERY_CHARGING = 1, BATTERY_DISCHARGING = 2
-	.status_current = 1, // BATTERY_CHARGING = 1, BATTERY_DISCHARGING = 2
-	.auto_mode_ptr = 1,     // AUTO_MODE00 = 0, MANUAL_MODE = 1
-	.auto_mode_current = 1, // AUTO_MODE00 = 0, MANUAL_MODE = 1
+	.status_ptr = 0,     // BATTERY_CHARGING = 1, BATTERY_DISCHARGING = 2
+	.status_current = 0, // BATTERY_CHARGING = 1, BATTERY_DISCHARGING = 2
+	.auto_mode_ptr = 0,     // AUTO_MODE00 = 0, MANUAL_MODE = 1
+	.auto_mode_current = 0, // AUTO_MODE00 = 0, MANUAL_MODE = 1
 	.enc_count = 0,
 	.prev_enc_count = 0,
 	.enc_offset = 0,
-    .set_current_discharge = 0.5,      // prad rozłaowywania
-    .set_current_discharge_prev = 0.5, // prad rozłaowywania
+    .set_current_discharge = 0,      // prad rozłaowywania
+    .set_current_discharge_prev = 0, // prad rozłaowywania
     .set_current_charge = 0,
     .set_current_charge_prev = 0,
     .get_current_charge = 0,
-    .charge_end_current = 0.05,      // minimalny prad ladowania
-    .charge_end_current_prev = 0.05, // minimalny prad ladowania
-    .discharge_cutoff_voltage = 3.0,      // minimalne napiecie rozladowywania
-    .discharge_cutoff_voltage_prev = 3.0, // minimalne napiecie rozladowywania
+    .charge_end_current = 0,      // minimalny prad ladowania
+    .charge_end_current_prev = 0, // minimalny prad ladowania
+    .discharge_cutoff_voltage = 0,      // minimalne napiecie rozladowywania
+    .discharge_cutoff_voltage_prev = 0, // minimalne napiecie rozladowywania
 
 	.is_screen_menu = true,
 	.screen_clear = true,
@@ -144,7 +117,7 @@ const char* batteries[BATERYS_NUM] = {
 const char* status[STATUS_NUM] = {
 	"Bezczynny",
 	"Ladowanie",
-	"Rozladow."
+	"Rozadow."
 };
 const char* auto_mode[AUTO_MODE_NUM] = {
 	"Automatyczny",
@@ -234,7 +207,7 @@ int main(void)
 	HAL_TIM_Base_Start_IT(&htim11);
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 
-	//OLED_options_init();
+	OLED_options_init();
 
 	LOG_DEBUG("Complete peripheral initialization\r\n");
 	HAL_Delay(1000);
@@ -252,14 +225,14 @@ int main(void)
 			read_sensors_data();
 
 			// charging state
-			//control_battery_state(&s.voltage, &s.current,&s.BME280temperature[0]); // todo
+			control_battery_state(&s.voltage, &s.current,&s.BME280temperature[0]);
 			handle_battery_state();
 
 			// OLED
 			OLED_manage();
 
 			// SD
-			//SDcardWriteData();
+			SDcardWriteData();
 
 			// Transmit over usb
 			LOG_DATA("%u,%u,"
@@ -369,12 +342,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
     }
     // Set battery type based on the state of PB14 and PB15 pins
     else if (GPIO_Pin == GPIO_PIN_14 || GPIO_Pin == GPIO_PIN_15) {
-        if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
-            st.battery_current = 1;
-        else if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15) == GPIO_PIN_RESET)
-            st.battery_current = 2;
-        else
-            st.battery_current = 0;
+        BATT_state();
     }
 }
 

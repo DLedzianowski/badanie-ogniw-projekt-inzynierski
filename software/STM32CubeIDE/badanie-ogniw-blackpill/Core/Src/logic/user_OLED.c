@@ -68,7 +68,6 @@ void OLED_manage(void) {
 	case SCREEN_MENU:
 		if (st.is_enc_pressed) {
 			menu_actions[st.menu_current]();
-			//st.enc_offset = __HAL_TIM_GET_COUNTER(&htim1) / 4;
 			st.is_enc_pressed = false;
 			st.screen_clear = true;
 		}
@@ -194,7 +193,7 @@ void display_sensor_first(void) {
 	ILI9341_DrawText(5,  180, buffer, FONT4, WHITE, BLACK);
 
 	// PWM "ADC: %.2f%%\r\n",
-	snprintf(buffer, sizeof(buffer), "Prad ladowania:%4.1f%% ", st.get_current_charge);
+	snprintf(buffer, sizeof(buffer), "Prad ladowania:%4.2fA ", st.get_current_charge);
 	x = ILI9341_GetTextWidth(buffer, FONT4);
 	ILI9341_DrawRectangle(x+5, 210, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
 	ILI9341_DrawText(5, 210, buffer, FONT4, WHITE, BLACK);
