@@ -136,7 +136,7 @@ void display_sensor_first(void) {
 	uint8_t x;
 
 	// Temperatura 1
-	snprintf(buffer, sizeof(buffer), "Temp. ogniwa1: %5.2f C ", s.BME280temperature[0]);
+	snprintf(buffer, sizeof(buffer), "Temp. ogniwa1: %5.1f C ", s.BME280temperature[0]);
 	x = ILI9341_GetTextWidth(buffer, FONT4);
 	ILI9341_DrawRectangle(x+5, 5, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
 	ILI9341_DrawText(5, 5, buffer, FONT4, WHITE, BLACK);
@@ -193,7 +193,7 @@ void display_sensor_first(void) {
 	ILI9341_DrawText(5,  180, buffer, FONT4, WHITE, BLACK);
 
 	// PWM "ADC: %.2f%%\r\n",
-	snprintf(buffer, sizeof(buffer), "Prad ladowania:%4.2fA ", st.get_current_charge);
+	snprintf(buffer, sizeof(buffer), "Prad ladowania: %4.2fA ", st.get_current_charge);
 	x = ILI9341_GetTextWidth(buffer, FONT4);
 	ILI9341_DrawRectangle(x+5, 210, ILI9341_SCREEN_WIDTH-x-5, FONT4h, BLACK);
 	ILI9341_DrawText(5, 210, buffer, FONT4, WHITE, BLACK);
@@ -537,7 +537,7 @@ void action_menu_start(void) {
 
 	// SD
 	if (st.is_measurements_started == false) {
-		//SDcardInit("test.csv");
+		SDcardInit("test.csv");
 	}
 
 	st.is_measurements_started = true;
@@ -644,7 +644,7 @@ void display_bottom_bar(void) {
 	uint16_t x_pos = 5;
 	ILI9341_DrawImageWH(x_pos, y_pos, &img_arrowup);
 	x_pos += img_arrowup.width + 4;
-	snprintf(buffer, sizeof(buffer), "%.1f%%", st.get_current_charge);
+	snprintf(buffer, sizeof(buffer), "%.1fA", st.get_current_charge);
 	ILI9341_DrawText(x_pos, y_pos, buffer, FONT4, WHITE, BLACK);
 
 	// Current battery

@@ -18,10 +18,12 @@ void SDcardInit(const char *folder_name) {
 			break;
 		}
 		LOG_DEBUG("Error mounting filesystem! (%d). Retrying...\r\n", sd.res);
-		ILI9341_DrawText(((ILI9341_SCREEN_WIDTH - ILI9341_GetTextWidth("Error in file!", FONT1)) / 2), ILI9341_SCREEN_HEIGHT-FONT1h, "Error in file!", FONT1, RED, BLACK);
+		//ILI9341_DrawText(((ILI9341_SCREEN_WIDTH - ILI9341_GetTextWidth("Error in file!", FONT1)) / 2), ILI9341_SCREEN_HEIGHT-FONT1h, "Error in file!", FONT1, RED, BLACK);
+		ILI9341_DrawRectangle(0, ILI9341_SCREEN_HEIGHT-1, ILI9341_SCREEN_WIDTH, 1, RED);
 		HAL_Delay(RETRY_DELAY_MS);
 	}
 
+	HAL_Delay(100);
 	retry_count = 2;
 	while (retry_count--) {
 		sd.res = f_open(&sd.fil, folder_name, FA_OPEN_ALWAYS | FA_WRITE | FA_READ);
@@ -32,6 +34,7 @@ void SDcardInit(const char *folder_name) {
 		HAL_Delay(RETRY_DELAY_MS);
 	}
 
+	HAL_Delay(100);
 	sd.res = f_lseek(&sd.fil, f_size(&sd.fil));
 	if (sd.res != FR_OK) {
 		LOG_DEBUG("Error seeking to end of file! (%d)\r\n", sd.res);
@@ -81,7 +84,8 @@ void SDcardWriteData() {
 	// inserting into package
 	if (f_puts(buffer, &sd.fil) < 0) {
 		LOG_DEBUG("Error writing to file!\r\n");
-		ILI9341_DrawText(((ILI9341_SCREEN_WIDTH - ILI9341_GetTextWidth("Error writing to file!", FONT1)) / 2), ILI9341_SCREEN_HEIGHT-FONT1h, "Error writing to file!", FONT1, RED, BLACK);
+		//ILI9341_DrawText(((ILI9341_SCREEN_WIDTH - ILI9341_GetTextWidth("Error writing to file!", FONT1)) / 2), ILI9341_SCREEN_HEIGHT-FONT1h, "Error writing to file!", FONT1, RED, BLACK);
+		ILI9341_DrawRectangle(0, ILI9341_SCREEN_HEIGHT-1, ILI9341_SCREEN_WIDTH, 1, RED);
 		return;
 	}
 
@@ -90,7 +94,8 @@ void SDcardWriteData() {
 	if (++sync_cnt >= 10) {
 		if (f_sync(&sd.fil) != FR_OK) {
 			LOG_DEBUG("Error sync sd!\r\n");
-			ILI9341_DrawText(((ILI9341_SCREEN_WIDTH - ILI9341_GetTextWidth("Error sync sd!", FONT1)) / 2), ILI9341_SCREEN_HEIGHT-FONT1h, "Error sync sd!", FONT1, RED, BLACK);
+			//ILI9341_DrawText(((ILI9341_SCREEN_WIDTH - ILI9341_GetTextWidth("Error sync sd!", FONT1)) / 2), ILI9341_SCREEN_HEIGHT-FONT1h, "Error sync sd!", FONT1, RED, BLACK);
+			ILI9341_DrawRectangle(0, ILI9341_SCREEN_HEIGHT-1, ILI9341_SCREEN_WIDTH, 1, RED);
 		}
 		sync_cnt = 0;
 	}

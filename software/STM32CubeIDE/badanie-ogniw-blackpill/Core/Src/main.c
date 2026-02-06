@@ -85,10 +85,10 @@ struct state st = {
     .set_current_charge = 0,
     .set_current_charge_prev = 0,
     .get_current_charge = 0,
-    .charge_end_current = 0,      // minimalny prad ladowania
-    .charge_end_current_prev = 0, // minimalny prad ladowania
-    .discharge_cutoff_voltage = 0,      // minimalne napiecie rozladowywania
-    .discharge_cutoff_voltage_prev = 0, // minimalne napiecie rozladowywania
+    .charge_end_current = 0.1,      // minimalny prad ladowania
+    .charge_end_current_prev = 0.1, // minimalny prad ladowania
+    .discharge_cutoff_voltage = 3.0,      // minimalne napiecie rozladowywania
+    .discharge_cutoff_voltage_prev = 3.0, // minimalne napiecie rozladowywania
 
 	.is_screen_menu = true,
 	.screen_clear = true,
