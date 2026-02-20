@@ -8,81 +8,65 @@
 #include "logic/user_fnc.h"
 #include <stdlib.h>
 
-float adc_buffer[N_SAMPLES] = {0};
-uint8_t sample_idx = 0;
+static float current_filtered = 0.0f;
 
 float current_filtered_read(void) {
 	/* IN9
 	 * ACS712
+	 * restart - set_current_filtering(val)
 	 */
-	//float current = (float)ADC_Convert_Channel(ADC_CHANNEL_9);
-//2042 0A
-//2005 0.5A
-//2080 -0.5A
-	#define ADC_ZERO   2042.0f
-	#define ADC_PER_A  (37.0f / 0.5f)
+	#define CURRENT_A			(-0.0124104129f)
+	#define CURRENT_B			(25.1413510889f)
+	#define CURRENT_ALPHA		(0.02f)
 
 	float adc = (float)ADC_Convert_Channel(ADC_CHANNEL_9);
-	float current = (adc - ADC_ZERO) / ADC_PER_A;
 
-	//float adc_val = (float)ADC_Convert_Channel(ADC_CHANNEL_9);
-	//float voltage = adc_val * 3.3f / 4095.0f; // adc * Vref / 2^12
-	//float current = (voltage - 1.65f) / 0.0625f; // (V - Voff) / ACS_Sensitivity(0.625/10)
+	float current = CURRENT_A * adc + CURRENT_B;
 
-	// Current filtering
-	adc_buffer[sample_idx] = current;
-	sample_idx = (sample_idx + 1) % N_SAMPLES;
-	float sum = 0;
-	for (uint8_t i = 0; i < N_SAMPLES; i++)
-		sum += adc_buffer[i];
+	/* IIR filtering */
+	current_filtered += CURRENT_ALPHA *
+					   (current - current_filtered);
 
-	return sum / (float)N_SAMPLES;
+	return current_filtered;
 }
 
-void get_current_charge_val(void){
-	static const float adc_points[8] = {
-		40.0f, 200.0f, 430.0f, 660.0f,
-		850.0f, 1130.0f, 1600.0f, 3000.0f
-	};
+float voltage_read(void) {
+	#define ADC_3V   1950.0f
+	#define ADC_4V2  2630.0f
+	#define V_3V     3.0f
+	#define V_4V2    4.2f
+	#define V_a  ((V_4V2 - V_3V) / (ADC_4V2 - ADC_3V))
+	#define V_b  (V_3V - V_a * ADC_3V)
 
-	static const float current_points[8] = {
-		0.05f, 0.15f, 0.28f, 0.40f,
-		0.55f, 0.70f, 0.85f, 0.95f
-	};
-
-    float adc = 4095.0f - ADC_Convert_Channel(ADC_CHANNEL_0);
-    float current = current_points[0];
-
-    // ograniczenia
-    if (adc <= adc_points[0]) {
-        current = current_points[0];
-    }
-    else if (adc >= adc_points[7]) {
-        current = current_points[7];
-    }
-    else {
-        for (int i = 0; i < 7; i++) {
-            if (adc <= adc_points[i + 1]) {
-                float x0 = adc_points[i];
-                float x1 = adc_points[i + 1];
-                float y0 = current_points[i];
-                float y1 = current_points[i + 1];
-
-                current = y0 + (adc - x0) * (y1 - y0) / (x1 - x0);
-                break;
-            }
-        }
-    }
-
-    st.get_current_charge = current;
+	return (V_a * (float)ADC_Convert_Channel(ADC_CHANNEL_8) + V_b);
 }
 
-void current_filter_reset(void) {
-	for (uint8_t i = 0; i < N_SAMPLES; i++) {
-		adc_buffer[i] = 0;
+void set_current_filtering(float val) {
+	current_filtered = -val;
+}
+
+void get_current_charge_val(void)
+{
+	float adc = ADC_Convert_Channel(ADC_CHANNEL_0);
+	float a;
+	float b;
+	if (st.battery_current == 1) {	// li-ion
+		//50, 1400, 1653, 1818, 2120, 2400, 2615, 2900, 3162, 3377, 3648
+		//1.3, 1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3 ,0.2, 0.1
+		a =  -0.0003495841f;
+		b =  1.4172358277f;
+	} else {	// li-pol
+		//1750.0f, 2100.0f, 2320.0f, 2560.0f, 2800.0f, 3050.0f, 3290.0f, 3523.0f, 3750.0f
+		//0.9f, 0.8f, 0.7f, 0.6f, 0.5f, 0.4f, 0.3f, 0.2f, 0.1f
+		a = -0.0004074038f;
+		b =  1.6381505139f;
 	}
-	sample_idx = 0;
+
+	float current = a * adc + b;
+
+	st.get_current_charge = current;
 }
+
 
 void read_sensors_data(void) {
 	/* IN8
@@ -90,21 +74,21 @@ void read_sensors_data(void) {
 	 * 3.3636V -> adc 3.44
 	 */
 	// ADC
-	#define ADC_3V   1950.0f
-	#define ADC_4V2  2550.0f
-	#define V_3V     3.0f
-	#define V_4V2    4.2f
-	#define V_a  ((V_4V2 - V_3V) / (ADC_4V2 - ADC_3V))
-	#define V_b  (V_3V - V_a * ADC_3V)
-
-	s.voltage = V_a * (float)ADC_Convert_Channel(ADC_CHANNEL_8) + V_b;
-	
-	// moving average filter
-	s.current = current_filtered_read();
+	s.voltage = voltage_read();				// battery voltage
+	//2025.5 -- 0.0A
+	//2019.5 -- 0.1A
+	//2008.5 -- 0.2A
+	//1999.0 -- 0.3A
+	//1994.5 -- 0.4A
+	//1985.5 -- 0.5A
+	//1980.5 -- 0.6A
+	//1968.0 -- 0.7A
+	s.current = -current_filtered_read();	// moving average filter
 
 	// charge potentiometer
 	get_current_charge_val();
 
+	// lipol or liion
 	BATT_state();
 
 
@@ -190,38 +174,105 @@ void control_battery_state(float *voltage, float *current, float *temperature) {
 	}
 }
 
-void handle_battery_state() {
-	static uint8_t prev_state = BATTERY_IDLE;
-    if (st.battery_state != prev_state) {
-        prev_state = st.battery_state;
 
-    	HAL_GPIO_WritePin(R1IN1_GPIO_Port, R1IN1_Pin, false);
-    	HAL_GPIO_WritePin(R1IN2_GPIO_Port, R1IN2_Pin, false);
-        return;
-    }
+void handle_battery_state_dead_time(uint8_t *active_state, uint8_t *pending_state, uint8_t *switch_delay) {
+	(*switch_delay)--;
 
-	switch (st.battery_state) {
-	case BATTERY_IDLE:
-		st.discharge_relay = false;
-		st.charge_relay = false;
-		break;
+	st.battery_state = BATTERY_IDLE;
+	st.charge_relay = false;
+	st.discharge_relay = false;
+	set_current_filtering(0.0f);
+	HAL_GPIO_WritePin(R1IN1_GPIO_Port, R1IN1_Pin, false);
+	HAL_GPIO_WritePin(R1IN2_GPIO_Port, R1IN2_Pin, false);
 
-	case BATTERY_CHARGING:
-		st.discharge_relay = false;
-		st.charge_relay = true;
-		break;
+	if (*switch_delay == 0) {
+		*active_state = *pending_state;
+		st.battery_state = *active_state;
 
-	case BATTERY_DISCHARGING:
-		st.discharge_relay = true;
-		st.charge_relay = false;
-		break;
-	default:
-		st.discharge_relay = false;
-		st.charge_relay = false;
+		if (*active_state == BATTERY_CHARGING) {
+			set_current_filtering(st.get_current_charge);
+		} else if (*active_state == BATTERY_DISCHARGING) {
+			set_current_filtering(-st.set_current_discharge);
+		} else {
+			set_current_filtering(0.0f);
+		}
 	}
+}
+
+bool handle_battery_state_decision(uint8_t *active_state, uint8_t *pending_state, uint8_t *switch_delay) {
+	uint8_t requested_state = st.battery_state;
+
+	if (requested_state != *active_state) {
+		if ((*active_state == BATTERY_CHARGING && requested_state == BATTERY_DISCHARGING) ||
+			(*active_state == BATTERY_DISCHARGING && requested_state == BATTERY_CHARGING)) {			*pending_state = requested_state;	// CHARGE <-> DISCHARGE : dead-time
+			*switch_delay = 10;
+			return false;
+
+		} else {
+			*active_state = requested_state;	//IDLE <-> CHARGE|DISCHARGE
+
+			if (requested_state == BATTERY_CHARGING) {
+				set_current_filtering(st.get_current_charge);
+			} else if (requested_state == BATTERY_DISCHARGING) {
+				set_current_filtering(-st.set_current_discharge);
+			} else {
+				set_current_filtering(0.0f);
+			}
+		}
+	}
+	return true;
+}
+
+void handle_battery_state(void) {
+	static uint8_t active_state = BATTERY_IDLE;
+	static uint8_t pending_state = BATTERY_IDLE;
+	static uint8_t switch_delay = 0;
+
+	/* ---------------- DEAD TIME ---------------- */
+
+	if (switch_delay > 0) {
+		handle_battery_state_dead_time(&active_state, &pending_state, &switch_delay);
+		return;
+	}
+
+	/* ---------------- DECISION ---------------- */
+
+	control_battery_state(&s.voltage, &s.current, &s.BME280temperature[0]);
+	if (!handle_battery_state_decision(&active_state, &pending_state, &switch_delay)) {
+		return;
+	}
+
+	/* ---------------- APPLY ---------------- */
+
+	st.battery_state = active_state;
+	switch (active_state) {
+		case BATTERY_IDLE:
+			st.charge_relay = false;
+			st.discharge_relay = false;
+			break;
+
+		case BATTERY_CHARGING:
+			st.charge_relay = true;
+			st.discharge_relay = false;
+			break;
+
+		case BATTERY_DISCHARGING:
+			st.charge_relay = false;
+			st.discharge_relay = true;
+			break;
+
+		default:
+			st.charge_relay = false;
+			st.discharge_relay = false;
+			active_state = BATTERY_IDLE;
+			st.battery_state = BATTERY_IDLE;
+			break;
+	}
+
 	HAL_GPIO_WritePin(R1IN1_GPIO_Port, R1IN1_Pin, st.charge_relay);
 	HAL_GPIO_WritePin(R1IN2_GPIO_Port, R1IN2_Pin, st.discharge_relay);
 }
+
 
 void ENC_SetPosition(int8_t pos) {
     __HAL_TIM_SET_COUNTER(&htim1, (int16_t)(pos << 2));

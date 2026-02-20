@@ -15,13 +15,10 @@
 #include "sensors/BMPXX80.h"
 #include "sensors/sgp30.h"
 
-#define N_SAMPLES 16
-
-extern float adc_buffer[N_SAMPLES];
-extern uint8_t sample_idx;
-
 float current_filtered_read(void);
-void get_current_charge_val();
+float voltage_read(void);
+void set_current_filtering(float val);
+void get_current_charge_val(void);
 void current_filter_reset(void);
 void read_sensors_data(void);
 void control_battery_state(float *voltage, float *current, float *temperature);

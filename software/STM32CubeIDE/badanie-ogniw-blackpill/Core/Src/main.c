@@ -66,17 +66,17 @@ struct state st = {
 	.current_screen_type = MENU_MAIN,
 	.menu_current_ptr = MENU_START,
 	.sensor_current = SENSOR_FIRST,
-	.battery_state = BATTERY_IDLE,
-	.auto_mode_current = MANUAL_MODE,
+	.battery_state = BATTERY_IDLE,  // BATTERY_IDLE = 0, BATTERY_CHARGING = 1, BATTERY_DISCHARGING = 2
+	.auto_mode_current = AUTO_MODE,  // AUTO_MODE = 0, MANUAL_MODE = 1
 
 	.screen_menu_ptr = 0,
 	.screen_menu_current = 0,
 	.battery_ptr = 0,
 	.battery_current = 0,
-	.status_ptr = 0,     // BATTERY_CHARGING = 1, BATTERY_DISCHARGING = 2
-	.status_current = 0, // BATTERY_CHARGING = 1, BATTERY_DISCHARGING = 2
-	.auto_mode_ptr = 0,     // AUTO_MODE00 = 0, MANUAL_MODE = 1
-	.auto_mode_current = 0, // AUTO_MODE00 = 0, MANUAL_MODE = 1
+	.status_ptr = 0,     // BATTERY_IDLE = 0, BATTERY_CHARGING = 1, BATTERY_DISCHARGING = 2
+	.status_current = 0, // BATTERY_IDLE = 0, BATTERY_CHARGING = 1, BATTERY_DISCHARGING = 2
+	.auto_mode_ptr = 0,     // AUTO_MODE = 0, MANUAL_MODE = 1
+	.auto_mode_current = 0, // AUTO_MODE = 0, MANUAL_MODE = 1
 	.enc_count = 0,
 	.prev_enc_count = 0,
 	.enc_offset = 0,
@@ -179,6 +179,8 @@ int main(void)
   MX_TIM11_Init();
   /* USER CODE BEGIN 2 */
 	// OLED
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 0);
+
 	ILI9341_Init();
 	ILI9341_FillScreen(WHITE);
 
@@ -207,10 +209,12 @@ int main(void)
 	HAL_TIM_Base_Start_IT(&htim11);
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 
-	OLED_options_init();
+	// oled options setup
+	//OLED_options_init();
 
 	LOG_DEBUG("Complete peripheral initialization\r\n");
 	HAL_Delay(1000);
+  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -222,17 +226,16 @@ int main(void)
     /* USER CODE BEGIN 3 */
 		// stele probkowanie
 		if (st._interrupt_flag == true && st.is_measurements_started == true) {
-			read_sensors_data();
+			read_sensors_data();	// batteries[BATERYS_NUM] = { jest pol a wykrywa ion
 
 			// charging state
-			control_battery_state(&s.voltage, &s.current,&s.BME280temperature[0]);
 			handle_battery_state();
 
 			// OLED
 			OLED_manage();
 
 			// SD
-			SDcardWriteData();
+			//SDcardWriteData();
 
 			// Transmit over usb
 			LOG_DATA("%u,%u,"

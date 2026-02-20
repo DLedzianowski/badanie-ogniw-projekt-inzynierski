@@ -537,7 +537,7 @@ void action_menu_start(void) {
 
 	// SD
 	if (st.is_measurements_started == false) {
-		SDcardInit("test.csv");
+		//SDcardInit("test.csv");
 	}
 
 	st.is_measurements_started = true;
@@ -560,7 +560,6 @@ void action_menu_start(void) {
 void action_menu_current_charge(void) {
 	st.set_current_charge = st.set_current_charge_prev;
 	set_current_charge_first_enter = true;
-	current_filter_reset();
 
 	ENC_SetPosition(0);
 	st.current_screen_type = SCREEN_MENU;
@@ -592,7 +591,9 @@ void action_menu_min_discharge_voltage(void) {
 void action_menu_current_discharge(void) {
 	st.set_current_discharge = st.set_current_discharge_prev;
 	set_current_discharge_first_enter = true;
-	current_filter_reset();
+	if (st.battery_state == BATTERY_DISCHARGING) {
+		set_current_filtering(-st.set_current_discharge);
+	}
 
 	ENC_SetPosition(3);
 	st.current_screen_type = SCREEN_MENU;
